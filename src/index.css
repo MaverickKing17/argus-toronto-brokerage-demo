@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --color-gold: #c5a367;
+    --color-gold-hover: #b39055;
+    --color-dark-bg: #0a0a0a;
+    --color-dark-card: #0f0f0f;
+    --color-dark-surface: #151515;
+    --color-dark-elevated: #1a1a1a;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-dark-bg);
+    color: #e5e5e5;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+.text-gold {
+  color: #c5a367;
+}
+
+.bg-gold {
+  background-color: #c5a367;
+}
+
+.border-gold {
+  border-color: #c5a367;
+}
+
+.border-gold-subtle {
+  border-color: rgba(197, 163, 103, 0.25);
+}
+
+.bg-gold-subtle {
+  background-color: rgba(197, 163, 103, 0.1);
+}
+
+/* Custom subtle scrollbars for chat and galleries */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 163, 103, 0.3);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 163, 103, 0.6);
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+

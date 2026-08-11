@@ -1,0 +1,6 @@
+{
+  "name": "The Yorkville Luxury Group",
+  "description": "Luxury real estate brokerage web page prototype featuring the Yorkville Penthouse Collection and ARGUS AI Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
