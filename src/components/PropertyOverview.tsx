@@ -85,35 +85,44 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
           </div>
         </div>
 
-        {/* Specs Grid with High Contrast Cards */}
+        {/* Specs Grid with High Contrast "Popping" Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {PROPERTY_SPECS.map((spec) => (
             <div 
               key={spec.id}
-              className="relative p-6 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-900 to-zinc-950 border border-zinc-700/80 hover:border-amber-500/50 shadow-xl hover:shadow-2xl hover:shadow-amber-500/5 transition-all duration-300 group overflow-hidden"
+              className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-zinc-900/95 via-zinc-900 to-zinc-950 border border-zinc-700/80 hover:border-amber-400/80 shadow-xl hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden"
               id={`spec-card-${spec.id}`}
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              {/* Metallic Gold Accent Top Bar */}
+              <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-amber-500/20 via-amber-400 to-amber-500/20 group-hover:via-amber-300 transition-all duration-500"></div>
               
-              <div className="flex items-start justify-between mb-4">
-                <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800 shadow-inner group-hover:border-amber-500/30 transition-colors">
+              {/* Background Glow Spot on Hover */}
+              <div className="absolute -top-10 -right-10 w-36 h-36 bg-amber-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+              <div className="flex items-start justify-between mb-5 relative z-10">
+                <div className="p-3.5 rounded-xl bg-gradient-to-br from-amber-500/20 via-zinc-900 to-zinc-950 border border-amber-500/40 shadow-lg group-hover:border-amber-400 group-hover:scale-110 transition-all duration-300">
                   {getIcon(spec.iconName)}
                 </div>
-                <span className="text-[10px] font-mono text-amber-400/90 uppercase tracking-wider font-bold px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                   VERIFIED SPEC
                 </span>
               </div>
-              <span className="block text-xs text-zinc-400 uppercase tracking-wider font-semibold">
-                {spec.label}
-              </span>
-              <span className="font-serif text-2xl text-white font-bold mt-1 block group-hover:text-amber-300 transition-colors">
-                {spec.value}
-              </span>
-              {spec.subtext && (
-                <span className="block text-xs text-zinc-300 mt-2 font-medium">
-                  {spec.subtext}
+
+              <div className="relative z-10 space-y-1">
+                <span className="block text-[11px] font-mono text-amber-400/90 uppercase tracking-widest font-bold">
+                  {spec.label}
                 </span>
-              )}
+                <span className="font-serif text-2xl sm:text-3xl text-white font-bold tracking-tight block group-hover:text-amber-200 transition-colors drop-shadow-sm">
+                  {spec.value}
+                </span>
+                {spec.subtext && (
+                  <div className="mt-3 pt-2.5 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-300 font-semibold bg-zinc-950/60 -mx-1 px-3 py-1.5 rounded-lg border border-zinc-800/50">
+                    <span>{spec.subtext}</span>
+                    <span className="text-amber-400 text-xs">→</span>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -153,23 +162,27 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
             </div>
 
             {/* Key Features & Amenities List */}
-            <div className="p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-zinc-950 border border-zinc-700/80 shadow-2xl">
-              <h3 className="font-serif text-xl text-white font-bold mb-6 flex items-center gap-2">
+            <div className="p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-zinc-950 border border-zinc-700/80 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent"></div>
+
+              <h3 className="font-serif text-xl sm:text-2xl text-white font-bold mb-6 flex items-center gap-2.5">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                 Unsurpassed Architectural Features
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {AMENITIES_LIST.map((amenity) => (
-                  <div key={amenity.id} className="flex items-start gap-4 p-4.5 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-zinc-700 transition-colors">
-                    <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-700 text-amber-400 shrink-0 shadow-sm">
+                  <div key={amenity.id} className="relative flex items-start gap-4 p-5 rounded-2xl bg-zinc-950/90 border border-zinc-800 hover:border-amber-500/40 hover:-translate-y-0.5 transition-all duration-300 shadow-lg group overflow-hidden">
+                    <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/20 via-zinc-900 to-zinc-950 border border-amber-500/30 text-amber-300 shrink-0 shadow-md group-hover:border-amber-400 group-hover:scale-105 transition-all">
                       {getIcon(amenity.icon)}
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase text-amber-400 tracking-wider font-bold block">
+                      <span className="text-[10px] font-mono uppercase text-amber-400 tracking-widest font-bold block">
                         {amenity.category}
                       </span>
-                      <h4 className="text-sm font-bold text-white mt-0.5">
+                      <h4 className="text-sm font-bold text-white mt-0.5 group-hover:text-amber-200 transition-colors">
                         {amenity.title}
                       </h4>
                       <p className="text-xs text-zinc-300 mt-1 font-normal leading-relaxed">
