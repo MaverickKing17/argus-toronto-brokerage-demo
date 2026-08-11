@@ -26,18 +26,22 @@ export const MortgageCalculator: React.FC = () => {
   const estimatedLTT = 210000; // Approx LTT for $4.5M in Toronto
 
   return (
-    <section id="calculator" className="py-16 bg-neutral-950 text-neutral-100 border-b border-neutral-800/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="calculator" className="relative py-20 bg-zinc-950 text-zinc-100 border-b border-zinc-800/80 overflow-hidden">
+      {/* Background Accent Glow */}
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="mb-12">
-          <span className="text-xs font-mono tracking-widest text-amber-400 uppercase">
-            // FINANCIAL MODELING & CARRY ANALYSIS
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[11px] font-mono font-bold uppercase tracking-wider mb-3">
+            <Calculator className="w-3.5 h-3.5" />
+            FINANCIAL MODELING & CARRY ANALYSIS
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-white font-semibold mt-2">
+          <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold mt-1">
             $4.5M Investment & Capital Breakdown
           </h2>
-          <p className="text-neutral-400 text-sm mt-1 font-light max-w-2xl">
+          <p className="text-zinc-300 text-sm mt-2 font-normal max-w-2xl leading-relaxed">
             Simulate custom acquisition structures, down payment allocations, and estimated monthly carries for Suite 5200.
           </p>
         </div>
@@ -45,19 +49,19 @@ export const MortgageCalculator: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Controls Column */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-neutral-900/60 border border-neutral-800 space-y-6">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-900 to-zinc-950 border border-zinc-700/80 shadow-2xl space-y-6">
             
             {/* Purchase Price Display */}
-            <div className="flex items-center justify-between pb-4 border-b border-neutral-800">
-              <span className="text-xs font-semibold text-neutral-300">Purchase Price (CAD):</span>
-              <span className="font-serif text-2xl text-amber-400 font-bold">$4,500,000</span>
+            <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
+              <span className="text-xs font-bold text-zinc-300">Purchase Price (CAD):</span>
+              <span className="font-serif text-2xl text-white font-bold">$4,500,000</span>
             </div>
 
             {/* Down Payment Slider */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs">
-                <span className="text-neutral-300 font-medium">Down Payment ({downPaymentPercent}%):</span>
-                <span className="font-mono text-amber-300 font-semibold">${downPaymentAmount.toLocaleString()} CAD</span>
+                <span className="text-zinc-200 font-bold">Down Payment ({downPaymentPercent}%):</span>
+                <span className="font-mono text-amber-300 font-bold">${downPaymentAmount.toLocaleString()} CAD</span>
               </div>
               <input
                 type="range"
@@ -66,9 +70,9 @@ export const MortgageCalculator: React.FC = () => {
                 step={5}
                 value={downPaymentPercent}
                 onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className="w-full accent-amber-500 bg-neutral-800 h-2 rounded-lg cursor-pointer"
+                className="w-full accent-amber-500 bg-zinc-950 h-2 rounded-lg cursor-pointer border border-zinc-800"
               />
-              <div className="flex justify-between text-[10px] text-neutral-500 font-mono">
+              <div className="flex justify-between text-[10px] text-zinc-400 font-mono font-semibold">
                 <span>20% ($900k)</span>
                 <span>35% ($1.575M)</span>
                 <span>50% ($2.25M)</span>
@@ -78,8 +82,8 @@ export const MortgageCalculator: React.FC = () => {
             {/* Interest Rate Slider */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs">
-                <span className="text-neutral-300 font-medium">Interest Rate:</span>
-                <span className="font-mono text-amber-300 font-semibold">{interestRate.toFixed(1)}%</span>
+                <span className="text-zinc-200 font-bold">Interest Rate:</span>
+                <span className="font-mono text-amber-300 font-bold">{interestRate.toFixed(1)}%</span>
               </div>
               <input
                 type="range"
@@ -88,9 +92,9 @@ export const MortgageCalculator: React.FC = () => {
                 step={0.1}
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className="w-full accent-amber-500 bg-neutral-800 h-2 rounded-lg cursor-pointer"
+                className="w-full accent-amber-500 bg-zinc-950 h-2 rounded-lg cursor-pointer border border-zinc-800"
               />
-              <div className="flex justify-between text-[10px] text-neutral-500 font-mono">
+              <div className="flex justify-between text-[10px] text-zinc-400 font-mono font-semibold">
                 <span>4.0% Prime</span>
                 <span>5.5% Benchmark</span>
                 <span>7.5%</span>
@@ -99,24 +103,24 @@ export const MortgageCalculator: React.FC = () => {
 
             {/* Amortization Term */}
             <div className="space-y-2">
-              <label className="block text-xs font-medium text-neutral-300">Amortization Period:</label>
+              <label className="block text-xs font-bold text-zinc-200">Amortization Period:</label>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setAmortizationYears(25)}
-                  className={`py-2.5 rounded-lg border text-xs font-semibold font-mono transition-all ${
+                  className={`py-3 rounded-xl border text-xs font-bold font-mono transition-all shadow-md ${
                     amortizationYears === 25 
-                      ? 'bg-amber-500/20 border-amber-400 text-amber-300' 
-                      : 'bg-neutral-950 border-neutral-800 text-neutral-400'
+                      ? 'bg-amber-500 text-zinc-950 border-amber-400 shadow-amber-500/20' 
+                      : 'bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700'
                   }`}
                 >
                   25 Years (Standard)
                 </button>
                 <button
                   onClick={() => setAmortizationYears(30)}
-                  className={`py-2.5 rounded-lg border text-xs font-semibold font-mono transition-all ${
+                  className={`py-3 rounded-xl border text-xs font-bold font-mono transition-all shadow-md ${
                     amortizationYears === 30 
-                      ? 'bg-amber-500/20 border-amber-400 text-amber-300' 
-                      : 'bg-neutral-950 border-neutral-800 text-neutral-400'
+                      ? 'bg-amber-500 text-zinc-950 border-amber-400 shadow-amber-500/20' 
+                      : 'bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700'
                   }`}
                 >
                   30 Years (Extended)
@@ -125,15 +129,15 @@ export const MortgageCalculator: React.FC = () => {
             </div>
 
             {/* Closing Costs Callout */}
-            <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 text-xs space-y-1.5">
-              <span className="font-mono text-amber-400 text-[10px] uppercase block">
+            <div className="p-4.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs space-y-1.5 shadow-inner">
+              <span className="font-mono text-amber-400 text-[10px] uppercase block font-bold">
                 TORONTO CLOSING CAPITAL ESTIMATE
               </span>
-              <div className="flex justify-between text-neutral-300">
+              <div className="flex justify-between text-zinc-200 font-semibold">
                 <span>Combined ON/Toronto Land Transfer Tax:</span>
-                <span className="font-mono text-white font-semibold">~${estimatedLTT.toLocaleString()} CAD</span>
+                <span className="font-mono text-white font-bold">~${estimatedLTT.toLocaleString()} CAD</span>
               </div>
-              <p className="text-[10px] text-neutral-400 font-light">
+              <p className="text-[10px] text-zinc-400 font-normal">
                 *Subject to lawyer verification. Our private wealth division assists with structure optimization.
               </p>
             </div>
@@ -141,38 +145,40 @@ export const MortgageCalculator: React.FC = () => {
           </div>
 
           {/* Monthly Output Summary Card */}
-          <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-neutral-900 via-neutral-900 to-neutral-950 border border-amber-500/30 space-y-6 shadow-2xl">
+          <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-amber-500/40 space-y-6 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
             <div>
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">
+              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block font-bold mb-1">
                 ESTIMATED MONTHLY CARRY
               </span>
-              <h3 className="font-serif text-3xl sm:text-4xl text-amber-300 font-bold mt-1">
-                ${Math.round(totalMonthlyCarry).toLocaleString()} <span className="text-xs font-sans text-neutral-400 font-normal">/ mo</span>
+              <h3 className="font-serif text-3xl sm:text-4xl text-white font-bold">
+                ${Math.round(totalMonthlyCarry).toLocaleString()} <span className="text-xs font-sans text-zinc-300 font-normal">/ mo</span>
               </h3>
-              <span className="text-[11px] text-neutral-400 font-light block mt-1">
+              <span className="text-[11px] text-zinc-300 font-medium block mt-1.5">
                 Total combined principal, interest, taxes, and building maintenance.
               </span>
             </div>
 
-            <div className="space-y-3 pt-4 border-t border-neutral-800">
-              <div className="flex items-center justify-between text-xs py-2 border-b border-neutral-800/80">
-                <span className="text-neutral-300">Mortgage Principal & Interest:</span>
-                <span className="font-mono text-amber-300 font-semibold">${Math.round(monthlyMortgage).toLocaleString()}/mo</span>
+            <div className="space-y-3 pt-4 border-t border-zinc-800/80">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+                <span className="text-zinc-300 font-medium">Mortgage Principal & Interest:</span>
+                <span className="font-mono text-white font-bold">${Math.round(monthlyMortgage).toLocaleString()}/mo</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-neutral-800/80">
-                <span className="text-neutral-300">Building Maintenance Fee:</span>
-                <span className="font-mono text-white font-semibold">${monthlyMaintenance.toLocaleString()}/mo</span>
+              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+                <span className="text-zinc-300 font-medium">Building Maintenance Fee:</span>
+                <span className="font-mono text-white font-bold">${monthlyMaintenance.toLocaleString()}/mo</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-neutral-800/80">
-                <span className="text-neutral-300">Annual Property Tax (Est. Monthly):</span>
-                <span className="font-mono text-white font-semibold">${Math.round(monthlyPropertyTax).toLocaleString()}/mo</span>
+              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+                <span className="text-zinc-300 font-medium">Annual Property Tax (Est. Monthly):</span>
+                <span className="font-mono text-white font-bold">${Math.round(monthlyPropertyTax).toLocaleString()}/mo</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2">
-                <span className="text-neutral-300 font-semibold">Financed Balance:</span>
-                <span className="font-mono text-amber-400 font-bold">${loanAmount.toLocaleString()} CAD</span>
+              <div className="flex items-center justify-between text-xs py-2 pt-3">
+                <span className="text-amber-300 font-bold">Financed Balance:</span>
+                <span className="font-mono text-white font-bold text-sm">${loanAmount.toLocaleString()} CAD</span>
               </div>
             </div>
 

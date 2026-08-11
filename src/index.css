@@ -6,16 +6,16 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --color-gold: #c5a367;
     --color-gold-hover: #b39055;
-    --color-dark-bg: #0a0a0a;
-    --color-dark-card: #0f0f0f;
-    --color-dark-surface: #151515;
-    --color-dark-elevated: #1a1a1a;
+    --color-dark-bg: #121212;
+    --color-dark-card: #18181b;
+    --color-dark-surface: #202023;
+    --color-dark-elevated: #27272a;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-dark-bg);
-    color: #e5e5e5;
+    background-color: #121212;
+    color: #f4f4f5;
   }
 
   h1, h2, h3, .font-serif {
@@ -36,11 +36,11 @@
 }
 
 .border-gold-subtle {
-  border-color: rgba(197, 163, 103, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .bg-gold-subtle {
-  background-color: rgba(197, 163, 103, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Custom subtle scrollbars for chat and galleries */
@@ -50,11 +50,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #121212;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(197, 163, 103, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
 }
 
@@ -64,10 +64,11 @@
 
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.02); }
+  50% { opacity: 0.9; transform: scale(1.02); }
 }
 
 .animate-pulse-subtle {
   animation: pulse-subtle 3s ease-in-out infinite;
 }
+
 
