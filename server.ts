@@ -23,7 +23,14 @@ async function startServer() {
 
       if (apiKey && apiKey !== "MY_GEMINI_API_KEY") {
         try {
-          const ai = new GoogleGenAI({ apiKey });
+          const ai = new GoogleGenAI({ 
+            apiKey,
+            httpOptions: {
+              headers: {
+                'User-Agent': 'aistudio-build'
+              }
+            }
+          });
           
           const systemInstruction = `You are ARGUS AI Assistant, a 24/7 ultra-high-end concierge AI for "The Yorkville Luxury Group", premier real estate brokerage in Toronto, Ontario.
 You are representing the flagship listing: "The Yorkville Penthouse Collection" located at 188 Bay Street / Yorkville Ave, Toronto, ON.
@@ -43,7 +50,7 @@ Respond concisely (2-4 sentences max), always offering to schedule a private vie
           })) : [{ role: "user", parts: [{ text: userIntent || "Tell me about the $4.5M Penthouse in Yorkville" }] }];
 
           const response = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
+            model: "gemini-3.6-flash",
             contents: formattedContents,
             config: {
               systemInstruction,
