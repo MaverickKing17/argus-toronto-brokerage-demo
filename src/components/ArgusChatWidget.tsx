@@ -37,6 +37,56 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     }
   }, [isOpenExternal]);
 
+  // Continuously ensure Botpress's native blue launcher button is hidden so ONLY the dark custom ARGUS widget appears
+  useEffect(() => {
+    const hideBotpressNativeButton = () => {
+      try {
+        if ((window as any).botpressWebChat?.hide) {
+          (window as any).botpressWebChat.hide();
+        } else if ((window as any).botpress?.hide) {
+          (window as any).botpress.hide();
+        }
+      } catch (e) {
+        // ignore
+      }
+
+      const selectors = [
+        '#bp-webchat-container',
+        '.bpw-widget-container',
+        '.bpw-floating-button',
+        '#bp-webchat-container-iframe',
+        'iframe[src*="botpress"]',
+        'iframe[title*="botpress"]',
+        'iframe[title*="webchat"]',
+        'iframe[id*="bp-"]',
+        'div[class*="bpw-"]',
+        'div[id*="bp-webchat"]',
+        'button[class*="bpw-"]',
+        'div[data-testid="webchat-container"]'
+      ];
+
+      selectors.forEach((sel) => {
+        const els = document.querySelectorAll(sel);
+        els.forEach((el) => {
+          if (el instanceof HTMLElement) {
+            el.style.setProperty('display', 'none', 'important');
+            el.style.setProperty('visibility', 'hidden', 'important');
+            el.style.setProperty('opacity', '0', 'important');
+            el.style.setProperty('pointer-events', 'none', 'important');
+            el.style.setProperty('width', '0', 'important');
+            el.style.setProperty('height', '0', 'important');
+            el.style.setProperty('position', 'absolute', 'important');
+            el.style.setProperty('left', '-9999px', 'important');
+          }
+        });
+      });
+    };
+
+    hideBotpressNativeButton();
+    const interval = setInterval(hideBotpressNativeButton, 400);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };

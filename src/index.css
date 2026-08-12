@@ -71,16 +71,29 @@
   animation: pulse-subtle 3s ease-in-out infinite;
 }
 
-/* Ensure Botpress default floating trigger doesn't conflict with custom UI */
+/* Completely hide native Botpress floating blue button and default widget overlay */
 #bp-webchat-container, 
 .bpw-widget-container,
-.bpw-layout {
-  z-index: 40 !important;
-  opacity: 0.01 !important;
+.bpw-layout,
+.bpw-floating-button,
+#bp-webchat-container-iframe,
+iframe[src*="botpress"],
+iframe[title*="botpress"],
+iframe[title*="webchat"],
+iframe[id*="bp-"],
+div[class*="bpw-"],
+div[id*="bp-webchat"],
+button[class*="bpw-"],
+div[data-testid="webchat-container"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
   pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
   position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
+  left: -9999px !important;
+  top: -9999px !important;
 }
 
 
