@@ -4,13 +4,11 @@ import {
   X, 
   Send, 
   RotateCcw, 
-  Play, 
   CheckCircle2, 
   Calendar, 
-  Bot, 
   User, 
-  ChevronDown,
   ShieldCheck,
+  Maximize2,
   Minimize2
 } from 'lucide-react';
 import { REQUIRED_DEMO_SCRIPT } from '../data/propertyData';
@@ -25,7 +23,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
   isOpenExternal,
   onToggleExternal
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(true); // Default open to show prototype immediately
+  const [isOpen, setIsOpen] = useState<boolean>(true); // Default open to showcase prototype layout
   const [messages, setMessages] = useState<ChatMessage[]>(REQUIRED_DEMO_SCRIPT);
   const [inputValue, setInputValue] = useState<string>('');
   const [isTyping, setIsTyping] = useState<boolean>(false);
@@ -52,7 +50,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     if (onToggleExternal) onToggleExternal();
   };
 
-  // Replay exact prompt-required demo conversation step by step for video recording
+  // Replay exact prompt-required demo conversation step by step
   const handleReplayDemo = () => {
     setMessages([]);
     setAutoPlayIndex(0);
@@ -72,7 +70,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     }
   }, [autoPlayIndex]);
 
-  // Handle user typing live messages to ARGUS
+  // Handle user sending live messages to ARGUS AI + Botpress Webchat
   const handleSendMessage = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!inputValue.trim()) return;
@@ -88,6 +86,17 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     setMessages((prev) => [...prev, newUserMsg]);
     setInputValue('');
     setIsTyping(true);
+
+    // Send event to Botpress if Botpress Webchat is loaded in window
+    try {
+      if ((window as any).botpressWebChat) {
+        (window as any).botpressWebChat.sendPayload({ type: 'text', text: userText });
+      } else if ((window as any).botpress) {
+        (window as any).botpress.sendMessage(userText);
+      }
+    } catch (bpErr) {
+      console.warn("Botpress trigger note:", bpErr);
+    }
 
     try {
       const res = await fetch("/api/chat", {
@@ -125,95 +134,96 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end">
       
       {/* Floating Widget Trigger Button */}
       {!isOpen && (
         <button
           onClick={toggleWidget}
-          className="group relative px-5 py-3.5 rounded-full bg-zinc-900 border-2 border-amber-400 text-white shadow-2xl hover:shadow-amber-500/30 transition-all flex items-center gap-3 backdrop-blur-xl animate-pulse-subtle"
+          className="group relative px-5 py-3.5 rounded-full bg-zinc-950 border-2 border-amber-400 text-white shadow-2xl hover:shadow-amber-500/40 hover:scale-105 transition-all flex items-center gap-3 backdrop-blur-xl animate-pulse-subtle"
           id="argus-widget-trigger"
         >
           <div className="relative">
-            <div className="w-9 h-9 rounded-full bg-amber-500/25 border border-amber-400 flex items-center justify-center text-amber-300 shadow-inner">
-              <Sparkles className="w-4.5 h-4.5 text-amber-300" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 border border-amber-300 flex items-center justify-center text-zinc-950 shadow-lg">
+              <Sparkles className="w-5 h-5 text-zinc-950" />
             </div>
-            <span className="absolute top-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-zinc-900"></span>
+            <span className="absolute top-0 right-0 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-zinc-950"></span>
           </div>
 
           <div className="text-left hidden sm:block">
-            <span className="block text-xs font-bold text-white tracking-wide">
+            <span className="block text-xs font-bold text-white tracking-wide font-serif">
               ARGUS AI Assistant
             </span>
-            <span className="block text-[10px] font-mono text-amber-400 font-semibold">
-              24/7 Live Broker Concierge
+            <span className="block text-[10px] font-mono text-amber-400 font-bold">
+              24/7 Live Concierge
             </span>
           </div>
         </button>
       )}
 
-      {/* Embedded Chat Window */}
+      {/* Embedded Chat Window (Matches exact screenshot layout) */}
       {isOpen && (
         <div 
-          className="w-[360px] sm:w-[420px] h-[580px] max-h-[85vh] rounded-2xl bg-[#121212] border-2 border-amber-500/60 shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl transition-all duration-300"
+          className="w-[380px] sm:w-[440px] h-[610px] max-h-[88vh] rounded-2xl bg-[#121212] border-2 border-amber-500/70 shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl transition-all duration-300 ring-1 ring-amber-500/30"
           id="argus-chat-window"
         >
-          {/* Header */}
-          <div className="bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 p-4 border-b border-zinc-800 flex items-center justify-between">
+          {/* Header Bar */}
+          <div className="bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-3.5 sm:p-4 border-b border-zinc-800 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-9 h-9 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center text-amber-300 shadow-inner">
-                  <Sparkles className="w-4 h-4 text-amber-300" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 border border-amber-300 flex items-center justify-center text-zinc-950 shadow-md">
+                  <Sparkles className="w-5 h-5 text-zinc-950" />
                 </div>
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-zinc-900"></span>
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-zinc-950"></span>
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-xs font-bold text-white tracking-wide font-serif">
+                  <h3 className="text-sm font-bold text-white tracking-wide font-serif">
                     ARGUS AI Assistant
                   </h3>
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-amber-500/25 text-amber-300 border border-amber-400/50 font-bold">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-amber-500/20 text-amber-300 border border-amber-400/50 font-bold uppercase tracking-wider">
                     24/7 LIVE
                   </span>
                 </div>
-                <span className="text-[10px] text-zinc-300 font-medium block">
+                <span className="text-[11px] text-zinc-300 font-medium block mt-0.5">
                   The Yorkville Luxury Group Concierge
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={handleReplayDemo}
                 title="Replay Video Demo Conversation"
-                className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-amber-300 text-xs transition-colors flex items-center gap-1"
+                className="px-2.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 hover:text-amber-300 text-xs transition-colors flex items-center gap-1.5 shadow-sm"
                 id="replay-demo-btn"
               >
                 <RotateCcw className="w-3.5 h-3.5 text-zinc-300" />
-                <span className="text-[10px] font-mono font-medium hidden sm:inline">Demo Replay</span>
+                <span className="text-[11px] font-mono font-medium">Demo Replay</span>
               </button>
 
               <button
                 onClick={toggleWidget}
-                className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white transition-colors"
+                className="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-white transition-colors"
                 id="close-chat-widget-btn"
+                title="Minimize Window"
               >
-                <Minimize2 className="w-4 h-4" />
+                <Maximize2 className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
 
           {/* Subheader Status */}
-          <div className="bg-zinc-900/90 px-4 py-1.5 border-b border-zinc-800 text-[10px] font-mono text-zinc-300 flex items-center justify-between">
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3 text-amber-400" />
+          <div className="bg-zinc-950 px-4 py-2 border-b border-zinc-800/80 text-[11px] font-mono text-zinc-300 flex items-center justify-between">
+            <span className="flex items-center gap-1.5 font-medium">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
               Listing: Suite 5200 ($4.5M CAD)
             </span>
-            <span className="text-emerald-400 font-semibold">Broker Calendar Synced</span>
+            <span className="text-emerald-400 font-bold tracking-tight">Broker Calendar Synced</span>
           </div>
 
           {/* Messages Body */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-sans bg-[#121212]">
+          <div className="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-sans bg-[#121212] scrollbar-thin">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -221,15 +231,15 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                   msg.sender === 'user' ? 'items-end' : 'items-start'
                 }`}
               >
-                <div className="flex items-center gap-1.5 mb-1 px-1 text-[10px] text-zinc-300 font-mono">
+                <div className="flex items-center gap-1.5 mb-1 px-1 text-[11px] text-zinc-400 font-mono">
                   {msg.sender === 'user' ? (
                     <>
-                      <span className="text-zinc-200 font-medium">You</span>
-                      <User className="w-3 h-3 text-zinc-300" />
+                      <span className="text-zinc-300 font-semibold">You</span>
+                      <User className="w-3 h-3 text-zinc-400" />
                     </>
                   ) : (
                     <>
-                      <Sparkles className="w-3 h-3 text-amber-400" />
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                       <span className="text-amber-400 font-bold">ARGUS AI</span>
                     </>
                   )}
@@ -237,37 +247,37 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                 </div>
 
                 <div
-                  className={`p-3.5 rounded-2xl max-w-[88%] leading-relaxed ${
+                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed ${
                     msg.sender === 'user'
-                      ? 'bg-amber-500 text-zinc-950 font-semibold rounded-tr-xs shadow-md'
-                      : 'bg-zinc-900 border border-zinc-800 text-zinc-100 font-normal rounded-tl-xs shadow-lg'
+                      ? 'bg-amber-500 text-zinc-950 font-bold rounded-tr-xs shadow-md text-xs sm:text-sm'
+                      : 'bg-zinc-900/90 border border-zinc-800 text-zinc-100 font-normal rounded-tl-xs shadow-xl text-xs sm:text-sm'
                   }`}
                 >
                   <p>{msg.content}</p>
 
                   {/* Calendar Confirmation Action Card inside ARGUS AI message */}
                   {msg.actionCard && (
-                    <div className="mt-3 p-3 rounded-xl bg-zinc-950 border border-emerald-500/50 text-zinc-100 space-y-2">
-                      <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-                        <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold flex items-center gap-1">
+                    <div className="mt-3.5 p-3.5 rounded-xl bg-zinc-950 border border-emerald-500/50 text-zinc-100 space-y-2.5 shadow-inner">
+                      <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2">
+                        <span className="text-[11px] font-mono text-emerald-400 uppercase font-bold flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                           VIP VIEWING CONFIRMED
                         </span>
-                        <span className="text-[9px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">
+                        <span className="text-[9px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-bold uppercase border border-emerald-500/30">
                           CALENDAR SYNCED
                         </span>
                       </div>
 
-                      <div className="space-y-1 text-[11px]">
-                        <div className="flex items-center gap-2 text-white font-semibold">
-                          <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <div className="space-y-1.5 text-xs">
+                        <div className="flex items-center gap-2 text-white font-bold text-sm">
+                          <Calendar className="w-4 h-4 text-amber-400 shrink-0" />
                           <span>{msg.actionCard.slot}</span>
                         </div>
-                        <div className="text-zinc-300 text-[10px] font-medium">
-                          Senior Broker: {msg.actionCard.broker}
+                        <div className="text-zinc-300 text-[11px] font-medium">
+                          Senior Broker: <span className="text-white font-semibold">{msg.actionCard.broker}</span>
                         </div>
-                        <div className="text-zinc-300 text-[10px] font-mono">
-                          Location: {msg.actionCard.location}
+                        <div className="text-zinc-300 text-[11px] font-mono">
+                          Location: <span className="text-zinc-200">{msg.actionCard.location}</span>
                         </div>
                       </div>
                     </div>
@@ -287,21 +297,21 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Preset Quick Prompts */}
-          <div className="p-2 bg-zinc-900 border-t border-zinc-800 flex gap-2 overflow-x-auto text-[10px]">
+          {/* Preset Quick Prompts Chips */}
+          <div className="p-2.5 bg-zinc-950 border-t border-zinc-800/80 flex gap-2 overflow-x-auto text-xs scrollbar-none">
             <button
               onClick={() => {
                 setInputValue("Can I view the penthouse this Saturday?");
               }}
-              className="px-2.5 py-1 rounded-full bg-zinc-950 border border-zinc-800 hover:border-amber-500/40 text-zinc-200 hover:text-white shrink-0 font-medium"
+              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5"
             >
               📅 Schedule Saturday
             </button>
             <button
               onClick={() => {
-                setInputValue("What are the HOA maintenance fees?");
+                setInputValue("What are the HOA maintenance specs?");
               }}
-              className="px-2.5 py-1 rounded-full bg-zinc-950 border border-zinc-800 hover:border-amber-500/40 text-zinc-200 hover:text-white shrink-0 font-medium"
+              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5"
             >
               💰 Maintenance Specs
             </button>
@@ -309,26 +319,26 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
               onClick={() => {
                 setInputValue("Tell me about the private elevator & wine vault.");
               }}
-              className="px-2.5 py-1 rounded-full bg-zinc-950 border border-zinc-800 hover:border-amber-500/40 text-zinc-200 hover:text-white shrink-0 font-medium"
+              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5"
             >
               🍷 Private Features
             </button>
           </div>
 
-          {/* Chat Input */}
-          <form onSubmit={handleSendMessage} className="p-3 bg-zinc-900 border-t border-zinc-800 flex items-center gap-2">
+          {/* Chat Input Bar */}
+          <form onSubmit={handleSendMessage} className="p-3 bg-zinc-950 border-t border-zinc-800 flex items-center gap-2">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Ask ARGUS about Bay St Penthouse..."
-              className="flex-1 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 placeholder-zinc-400 font-medium"
+              className="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 placeholder-zinc-500 font-medium"
               id="argus-chat-input"
             />
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="p-2 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-zinc-950 font-bold transition-all"
+              className="p-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-zinc-950 font-bold transition-all shadow-lg shrink-0"
               id="argus-send-btn"
             >
               <Send className="w-4 h-4" />
@@ -341,3 +351,4 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     </div>
   );
 };
+

@@ -71,4 +71,16 @@
   animation: pulse-subtle 3s ease-in-out infinite;
 }
 
+/* Ensure Botpress default floating trigger doesn't conflict with custom UI */
+#bp-webchat-container, 
+.bpw-widget-container,
+.bpw-layout {
+  z-index: 40 !important;
+  opacity: 0.01 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+}
+
 
