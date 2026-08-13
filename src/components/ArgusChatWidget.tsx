@@ -214,7 +214,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
       {/* Embedded Chat Window (Matches exact screenshot layout) */}
       {isOpen && (
         <div 
-          className="w-[380px] sm:w-[440px] h-[610px] max-h-[88vh] rounded-2xl bg-[#121212] border-2 border-amber-500/70 shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl transition-all duration-300 ring-1 ring-amber-500/30"
+          className="w-[390px] sm:w-[480px] h-[640px] max-h-[88vh] rounded-2xl bg-[#121212] border-2 border-amber-500/70 shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl transition-all duration-300 ring-1 ring-amber-500/30"
           id="argus-chat-window"
         >
           {/* Header Bar */}
@@ -399,22 +399,33 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
           </div>
 
           {/* Chat Input Bar */}
-          <form onSubmit={handleSendMessage} className="p-3 bg-zinc-950 border-t border-zinc-800 flex items-center gap-2">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask ARGUS about Bay St Penthouse..."
-              className="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 placeholder-zinc-500 font-medium"
-              id="argus-chat-input"
-            />
+          <form onSubmit={handleSendMessage} className="p-3.5 bg-zinc-950 border-t border-zinc-800 flex items-end gap-2.5">
+            <div className="flex-1 relative bg-zinc-900 border border-zinc-700/80 rounded-xl focus-within:border-amber-400 focus-within:ring-1 focus-within:ring-amber-400/30 transition-all">
+              <textarea
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    if (inputValue.trim()) {
+                      handleSendMessage();
+                    }
+                  }
+                }}
+                placeholder="Ask ARGUS anything about Suite 5200..."
+                rows={2}
+                className="w-full bg-transparent px-4 py-3 text-sm text-white placeholder-zinc-400 font-medium focus:outline-none resize-none leading-relaxed min-h-[56px] max-h-[140px] overflow-y-auto scrollbar-thin"
+                id="argus-chat-input"
+              />
+            </div>
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="p-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-zinc-950 font-bold transition-all shadow-lg shrink-0"
+              className="p-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 disabled:opacity-40 text-zinc-950 font-bold transition-all shadow-lg hover:shadow-amber-500/25 shrink-0 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed"
               id="argus-send-btn"
+              title="Send Message (Enter)"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-5 h-5 text-zinc-950 stroke-[2.5]" />
             </button>
           </form>
 
