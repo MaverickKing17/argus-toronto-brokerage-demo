@@ -9,7 +9,9 @@ import {
   User, 
   ShieldCheck,
   Maximize2,
-  Minimize2
+  Minimize2,
+  ChevronUp,
+  ChevronDown
 } from 'lucide-react';
 import { REQUIRED_DEMO_SCRIPT } from '../data/propertyData';
 import { ChatMessage } from '../types';
@@ -30,6 +32,23 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
   const [autoPlayIndex, setAutoPlayIndex] = useState<number>(-1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto-resize textarea as user types to comfortably view longer inquiries
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      const scrollH = textareaRef.current.scrollHeight;
+      textareaRef.current.style.height = `${Math.min(Math.max(scrollH, 56), 160)}px`;
+    }
+  }, [inputValue]);
+
+  const handleScrollInput = (direction: 'up' | 'down') => {
+    if (textareaRef.current) {
+      const scrollAmount = direction === 'up' ? -50 : 50;
+      textareaRef.current.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   // Sync external open state if controlled from header/hero buttons
   useEffect(() => {
@@ -413,8 +432,9 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
 
           {/* Chat Input Bar */}
           <form onSubmit={handleSendMessage} className="p-3.5 bg-zinc-950 border-t border-zinc-800 flex items-end gap-2.5">
-            <div className="flex-1 relative bg-zinc-900 border border-zinc-700/80 rounded-xl focus-within:border-amber-400 focus-within:ring-1 focus-within:ring-amber-400/30 transition-all">
+            <div className="flex-1 relative bg-zinc-900 border border-zinc-700/80 rounded-xl focus-within:border-amber-400 focus-within:ring-1 focus-within:ring-amber-400/30 transition-all flex items-center">
               <textarea
+                ref={textareaRef}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => {
@@ -427,10 +447,33 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                 }}
                 placeholder="Ask ARGUS anything about Suite 5200..."
                 rows={2}
-                className="w-full bg-transparent px-4 py-3 text-sm text-white placeholder-zinc-400 font-medium focus:outline-none resize-none leading-relaxed min-h-[56px] max-h-[140px] overflow-y-auto scrollbar-thin"
+                className="w-full bg-transparent pl-4 pr-10 py-3 text-sm text-white placeholder-zinc-400 font-medium focus:outline-none resize-none leading-relaxed min-h-[56px] max-h-[160px] overflow-y-auto scrollbar-thin"
                 id="argus-chat-input"
               />
+
+              {/* Dedicated UX Scroll Up / Down Controls for long messages */}
+              <div className="absolute right-2 top-2 bottom-2 flex flex-col justify-between items-center py-1 z-10">
+                <button
+                  type="button"
+                  onClick={() => handleScrollInput('up')}
+                  className="p-1 rounded-md bg-zinc-800/90 hover:bg-amber-500 hover:text-zinc-950 text-zinc-300 transition-all shadow-sm flex items-center justify-center cursor-pointer active:scale-95"
+                  title="Scroll message up"
+                  aria-label="Scroll message up"
+                >
+                  <ChevronUp className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleScrollInput('down')}
+                  className="p-1 rounded-md bg-zinc-800/90 hover:bg-amber-500 hover:text-zinc-950 text-zinc-300 transition-all shadow-sm flex items-center justify-center cursor-pointer active:scale-95"
+                  title="Scroll message down"
+                  aria-label="Scroll message down"
+                >
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
+
             <button
               type="submit"
               disabled={!inputValue.trim()}
