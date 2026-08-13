@@ -74,15 +74,7 @@
 /* Custom chat wrapper container and message bubble formatting */
 .chat-message-bubble,
 .chat-message-card,
-#argus-chat-window .chat-message-bubble,
-#argus-chat-window div[class*="rounded-2xl"],
-.bpw-chat-bubble,
-.bpw-message-content,
-.bpw-bubble,
-.bpw-message-group,
-.bpw-message-container,
-.bpw-from-bot,
-.bpw-from-user {
+#argus-chat-window .chat-message-bubble {
   max-height: none !important;
   height: auto !important;
   min-height: fit-content !important;
@@ -92,24 +84,45 @@
   white-space: pre-wrap !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.chat-message-bubble p,
-#argus-chat-window p,
-#argus-chat-window div[class*="rounded-2xl"] p,
-.bpw-chat-bubble p,
-.bpw-message-content p,
-.bpw-bubble p,
-.bpw-message-content span,
-.bpw-message-content div {
+/* High-contrast text colors */
+.chat-bot-bubble,
+.chat-bot-bubble p,
+.chat-bot-bubble span,
+#argus-chat-window .chat-bot-bubble,
+#argus-chat-window .chat-bot-bubble p {
+  color: #FFFFFF !important;
+  background-color: #18181b !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   white-space: pre-wrap !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
   max-height: none !important;
   height: auto !important;
   overflow: visible !important;
-  overflow-y: visible !important;
-  display: block !important;
+}
+
+.chat-user-bubble,
+.chat-user-bubble p,
+.chat-user-bubble span,
+#argus-chat-window .chat-user-bubble,
+#argus-chat-window .chat-user-bubble p {
+  color: #09090b !important;
+  background-color: #f59e0b !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 #argus-chat-window .messages-scroll-area {
@@ -121,19 +134,18 @@
 }
 
 /* Completely hide native Botpress floating blue button and default widget overlay */
-#bp-webchat-container, 
-.bpw-widget-container,
-.bpw-layout,
-.bpw-floating-button,
-#bp-webchat-container-iframe,
-iframe[src*="botpress"],
-iframe[title*="botpress"],
-iframe[title*="webchat"],
-iframe[id*="bp-"],
-div[class*="bpw-"],
-div[id*="bp-webchat"],
-button[class*="bpw-"],
-div[data-testid="webchat-container"] {
+body > #bp-webchat-container, 
+body > .bpw-widget-container,
+body > .bpw-layout,
+body > .bpw-floating-button,
+body > #bp-webchat-container-iframe,
+body > iframe[src*="botpress"],
+body > iframe[title*="botpress"],
+body > iframe[title*="webchat"],
+body > iframe[id*="bp-"],
+body > div[data-testid="webchat-container"],
+body > div[class*="bpw-widget"],
+body > div[id*="bp-webchat"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;

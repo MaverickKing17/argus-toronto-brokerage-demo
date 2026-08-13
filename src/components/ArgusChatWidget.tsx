@@ -29,6 +29,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [autoPlayIndex, setAutoPlayIndex] = useState<number>(-1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   // Sync external open state if controlled from header/hero buttons
   useEffect(() => {
@@ -37,7 +38,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     }
   }, [isOpenExternal]);
 
-  // Continuously ensure Botpress's native blue launcher button is hidden so ONLY the dark custom ARGUS widget appears
+  // Continuously ensure Botpress's native blue launcher button outside our app is hidden
   useEffect(() => {
     const hideBotpressNativeButton = () => {
       try {
@@ -59,16 +60,13 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
         'iframe[title*="botpress"]',
         'iframe[title*="webchat"]',
         'iframe[id*="bp-"]',
-        'div[class*="bpw-"]',
-        'div[id*="bp-webchat"]',
-        'button[class*="bpw-"]',
         'div[data-testid="webchat-container"]'
       ];
 
       selectors.forEach((sel) => {
         const els = document.querySelectorAll(sel);
         els.forEach((el) => {
-          if (el instanceof HTMLElement) {
+          if (el instanceof HTMLElement && !el.closest('#root')) {
             el.style.setProperty('display', 'none', 'important');
             el.style.setProperty('visibility', 'hidden', 'important');
             el.style.setProperty('opacity', '0', 'important');
@@ -88,6 +86,9 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
   }, []);
 
   const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -274,6 +275,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
 
           {/* Messages Body */}
           <div 
+            ref={messagesContainerRef}
             className="flex-1 p-4 overflow-y-auto overflow-x-hidden space-y-4 text-xs font-sans bg-[#121212] scrollbar-thin messages-scroll-area min-h-0"
             style={{ overflowY: 'auto', overflowX: 'hidden' }}
           >
@@ -301,10 +303,10 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                 </div>
 
                 <div
-                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed chat-message-bubble bpw-chat-bubble bpw-message-content ${
+                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed chat-message-bubble ${
                     msg.sender === 'user'
-                      ? 'bg-amber-500 text-zinc-950 font-bold rounded-tr-xs shadow-md text-xs sm:text-sm'
-                      : 'bg-zinc-900/90 border border-zinc-800 text-zinc-100 font-normal rounded-tl-xs shadow-xl text-xs sm:text-sm'
+                      ? 'chat-user-bubble bg-amber-500 text-zinc-950 font-bold rounded-tr-xs shadow-md text-xs sm:text-sm'
+                      : 'chat-bot-bubble bg-zinc-900 border border-zinc-700/80 text-[#FFFFFF] font-normal rounded-tl-xs shadow-xl text-xs sm:text-sm'
                   }`}
                   style={{
                     maxHeight: 'none',
@@ -315,12 +317,23 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                     overflowX: 'visible',
                     whiteSpace: 'pre-wrap',
                     wordBreak: 'break-word',
-                    overflowWrap: 'break-word'
+                    overflowWrap: 'break-word',
+                    color: msg.sender === 'user' ? '#09090b' : '#FFFFFF',
+                    backgroundColor: msg.sender === 'user' ? '#f59e0b' : '#18181b',
+                    opacity: 1,
+                    visibility: 'visible'
                   }}
                 >
                   <p 
                     className="whitespace-pre-wrap break-words overflow-visible leading-relaxed"
-                    style={{ maxHeight: 'none', height: 'auto', overflow: 'visible' }}
+                    style={{ 
+                      maxHeight: 'none', 
+                      height: 'auto', 
+                      overflow: 'visible',
+                      color: msg.sender === 'user' ? '#09090b' : '#FFFFFF',
+                      opacity: 1,
+                      visibility: 'visible'
+                    }}
                   >
                     {msg.content}
                   </p>
