@@ -77,10 +77,18 @@
 #argus-chat-window .chat-message-bubble,
 #argus-chat-window div[class*="rounded-2xl"],
 .bpw-chat-bubble,
-.bpw-message-content {
+.bpw-message-content,
+.bpw-bubble,
+.bpw-message-group,
+.bpw-message-container,
+.bpw-from-bot,
+.bpw-from-user {
   max-height: none !important;
   height: auto !important;
+  min-height: fit-content !important;
+  overflow: visible !important;
   overflow-y: visible !important;
+  overflow-x: visible !important;
   white-space: pre-wrap !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
@@ -88,13 +96,28 @@
 
 .chat-message-bubble p,
 #argus-chat-window p,
-#argus-chat-window div[class*="rounded-2xl"] p {
+#argus-chat-window div[class*="rounded-2xl"] p,
+.bpw-chat-bubble p,
+.bpw-message-content p,
+.bpw-bubble p,
+.bpw-message-content span,
+.bpw-message-content div {
   white-space: pre-wrap !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
   max-height: none !important;
   height: auto !important;
+  overflow: visible !important;
   overflow-y: visible !important;
+  display: block !important;
+}
+
+#argus-chat-window .messages-scroll-area {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  height: auto !important;
 }
 
 /* Completely hide native Botpress floating blue button and default widget overlay */

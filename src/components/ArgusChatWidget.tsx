@@ -273,13 +273,17 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
           </div>
 
           {/* Messages Body */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-sans bg-[#121212] scrollbar-thin">
+          <div 
+            className="flex-1 p-4 overflow-y-auto overflow-x-hidden space-y-4 text-xs font-sans bg-[#121212] scrollbar-thin messages-scroll-area min-h-0"
+            style={{ overflowY: 'auto', overflowX: 'hidden' }}
+          >
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`flex flex-col ${
+                className={`flex flex-col w-full ${
                   msg.sender === 'user' ? 'items-end' : 'items-start'
                 }`}
+                style={{ maxHeight: 'none', height: 'auto', overflow: 'visible' }}
               >
                 <div className="flex items-center gap-1.5 mb-1 px-1 text-[11px] text-zinc-400 font-mono">
                   {msg.sender === 'user' ? (
@@ -297,7 +301,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                 </div>
 
                 <div
-                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed chat-message-bubble ${
+                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed chat-message-bubble bpw-chat-bubble bpw-message-content ${
                     msg.sender === 'user'
                       ? 'bg-amber-500 text-zinc-950 font-bold rounded-tr-xs shadow-md text-xs sm:text-sm'
                       : 'bg-zinc-900/90 border border-zinc-800 text-zinc-100 font-normal rounded-tl-xs shadow-xl text-xs sm:text-sm'
@@ -305,19 +309,27 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                   style={{
                     maxHeight: 'none',
                     height: 'auto',
+                    minHeight: 'fit-content',
+                    overflow: 'visible',
                     overflowY: 'visible',
+                    overflowX: 'visible',
                     whiteSpace: 'pre-wrap',
                     wordBreak: 'break-word',
                     overflowWrap: 'break-word'
                   }}
                 >
-                  <p className="whitespace-pre-wrap break-words">{msg.content}</p>
+                  <p 
+                    className="whitespace-pre-wrap break-words overflow-visible leading-relaxed"
+                    style={{ maxHeight: 'none', height: 'auto', overflow: 'visible' }}
+                  >
+                    {msg.content}
+                  </p>
 
                   {/* Calendar Confirmation Action Card inside ARGUS AI message */}
                   {msg.actionCard && (
                     <div 
                       className="mt-3.5 p-3.5 rounded-xl bg-zinc-950 border border-emerald-500/50 text-zinc-100 space-y-2.5 shadow-inner"
-                      style={{ maxHeight: 'none', height: 'auto', overflowY: 'visible' }}
+                      style={{ maxHeight: 'none', height: 'auto', overflow: 'visible' }}
                     >
                       <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2">
                         <span className="text-[11px] font-mono text-emerald-400 uppercase font-bold flex items-center gap-1.5">

@@ -55,7 +55,7 @@ Respond concisely (2-4 sentences max), always offering to schedule a private vie
             config: {
               systemInstruction,
               temperature: 0.7,
-              maxOutputTokens: 300,
+              maxOutputTokens: 2048,
             }
           });
 
