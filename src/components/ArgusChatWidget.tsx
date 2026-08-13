@@ -297,17 +297,28 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
                 </div>
 
                 <div
-                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed ${
+                  className={`p-4 rounded-2xl max-w-[90%] leading-relaxed chat-message-bubble ${
                     msg.sender === 'user'
                       ? 'bg-amber-500 text-zinc-950 font-bold rounded-tr-xs shadow-md text-xs sm:text-sm'
                       : 'bg-zinc-900/90 border border-zinc-800 text-zinc-100 font-normal rounded-tl-xs shadow-xl text-xs sm:text-sm'
                   }`}
+                  style={{
+                    maxHeight: 'none',
+                    height: 'auto',
+                    overflowY: 'visible',
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                    overflowWrap: 'break-word'
+                  }}
                 >
-                  <p>{msg.content}</p>
+                  <p className="whitespace-pre-wrap break-words">{msg.content}</p>
 
                   {/* Calendar Confirmation Action Card inside ARGUS AI message */}
                   {msg.actionCard && (
-                    <div className="mt-3.5 p-3.5 rounded-xl bg-zinc-950 border border-emerald-500/50 text-zinc-100 space-y-2.5 shadow-inner">
+                    <div 
+                      className="mt-3.5 p-3.5 rounded-xl bg-zinc-950 border border-emerald-500/50 text-zinc-100 space-y-2.5 shadow-inner"
+                      style={{ maxHeight: 'none', height: 'auto', overflowY: 'visible' }}
+                    >
                       <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2">
                         <span className="text-[11px] font-mono text-emerald-400 uppercase font-bold flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
