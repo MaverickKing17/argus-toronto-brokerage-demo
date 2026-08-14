@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { X, ShieldCheck, FileText, Lock, Scale, Copyright, Cookie, Building2, CheckCircle2 } from 'lucide-react';
+import { 
+  X, 
+  ShieldCheck, 
+  FileText, 
+  Lock, 
+  Scale, 
+  Copyright, 
+  Cookie, 
+  Building2, 
+  CheckCircle2, 
+  Sparkles,
+  ExternalLink,
+  ChevronRight,
+  Info,
+  Award,
+  Check
+} from 'lucide-react';
 
 export type LegalTab = 'privacy' | 'terms' | 'portal' | 'dmca' | 'disclaimers' | 'cookies';
 
@@ -20,26 +36,46 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialTab = 'pr
 
   if (!isOpen) return null;
 
+  const tabList: { id: LegalTab; label: string; icon: React.ReactNode; shortLabel: string }[] = [
+    { id: 'privacy', label: 'Privacy Policy (PIPEDA & FINTRAC)', shortLabel: 'Privacy & FINTRAC', icon: <Lock className="w-4 h-4" /> },
+    { id: 'terms', label: 'Terms of Representation (TRESA)', shortLabel: 'Terms of Representation', icon: <FileText className="w-4 h-4" /> },
+    { id: 'portal', label: 'Discreet Client Portal & NDAs', shortLabel: 'Discreet Portal & NDAs', icon: <Building2 className="w-4 h-4" /> },
+    { id: 'dmca', label: 'DMCA & Architectural Copyright', shortLabel: 'DMCA & Copyright', icon: <Copyright className="w-4 h-4" /> },
+    { id: 'disclaimers', label: 'RECO & TRREB Disclaimers', shortLabel: 'RECO Disclaimers', icon: <ShieldCheck className="w-4 h-4" /> },
+    { id: 'cookies', label: 'Cookie & Tracking Policy', shortLabel: 'Cookie Policy', icon: <Cookie className="w-4 h-4" /> },
+  ];
+
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-      <div className="relative w-full max-w-4xl rounded-2xl bg-white border border-gray-200 shadow-2xl overflow-hidden flex flex-col max-h-[85vh] my-auto">
-        
+    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fade-in">
+      <div 
+        className="relative w-full max-w-5xl rounded-3xl bg-white border-2 border-slate-300/90 shadow-[0_25px_70px_rgba(0,0,0,0.45)] overflow-hidden flex flex-col max-h-[90vh] my-auto"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="legal-modal-title"
+      >
+        {/* Luminous Gold Top Ambient Bar */}
+        <div className="absolute top-0 inset-x-0 h-[4px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 z-20"></div>
+
         {/* Modal Header */}
-        <div className="p-6 bg-gray-50 border-b border-gray-200 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800">
-              <Scale className="w-5 h-5" />
+        <div className="px-6 py-5 sm:px-8 sm:py-6 bg-slate-950 text-white border-b border-slate-800 flex items-center justify-between shrink-0 relative overflow-hidden">
+          {/* Subtle Ambient Gold Glow in Header */}
+          <div className="absolute -right-20 -top-20 w-56 h-56 bg-amber-500/15 blur-[60px] pointer-events-none rounded-full"></div>
+
+          <div className="flex items-center gap-4 relative z-10">
+            <div className="p-3 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 text-zinc-950 shadow-[0_0_20px_rgba(245,158,11,0.35)] shrink-0">
+              <Scale className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500 font-bold">
-                  ONTARIO REAL ESTATE COMPLIANCE & LEGAL GOVERNANCE
+              <div className="flex flex-wrap items-center gap-2 mb-1">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">
+                  AI SALES CLOSER TECHNOLOGY DEMONSTRATION · LEGAL SPECIFICATION
                 </span>
-                <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-50 border border-emerald-200 text-emerald-800">
-                  RECO #4892011
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-950/80 border border-amber-500/50 text-amber-300 shadow-xs">
+                  <Sparkles className="w-3 h-3 text-amber-400" />
+                  CONCEPT DEMO
                 </span>
               </div>
-              <h2 className="font-serif text-xl sm:text-2xl text-gray-900 font-bold">
+              <h2 id="legal-modal-title" className="text-xl sm:text-2xl font-bold tracking-tight text-white">
                 Legal & Regulatory Framework
               </h2>
             </div>
@@ -47,7 +83,8 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialTab = 'pr
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-white hover:bg-gray-100 border border-gray-200 text-gray-600 hover:text-black transition-colors cursor-pointer"
+            className="relative z-10 p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/20 text-slate-300 hover:text-white transition-all cursor-pointer shadow-sm hover:scale-105"
+            aria-label="Close legal modal"
             id="close-legal-modal-btn"
           >
             <X className="w-5 h-5" />
@@ -55,260 +92,316 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialTab = 'pr
         </div>
 
         {/* Tab Navigation Bar */}
-        <div className="bg-gray-100/70 border-b border-gray-200 px-6 py-2.5 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none">
-          <button
-            onClick={() => setActiveTab('privacy')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'privacy'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-sm'
-                : 'bg-white border border-gray-200 text-gray-700 hover:text-black hover:bg-gray-50'
-            }`}
-          >
-            <Lock className="w-3.5 h-3.5" />
-            Privacy Policy (PIPEDA & FINTRAC)
-          </button>
-
-          <button
-            onClick={() => setActiveTab('terms')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'terms'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-sm'
-                : 'bg-white border border-gray-200 text-gray-700 hover:text-black hover:bg-gray-50'
-            }`}
-          >
-            <FileText className="w-3.5 h-3.5" />
-            Terms of Representation (TRESA)
-          </button>
-
-          <button
-            onClick={() => setActiveTab('portal')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'portal'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-sm'
-                : 'bg-white border border-gray-200 text-gray-700 hover:text-black hover:bg-gray-50'
-            }`}
-          >
-            <Building2 className="w-3.5 h-3.5" />
-            Discreet Client Portal & NDAs
-          </button>
-
-          <button
-            onClick={() => setActiveTab('dmca')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'dmca'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-sm'
-                : 'bg-white border border-gray-200 text-gray-700 hover:text-black hover:bg-gray-50'
-            }`}
-          >
-            <Copyright className="w-3.5 h-3.5" />
-            DMCA & Architectural Copyright
-          </button>
-
-          <button
-            onClick={() => setActiveTab('disclaimers')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'disclaimers'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-sm'
-                : 'bg-white border border-gray-200 text-gray-700 hover:text-black hover:bg-gray-50'
-            }`}
-          >
-            <ShieldCheck className="w-3.5 h-3.5" />
-            RECO & TRREB Disclaimers
-          </button>
-
-          <button
-            onClick={() => setActiveTab('cookies')}
-            className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'cookies'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-sm'
-                : 'bg-white border border-gray-200 text-gray-700 hover:text-black hover:bg-gray-50'
-            }`}
-          >
-            <Cookie className="w-3.5 h-3.5" />
-            Cookie & Tracking Policy
-          </button>
+        <div className="bg-slate-100/90 border-b border-slate-200 px-4 sm:px-8 py-3 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none">
+          {tabList.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-all whitespace-nowrap cursor-pointer ${
+                  isActive
+                    ? 'bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 text-zinc-950 font-bold shadow-[0_4px_15px_rgba(245,158,11,0.35)] border border-amber-300 scale-[1.02]'
+                    : 'bg-white border border-slate-200 text-slate-700 hover:text-slate-950 hover:bg-slate-50 hover:border-slate-300'
+                }`}
+                id={`tab-btn-${tab.id}`}
+              >
+                <span className={isActive ? 'text-zinc-950' : 'text-amber-600'}>
+                  {tab.icon}
+                </span>
+                <span className="hidden sm:inline">{tab.label}</span>
+                <span className="sm:hidden">{tab.shortLabel}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Tab Body Content */}
-        <div className="p-6 sm:p-8 space-y-6 overflow-y-auto font-sans text-xs sm:text-sm text-gray-700 leading-relaxed bg-white">
+        {/* Tab Body Content Area - High Legibility & Structured Card Design */}
+        <div className="p-6 sm:p-10 space-y-8 overflow-y-auto text-slate-800 leading-relaxed bg-[#F9FAFB] flex-1">
           
           {/* TAB 1: PRIVACY POLICY */}
           {activeTab === 'privacy' && (
-            <div className="space-y-5 animate-fade-in text-gray-700">
-              <div className="pb-4 border-b border-gray-200">
-                <span className="text-xs font-mono text-gray-500 font-semibold block uppercase">
+            <div className="space-y-6 animate-fade-in">
+              {/* Document Banner */}
+              <div className="pb-4 border-b border-slate-200">
+                <span className="text-[11px] font-mono text-amber-800 font-bold uppercase tracking-wider block">
                   LEGAL DOCUMENT 01 // CANADIAN PRIVACY & FINTRAC PROTOCOL
                 </span>
-                <h3 className="font-serif text-2xl text-gray-900 font-bold mt-1">
+                <h3 className="text-2xl sm:text-3xl text-slate-950 font-bold mt-1 tracking-tight">
                   Privacy Policy & Confidential Wealth Data Protection
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
                   Effective Date: January 1, 2026 · Compliant with PIPEDA (Canada) & Ontario Personal Information Protection Framework
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
-                <div className="flex items-center gap-2 text-amber-800 font-bold text-xs">
-                  <ShieldCheck className="w-4 h-4 text-amber-600" />
-                  Ultra-High-Net-Worth (UHNW) Anonymity Guarantees
+              {/* Executive Summary Highlight Card */}
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-white border-2 border-amber-300/80 shadow-[0_4px_20px_rgba(245,158,11,0.12)] space-y-2.5">
+                <div className="flex items-center gap-2.5 text-amber-900 font-bold text-sm sm:text-base">
+                  <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0" />
+                  Ultra-High-Net-Worth (UHNW) Anonymity & Non-Disclosure Guarantee
                 </div>
-                <p className="text-xs text-gray-700 leading-relaxed font-normal">
-                  The Yorkville Luxury Group operating under RECO Brokerage Registration #4892011 maintains strict non-disclosure protocols. We do not sell, license, monetize, or publicly disclose client contact records, wire transaction logs, or property ownership details to third-party ad networks or public property search databases.
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  The Yorkville Luxury Group (RECO Brokerage Registration #4892011) enforces institutional-grade privacy protocols. We never monetize, lease, disclose, or syndicate client identities, net worth credentials, wire transactions, or acquired property holdings to public property indexes, marketing brokers, or advertising networks.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-serif text-base text-gray-900 font-bold">1. Information Collection & FINTRAC Compliance</h4>
-                <p>
-                  In accordance with the <em>Proceeds of Crime (Money Laundering) and Terrorist Financing Act (PCTFA)</em> enforced by FINTRAC (Financial Transactions and Reports Analysis Centre of Canada), real estate brokerages in Ontario are legally mandated to verify the identity of buyers and sellers participating in high-value real estate transactions.
-                </p>
-                <ul className="list-disc pl-5 space-y-1.5 text-gray-700">
-                  <li><strong>Identity Verification Records:</strong> Government-issued photo identification, corporate beneficial ownership declarations, and FINTRAC Individual Identification Information forms.</li>
-                  <li><strong>Financial Pre-Approvals & Proof of Funds:</strong> Verified letters of bank standing, escrow deposit receipts, and accredited investor credentials submitted for Suite 5200 access.</li>
-                  <li><strong>Digital Interactions:</strong> Encrypted IP logs, multi-factor login tokens for the Discreet Client Portal, and communication logs with Victoria Sterling, Senior Managing Partner.</li>
-                </ul>
+              {/* Structured Numbered Sections */}
+              <div className="grid grid-cols-1 gap-6">
+                
+                {/* Section 1 */}
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      01
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Mandatory Identification & FINTRAC Anti-Money Laundering Compliance
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    Under the federal <em>Proceeds of Crime (Money Laundering) and Terrorist Financing Act (PCTFA)</em> enforced by FINTRAC, licensed Canadian real estate brokerages are legally required to verify the bona fide identity of all transacting principals.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                      <span className="font-bold text-slate-950 text-xs block">Government ID Records</span>
+                      <span className="text-[11px] text-slate-600 block mt-0.5">Passports & corporate beneficial ownership registries.</span>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                      <span className="font-bold text-slate-950 text-xs block">Proof of Liquid Funds</span>
+                      <span className="text-[11px] text-slate-600 block mt-0.5">Verified bank standing letters for Suite 5200 access.</span>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                      <span className="font-bold text-slate-950 text-xs block">Encrypted Audit Logs</span>
+                      <span className="text-[11px] text-slate-600 block mt-0.5">Multi-factor tokens & secure showing records.</span>
+                    </div>
+                  </div>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">2. Use & Protection of Client Data</h4>
-                <p>
-                  All personal and financial documentation is encrypted using AES-256 standard encryption and stored on SOC2-compliant, Canadian-hosted servers. Data is strictly limited to authorized senior brokers and licensed legal counsel representing the transaction.
-                </p>
+                {/* Section 2 */}
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      02
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Institutional AES-256 Data Encryption & Canadian Server Hosting
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    All client disclosures, draft purchase agreements, and private communications are encrypted at rest and in transit using military-grade AES-256 standard encryption on dedicated SOC2 Type II certified servers physically hosted within Canada.
+                  </p>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">3. Disclosure to Third Parties</h4>
-                <p>
-                  We disclose personal information exclusively to: (a) Real Estate Council of Ontario (RECO) auditors upon legal requirement; (b) Closing real estate lawyers and trust account holders; (c) Financial institutions issuing deposit guarantees or mortgage charges upon client direction.
-                </p>
+                {/* Section 3 */}
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      03
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Strict Limitation of Third-Party Disclosures
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    Disclosures are executed strictly on a need-to-know basis directly with designated real estate attorneys, authorized statutory auditors from RECO, and escrow deposit holding accounts with chartered Schedule I Canadian banks.
+                  </p>
+                </div>
+
               </div>
             </div>
           )}
 
           {/* TAB 2: TERMS OF REPRESENTATION (TRESA) */}
           {activeTab === 'terms' && (
-            <div className="space-y-5 animate-fade-in text-gray-700">
-              <div className="pb-4 border-b border-gray-200">
-                <span className="text-xs font-mono text-gray-500 font-semibold block uppercase">
+            <div className="space-y-6 animate-fade-in">
+              <div className="pb-4 border-b border-slate-200">
+                <span className="text-[11px] font-mono text-amber-800 font-bold uppercase tracking-wider block">
                   LEGAL DOCUMENT 02 // ONTARIO TRESA 2023 REGULATORY FRAMEWORK
                 </span>
-                <h3 className="font-serif text-2xl text-gray-900 font-bold mt-1">
-                  Terms of Representation & Brokerage Duties
+                <h3 className="text-2xl sm:text-3xl text-slate-950 font-bold mt-1 tracking-tight">
+                  Terms of Representation & Brokerage Fiduciary Duties
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
                   Governed by the Trust in Real Estate Services Act, 2020 (TRESA) & Real Estate Council of Ontario (RECO)
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
-                  <span className="text-xs font-mono text-amber-800 font-bold uppercase block">DESIGNATED REPRESENTATION</span>
-                  <p className="text-xs text-gray-700 leading-relaxed font-normal">
-                    Under TRESA 2023, clients may enter into a Designated Representation Agreement where specific designated brokers (e.g. Victoria Sterling) owe full fiduciary duties of undivided loyalty, confidentiality, and competence directly to the client.
+              {/* Dual Representation Comparison Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="p-6 rounded-2xl bg-white border-2 border-amber-300/80 shadow-sm space-y-2.5">
+                  <div className="flex items-center gap-2 text-amber-900 font-bold text-xs uppercase font-mono tracking-wider">
+                    <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                    DESIGNATED REPRESENTATION
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    Under TRESA 2023, you are represented individually by Victoria Sterling. Full undivided loyalty, confidentiality, and negotiation advocacy are owed strictly to you without conflict of interest.
                   </p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
-                  <span className="text-xs font-mono text-amber-800 font-bold uppercase block">MULTIPLE REPRESENTATION DISCLOSURE</span>
-                  <p className="text-xs text-gray-700 leading-relaxed font-normal">
-                    In the event that The Yorkville Luxury Group represents both the prospective purchaser and vendor for Suite 5200, full written disclosure and explicit informed consent must be signed by both parties prior to offer presentation.
+
+                <div className="p-6 rounded-2xl bg-white border-2 border-slate-200 shadow-sm space-y-2.5">
+                  <div className="flex items-center gap-2 text-slate-900 font-bold text-xs uppercase font-mono tracking-wider">
+                    <Info className="w-4 h-4 text-slate-600" />
+                    MULTIPLE REPRESENTATION DISCLOSURE
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    In the event that our brokerage represents both buyer and seller on Suite 5200, mandatory written disclosure and affirmative consent are required prior to presenting offer terms.
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-serif text-base text-gray-900 font-bold">1. Statutory Fiduciary Duties Owed to Clients</h4>
-                <p>
-                  When represented under an official Buyer Representation Agreement (BRA) or Seller Representation Agreement:
-                </p>
-                <ul className="list-disc pl-5 space-y-1.5 text-gray-700">
-                  <li><strong>Duty of Undivided Loyalty:</strong> Promoting and protecting the client's best financial and legal interests above all others.</li>
-                  <li><strong>Confidentiality Guarantee:</strong> Maintaining lifetime confidentiality regarding client motivations, maximum budget allocations, or strategic negotiation thresholds.</li>
-                  <li><strong>Full Disclosure of Material Facts:</strong> Disclosing all known physical, legal, architectural, or zoning facts regarding the penthouse property.</li>
-                </ul>
+              {/* Detailed Articles */}
+              <div className="space-y-5">
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      01
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Statutory Fiduciary Guarantees Owed to Represented Clients
+                    </h4>
+                  </div>
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 font-normal">
+                    <li className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5 font-bold" />
+                      <span><strong>Undivided Loyalty:</strong> Advancing and defending the client's financial, tax, and legal position during acquisition talks.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5 font-bold" />
+                      <span><strong>Permanent Confidentiality:</strong> Absolute lifetime protection regarding purchasing budgets, motivation, and corporate structures.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5 font-bold" />
+                      <span><strong>Full Material Disclosure:</strong> Complete disclosure of building physical specs, reserve fund health, and condominium bylaws.</span>
+                    </li>
+                  </ul>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">2. Real Estate Trust Account Protection</h4>
-                <p>
-                  All earnest deposit funds paid towards property acquisitions (such as the standard 5% to 10% Toronto luxury deposit) are held in RECO-insured interest-bearing Real Estate Trust Accounts administered by top-tier Canadian chartered banks in accordance with Section 27 of TRESA.
-                </p>
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      02
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      RECO-Insured Real Estate Trust Account Protection
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    All earnest deposit payments (typically 5% to 10% on Toronto luxury sky estates) are placed into government-regulated, insured real estate trust accounts managed pursuant to Section 27 of TRESA.
+                  </p>
+                </div>
               </div>
             </div>
           )}
 
           {/* TAB 3: DISCREET CLIENT PORTAL & NDAs */}
           {activeTab === 'portal' && (
-            <div className="space-y-5 animate-fade-in text-gray-700">
-              <div className="pb-4 border-b border-gray-200">
-                <span className="text-xs font-mono text-gray-500 font-semibold block uppercase">
+            <div className="space-y-6 animate-fade-in">
+              <div className="pb-4 border-b border-slate-200">
+                <span className="text-[11px] font-mono text-amber-800 font-bold uppercase tracking-wider block">
                   LEGAL DOCUMENT 03 // PRIVATE OFF-MARKET DOSSIER ACCESS
                 </span>
-                <h3 className="font-serif text-2xl text-gray-900 font-bold mt-1">
-                  Discreet Client Portal & Off-Market NDA Protocols
+                <h3 className="text-2xl sm:text-3xl text-slate-950 font-bold mt-1 tracking-tight">
+                  Discreet Client Portal & Non-Disclosure Agreement (NDA)
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
                   Private Wealth Access Rules for Confidential Yorkville Sky Residences & Trophy Estates
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
-                <div className="flex items-center gap-2 text-emerald-800 font-bold text-xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  Privileged Architectural & Security Access
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-300 shadow-[0_4px_20px_rgba(16,185,129,0.1)] space-y-2.5">
+                <div className="flex items-center gap-2.5 text-emerald-900 font-bold text-sm sm:text-base">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  Privileged Off-Market Inventory & Architectural Schematics
                 </div>
-                <p className="text-xs text-gray-700 leading-relaxed font-normal">
-                  The Discreet Client Portal provides qualified luxury purchasers, family office representatives, and private wealth managers with confidential off-market inventory, 3D laser spatial walkthroughs, private elevator schematics, and structural engineering reports not indexed on public MLS systems.
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  The Discreet Client Portal grants accredited purchasers, family offices, and estate trustees confidential access to non-public floorplans, 3D laser spatial scans, and private elevator access protocols not available on MLS systems.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-serif text-base text-gray-900 font-bold">1. Non-Disclosure Agreement (NDA) Terms</h4>
-                <p>
-                  By accessing off-market listing dossiers or requesting 3D floorplan scans for Suite 5200 and other private off-market residences, the user agrees to:
-                </p>
-                <ul className="list-disc pl-5 space-y-1.5 text-gray-700">
-                  <li>Refrain from capturing, screenshotting, downloading, or publishing interior photos, floorplan schematics, or structural specs on public web platforms, social media, or press outlets.</li>
-                  <li>Maintain strict confidentiality regarding current vendor identity, artwork collections, security camera locations, and private elevator access protocols.</li>
-                  <li>Use listing dossiers solely for evaluating genuine acquisition interest on behalf of accredited buyers or principal entities.</li>
-                </ul>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <h4 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                    <Lock className="w-4 h-4 text-amber-600" />
+                    Binding Non-Disclosure Terms
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    Recipients agree not to publish, screenshot, or distribute interior architectural photos, vendor information, or security layout schematics to press, social media, or public forums.
+                  </p>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">2. Accredited Purchaser Vetting</h4>
-                <p>
-                  To protect seller privacy and maintain security in inhabited luxury sky residences, The Yorkville Luxury Group reserves the right to request proof of financial capacity or bank client verification prior to authorizing physical in-person private viewings.
-                </p>
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <h4 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                    <Award className="w-4 h-4 text-amber-600" />
+                    Accredited Buyer Vetting
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    To preserve building resident privacy, private in-person viewing slots for Suite 5200 are confirmed after bank standing or legal counsel representation verification.
+                  </p>
+                </div>
               </div>
             </div>
           )}
 
           {/* TAB 4: DMCA & ARCHITECTURAL COPYRIGHT */}
           {activeTab === 'dmca' && (
-            <div className="space-y-5 animate-fade-in text-gray-700">
-              <div className="pb-4 border-b border-gray-200">
-                <span className="text-xs font-mono text-gray-500 font-semibold block uppercase">
+            <div className="space-y-6 animate-fade-in">
+              <div className="pb-4 border-b border-slate-200">
+                <span className="text-[11px] font-mono text-amber-800 font-bold uppercase tracking-wider block">
                   LEGAL DOCUMENT 04 // INTELLECTUAL PROPERTY & MEDIA PROTECTION
                 </span>
-                <h3 className="font-serif text-2xl text-gray-900 font-bold mt-1">
+                <h3 className="text-2xl sm:text-3xl text-slate-950 font-bold mt-1 tracking-tight">
                   DMCA Notice & Architectural Copyright Policy
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
                   Protection of 4K Photography, Spatial 3D Scans, Floorplans & Proprietary Branding under Canadian & US Copyright Standards
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-serif text-base text-gray-900 font-bold">1. Proprietary Media Ownership</h4>
-                <p>
-                  All architectural photography, 3D Matterport/LiDAR spatial scans, CAD floorplan schematics, drone aerial videography, financial modeling calculators, and descriptive copy featured on this application are protected by copyright law and intellectual property rights owned by The Yorkville Luxury Group and licensed visual content producers.
+              {/* Highlight Box */}
+              <div className="p-6 rounded-2xl bg-white border-2 border-amber-400 shadow-sm space-y-3">
+                <div className="flex items-center gap-2.5 text-amber-900 font-bold text-sm sm:text-base">
+                  <Copyright className="w-5 h-5 text-amber-600 shrink-0" />
+                  Proprietary Media & Spatial Data Ownership
+                </div>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  All 4K architectural photography, 3D Matterport laser scans, CAD floorplan schematics, drone footage, financial mortgage calculators, and curated descriptive prose are protected intellectual property owned by The Yorkville Luxury Group.
                 </p>
+              </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">2. Prohibition of Unauthorized Extraction & Scraping</h4>
-                <p>
-                  Automated scraping, AI data mining, unauthorized media re-hosting, framing, or syndication to secondary property aggregation portals without explicit written permission from The Yorkville Luxury Group is strictly prohibited and subject to legal injunction.
-                </p>
+              <div className="space-y-5">
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      01
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Prohibition of Unauthorized Data Scraping & Re-hosting
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                    Automated web scraping, AI model training, framing, or syndication to third-party aggregation portals without express written consent is strictly prohibited and subject to injunctive relief.
+                  </p>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">3. DMCA Takedown Agent & Infringement Reporting</h4>
-                <p>
-                  If you believe any content hosted on this application infringes upon your copyright rights, please submit a formal written notification to our Designated Copyright Officer:
-                </p>
-                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 font-mono text-xs space-y-1">
-                  <p className="text-gray-900 font-bold">Legal Counsel & Intellectual Property Desk</p>
-                  <p className="text-gray-700">The Yorkville Luxury Group</p>
-                  <p className="text-gray-700">100 Bloor Street West, Suite 400, Toronto, ON M5S 1M4</p>
-                  <p className="text-amber-800 font-bold">Email: legal@yorkvilleluxury.com | Phone: +1 (416) 928-8800</p>
+                <div className="p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-md space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-amber-500 text-zinc-950 font-mono text-xs font-bold flex items-center justify-center">
+                      02
+                    </span>
+                    <h4 className="text-base sm:text-lg text-white font-bold">
+                      Designated DMCA Copyright Takedown Agent
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Formal copyright notices or takedown inquiries should be dispatched directly to our legal desk:
+                  </p>
+                  <div className="p-4 rounded-xl bg-slate-900 border border-white/15 font-mono text-xs space-y-1">
+                    <p className="text-amber-400 font-bold">Legal Counsel & Intellectual Property Desk</p>
+                    <p className="text-slate-200">The Yorkville Luxury Group · 100 Bloor Street West, Suite 400, Toronto, ON M5S 1M4</p>
+                    <p className="text-slate-300">Email: legal@yorkvilleluxury.com | Desk: +1 (416) 928-8800</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -316,96 +409,105 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialTab = 'pr
 
           {/* TAB 5: RECO & TRREB DISCLAIMERS */}
           {activeTab === 'disclaimers' && (
-            <div className="space-y-5 animate-fade-in text-gray-700">
-              <div className="pb-4 border-b border-gray-200">
-                <span className="text-xs font-mono text-gray-500 font-semibold block uppercase">
+            <div className="space-y-6 animate-fade-in">
+              <div className="pb-4 border-b border-slate-200">
+                <span className="text-[11px] font-mono text-amber-800 font-bold uppercase tracking-wider block">
                   LEGAL DOCUMENT 05 // REAL ESTATE COUNCIL & MLS DATA ACCURACY
                 </span>
-                <h3 className="font-serif text-2xl text-gray-900 font-bold mt-1">
+                <h3 className="text-2xl sm:text-3xl text-slate-950 font-bold mt-1 tracking-tight">
                   RECO Compliance & TRREB MLS Disclaimers
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
                   Mandatory Disclosures for Toronto Regional Real Estate Board (TRREB) & Ontario Real Estate Association (OREA)
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
-                <span className="text-xs font-mono text-amber-800 font-bold uppercase block">BROKERAGE REGISTRATION DETAILS</span>
-                <p className="text-xs text-gray-700 leading-relaxed font-normal">
-                  The Yorkville Luxury Group is a fully licensed and registered Real Estate Brokerage with the Real Estate Council of Ontario (RECO #4892011). Victoria Sterling is a licensed Senior Real Estate Broker in the Province of Ontario.
+              <div className="p-6 rounded-2xl bg-white border-2 border-slate-300 shadow-sm space-y-2">
+                <span className="text-xs font-mono text-amber-800 font-bold uppercase tracking-wider block">
+                  BROKERAGE REGISTRATION DETAILS
+                </span>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  The Yorkville Luxury Group is a registered Ontario Real Estate Brokerage licensed under RECO #4892011. Victoria Sterling is a licensed Senior Real Estate Broker in Ontario.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-serif text-base text-gray-900 font-bold">1. Independent Buyer Verification Required</h4>
-                <p>
-                  All materials, dimensions, square footages (e.g. 3,850 sq. ft. interior + 1,200 sq. ft. terrace), room measurements, ceiling heights, building amenities, maintenance fees ($3,250/mo), property taxes ($38,500/yr), and architectural schematics are provided for informational and marketing orientation purposes only.
-                </p>
-                <p>
-                  While believed to be accurate at the time of publication, all measurements and features must be independently confirmed by the purchaser or the purchaser's legal counsel through surveyor verification and status certificate inspection prior to executing a binding Agreement of Purchase and Sale.
-                </p>
+              <div className="space-y-5">
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      01
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Independent Buyer Measurement Verification
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    All specifications, square footages (3,850 sq. ft. interior + 1,200 sq. ft. private terrace), maintenance fees ($3,250/mo), and property taxes ($38,500/yr) are provided for marketing orientation and must be confirmed through legal status certificate review.
+                  </p>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">2. Equal Housing Opportunity & Non-Discrimination</h4>
-                <p>
-                  The Yorkville Luxury Group strictly adheres to the Ontario Human Rights Code and RECO Code of Ethics. We provide equal professional services to all persons regardless of race, ancestry, place of origin, color, ethnic origin, citizenship, creed, sex, sexual orientation, gender identity, age, marital status, family status, or disability.
-                </p>
-
-                <h4 className="font-serif text-base text-gray-900 font-bold">3. Financial Modeling Disclaimer</h4>
-                <p>
-                  The mortgage calculation tool provided on this platform is a mathematical simulation model for preliminary financial planning. Actual mortgage approval, land transfer tax rates (Ontario and Toronto municipal dual LTT), and interest charges are subject to formal underwriting by chartered financial institutions.
-                </p>
+                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-slate-900 text-amber-400 font-mono text-xs font-bold flex items-center justify-center">
+                      02
+                    </span>
+                    <h4 className="text-base sm:text-lg text-slate-950 font-bold">
+                      Equal Housing Opportunity & Human Rights Compliance
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    We strictly uphold the Ontario Human Rights Code and RECO Code of Ethics, delivering exemplary, non-discriminatory service across all client engagements.
+                  </p>
+                </div>
               </div>
             </div>
           )}
 
           {/* TAB 6: COOKIE & TRACKING POLICY */}
           {activeTab === 'cookies' && (
-            <div className="space-y-5 animate-fade-in text-gray-700">
-              <div className="pb-4 border-b border-gray-200">
-                <span className="text-xs font-mono text-gray-500 font-semibold block uppercase">
+            <div className="space-y-6 animate-fade-in">
+              <div className="pb-4 border-b border-slate-200">
+                <span className="text-[11px] font-mono text-amber-800 font-bold uppercase tracking-wider block">
                   LEGAL DOCUMENT 06 // PRIVACY PREFERENCES & DATA TOKENS
                 </span>
-                <h3 className="font-serif text-2xl text-gray-900 font-bold mt-1">
+                <h3 className="text-2xl sm:text-3xl text-slate-950 font-bold mt-1 tracking-tight">
                   Cookie & Privacy Tracking Policy
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 font-medium">
                   Transparent Session Management & High-Security Authentication Cookies
                 </p>
               </div>
 
               <div className="space-y-4">
-                <h4 className="font-serif text-base text-gray-900 font-bold">1. Essential Security & Authentication Cookies</h4>
-                <p>
-                  We utilize minimal, highly secure cookies exclusively to ensure website security, remember your active 3D virtual tour preferences, and authenticate secure access within the Discreet Client Portal.
-                </p>
-
-                <div className="space-y-3">
-                  <div className="p-3.5 rounded-lg bg-gray-50 border border-gray-200 flex items-start justify-between gap-4">
-                    <div>
-                      <span className="font-mono text-xs text-gray-900 font-bold block">`ylg_session_auth` (Essential)</span>
-                      <p className="text-xs text-gray-600 mt-0.5">Encrypts session authentication tokens for private client viewing schedules.</p>
-                    </div>
-                    <span className="px-2 py-1 rounded text-[10px] font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold shrink-0">STRICTLY ESSENTIAL</span>
+                <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start justify-between gap-4">
+                  <div>
+                    <span className="font-mono text-xs text-slate-950 font-bold block">`ylg_session_auth` (Strictly Essential)</span>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1">Encrypts authenticated tokens for private client viewing schedules.</p>
                   </div>
-
-                  <div className="p-3.5 rounded-lg bg-gray-50 border border-gray-200 flex items-start justify-between gap-4">
-                    <div>
-                      <span className="font-mono text-xs text-gray-900 font-bold block">`ylg_tour_state` (Functional)</span>
-                      <p className="text-xs text-gray-600 mt-0.5">Saves room preferences and filter states during floorplan inspections.</p>
-                    </div>
-                    <span className="px-2 py-1 rounded text-[10px] font-mono bg-gray-100 text-gray-700 border border-gray-200 font-bold shrink-0">FUNCTIONAL</span>
-                  </div>
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold shrink-0">
+                    ESSENTIAL
+                  </span>
                 </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">2. Zero Third-Party Advertising Trackers</h4>
-                <p>
-                  We do <strong>not</strong> deploy third-party advertising retargeting pixels (such as Meta Pixel or cross-site ad networks) that track UHNW client browsing behavior across external websites. Your privacy remains completely uncompromised.
-                </p>
+                <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start justify-between gap-4">
+                  <div>
+                    <span className="font-mono text-xs text-slate-950 font-bold block">`ylg_tour_state` (Functional)</span>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1">Saves active floorplan room filters and 3D camera angles.</p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-300 font-bold shrink-0">
+                    FUNCTIONAL
+                  </span>
+                </div>
 
-                <h4 className="font-serif text-base text-gray-900 font-bold">3. Managing Cookie Settings</h4>
-                <p>
-                  You can modify or disable cookies at any time through your web browser preferences. Note that disabling essential security cookies may limit access to private floorplans and automated schedule syncing.
-                </p>
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-white border border-amber-300 space-y-2">
+                  <div className="flex items-center gap-2 font-bold text-amber-900 text-xs sm:text-sm">
+                    <ShieldCheck className="w-4 h-4 text-amber-600" />
+                    Zero Third-Party Advertising Retargeting Pixels
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-700">
+                    We do not install cross-site marketing pixels (such as Meta Pixel or third-party ad networks). Your browsing behavior remains completely confidential.
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -413,17 +515,18 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, initialTab = 'pr
         </div>
 
         {/* Modal Footer Bar */}
-        <div className="p-4 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs shrink-0">
-          <div className="flex items-center gap-2 text-gray-600 font-mono text-[11px]">
+        <div className="px-6 py-4 sm:px-8 sm:py-5 bg-white border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs shrink-0 shadow-lg">
+          <div className="flex items-center gap-2.5 text-slate-700 font-mono text-xs">
             <Building2 className="w-4 h-4 text-amber-600 shrink-0" />
-            <span>The Yorkville Luxury Group · RECO Registered Real Estate Brokerage #4892011</span>
+            <span className="font-semibold">AI Sales Closer Interactive Prototype · Designed for Toronto Luxury Real Estate Brokerages & Teams</span>
           </div>
 
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-colors shadow-sm cursor-pointer"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all shadow-[0_4px_20px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_25px_rgba(245,158,11,0.5)] hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
             id="acknowledge-legal-modal-btn"
           >
+            <CheckCircle2 className="w-4 h-4 text-zinc-950 stroke-[2.5]" />
             Acknowledge & Close
           </button>
         </div>

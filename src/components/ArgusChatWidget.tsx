@@ -33,7 +33,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     {
       id: "intro_init",
       sender: "agent",
-      content: "Good afternoon. I am ARGUS, private AI Concierge for The Yorkville Luxury Group. How may I assist with your Toronto luxury property acquisition or private viewing schedule?",
+      content: "Good afternoon. I am ARGUS, a custom-engineered AI Sales Closer built for Toronto luxury real estate brokerages and top-producing teams. Explore Suite 5200 penthouse specs, schedule private viewings, calculate carry costs, or test how this AI converts high-net-worth buyer traffic.",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -282,9 +282,9 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
           <div className="bg-zinc-950 px-4 py-2 border-b border-zinc-800/80 text-[11px] font-mono text-zinc-300 flex items-center justify-between">
             <span className="flex items-center gap-1.5 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              Listing: Suite 5200 ($4.5M CAD)
+              AI Sales Closer Demo Mode
             </span>
-            <span className="text-emerald-400 font-bold tracking-tight">Broker Calendar Synced</span>
+            <span className="text-amber-400 font-bold tracking-tight">Suite 5200 ($4.5M CAD)</span>
           </div>
 
           {/* Messages Body */}
@@ -415,10 +415,10 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
             </button>
             <button
               type="button"
-              onClick={() => handleSendMessage(undefined, "Tell me about the private elevator & wine vault in the penthouse.")}
-              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+              onClick={() => handleSendMessage(undefined, "How does this AI Sales Closer integrate into my luxury real estate team or brokerage?")}
+              className="px-3 py-1.5 rounded-full bg-amber-950/80 hover:bg-amber-900/90 border border-amber-500/60 text-amber-300 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
-              🍷 Private Features
+              ⚡ Deploy For My Brokerage
             </button>
           </div>
 

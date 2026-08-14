@@ -34,27 +34,29 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
 }) => {
   return (
     <header className="relative w-full bg-[#F4F5F7] border-b border-slate-200/90">
-      {/* Top Luxury Announcement Bar */}
-      <div className="bg-[#F4F5F7] border-b border-slate-200/90 px-4 py-2 text-xs text-slate-600">
+      {/* Top AI Demo Announcement Bar */}
+      <div className="bg-slate-950 text-white border-b border-amber-500/30 px-4 py-2 text-xs">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              TROPHY RESIDENCE
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/50 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+              AI SALES CLOSER DEMO
             </span>
-            <span className="text-slate-700 font-medium">Yorkville, Toronto, ON · Private Collection</span>
+            <span className="text-slate-300 font-medium text-[11px]">
+              Custom-Built AI Sales Engine for Toronto Luxury Real Estate Brokerages & Teams
+            </span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] text-slate-600 font-medium">
-            <span className="flex items-center gap-1.5 hover:text-amber-700 transition-colors cursor-pointer" onClick={onOpenChat}>
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              ARGUS AI Concierge Online
-            </span>
-            <span className="hidden md:inline text-slate-300">|</span>
-            <a href="tel:+14169288800" className="hidden md:flex items-center gap-1 hover:text-slate-900 transition-colors text-slate-600">
-              <PhoneCall className="w-3 h-3 text-slate-500" />
-              +1 (416) 928-8800
-            </a>
+          <div className="flex items-center gap-3 text-[11px] text-slate-300 font-medium">
+            <button 
+              onClick={onOpenChat}
+              className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-colors font-bold cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>Test AI Closer (ARGUS)</span>
+            </button>
+            <span className="text-slate-600">|</span>
+            <span className="text-slate-400 text-[10px] font-mono">Concept Spec: 188 Bay St Penthouse</span>
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
               The Yorkville Luxury Group
             </span>
             <span className="block text-[10px] tracking-widest text-slate-500 uppercase font-mono font-semibold">
-              Premier Toronto Brokerage
+              Interactive Brokerage Showcase
             </span>
           </div>
         </a>

@@ -83,9 +83,20 @@ Tone & Persona:
         (messages && messages.length > 0 ? messages[messages.length - 1].content : "")
       ).toLowerCase();
 
-      let reply = "Absolute discretion is the cornerstone of The Yorkville Luxury Group. For our off-market $10M–$15M+ estates in The Bridle Path and private full-floor Yorkville penthouses, we execute a bilateral digital Non-Disclosure Agreement (NDA) via encrypted DocuSign prior to transmitting architectural dossiers, security specs, or floor plans. Our Managing Partner Victoria Sterling can transmit the NDA to your counsel immediately—would you prefer we direct this to your office or representative?";
+      let reply = "Absolute discretion is the cornerstone of our AI Sales Closer. For off-market $10M–$15M+ estates and private full-floor Yorkville penthouses, our system handles bilateral digital Non-Disclosure Agreements (NDAs) via encrypted DocuSign prior to transmitting architectural dossiers, security specs, or floor plans. Would you like to test our showing booking or carry calculation modules?";
 
       if (
+        lastUserText.includes("deploy") || 
+        lastUserText.includes("integrate") || 
+        lastUserText.includes("my brokerage") || 
+        lastUserText.includes("my team") || 
+        lastUserText.includes("build this ai") || 
+        lastUserText.includes("who built") || 
+        lastUserText.includes("sales closer") || 
+        lastUserText.includes("custom ai")
+      ) {
+        reply = "This AI Sales Closer is custom-engineered specifically for luxury real estate brokerages, top-producing teams, and high-end developments in Toronto.\n\nKey Capabilities Built For Your Team:\n• 24/7 High-Ticket Lead Qualification & Vetting (buyer liquidity, timeline, representation status)\n• Automated Private Showing Booking synced directly to your team's Google / Outlook calendars\n• Detailed Architectural & Financial Carry Calculations (HOA, property tax, land transfer tax)\n• Strict TRESA & FINTRAC Compliance Guidance\n• Seamless CRM & MLS Data Ingestion for any luxury listing or off-market portfolio\n\nWould you like to discuss a custom AI Sales Closer deployment tailored to your brokerage's active inventory and brand identity?";
+      } else if (
         lastUserText.includes("commercial") || 
         lastUserText.includes("plaza") || 
         lastUserText.includes("plazas") || 

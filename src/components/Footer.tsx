@@ -287,10 +287,12 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar with Regulatory Notice & Quick Links */}
         <div className="pt-8 border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-400 font-medium">
-          <div className="space-y-1 text-center md:text-left">
-            <p className="text-white font-semibold">© 2026 The Yorkville Luxury Group. All Rights Reserved.</p>
-            <p className="text-[10px] text-slate-400 font-normal">
-              Equal Housing Opportunity. Licensed under Real Estate Council of Ontario (RECO Brokerage #4892011).
+          <div className="space-y-1.5 text-center md:text-left max-w-2xl">
+            <p className="text-white font-semibold">
+              © 2026 AI Sales Closer Interactive Demo · Custom AI Sales Engine for Toronto Luxury Real Estate Teams & Brokerages.
+            </p>
+            <p className="text-[10px] text-slate-400 font-normal leading-relaxed">
+              Demonstration & Technology Prototype. The Yorkville Luxury Group & Suite 5200 are conceptual demonstration assets engineered to showcase AI sales conversion, TRESA/RECO compliance handling, and high-ticket buyer qualification workflows.
             </p>
           </div>
 

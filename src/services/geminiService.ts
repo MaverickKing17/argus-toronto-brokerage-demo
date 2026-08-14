@@ -33,7 +33,22 @@ Tone & Persona:
 export function generateContextualConciergeResponse(userPrompt: string, history: ChatMessage[] = []): string {
   const query = userPrompt.toLowerCase();
 
-  // 1. Commercial Real Estate, Industrial, Retail, Plazas, Land/Hotel Development Inquiries
+  // 1. Brokerage / Real Estate Team Deployment & System Inquiries
+  if (
+    query.includes("deploy") || 
+    query.includes("integrate") || 
+    query.includes("my brokerage") || 
+    query.includes("my team") || 
+    query.includes("build this ai") || 
+    query.includes("who built") || 
+    query.includes("sales closer") || 
+    query.includes("custom ai") || 
+    query.includes("for agents")
+  ) {
+    return "This AI Sales Closer is custom-engineered specifically for luxury real estate brokerages, top-producing teams, and high-end developments in Toronto.\n\nKey Capabilities Built For Your Team:\n• 24/7 High-Ticket Lead Qualification & Vetting (buyer liquidity, timeline, representation status)\n• Automated Private Showing Booking synced directly to your team's Google / Outlook calendars\n• Detailed Architectural & Financial Carry Calculations (HOA, property tax, land transfer tax)\n• Strict TRESA & FINTRAC Compliance Guidance\n• Seamless CRM & MLS Data Ingestion for any luxury listing or off-market portfolio\n\nWould you like to discuss a custom AI Sales Closer deployment tailored to your brokerage's active inventory and brand identity?";
+  }
+
+  // 2. Commercial Real Estate, Industrial, Retail, Plazas, Land/Hotel Development Inquiries
   if (
     query.includes("commercial") || 
     query.includes("plaza") || 

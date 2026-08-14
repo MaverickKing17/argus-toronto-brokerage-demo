@@ -2,8 +2,10 @@
 
 @layer base {
   :root {
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    /* Microsoft Web Typography Design System (Segoe UI Stack) */
+    --font-sans: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    --font-serif: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    --font-mono: "Cascadia Code", "Segoe UI Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     --color-gold: #c5a367;
     --color-gold-hover: #b39055;
     --color-page-bg: #F4F5F7;
@@ -11,15 +13,18 @@
     --color-text-main: #0F172A;
   }
 
-  html, body, #root {
-    font-family: var(--font-sans);
+  html, body, #root, button, input, textarea, select {
+    font-family: var(--font-sans) !important;
     background-color: #F4F5F7 !important;
     color: #0F172A;
     min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, .font-serif {
-    font-family: var(--font-serif);
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-sans) !important;
+    letter-spacing: -0.015em;
   }
 }
 
