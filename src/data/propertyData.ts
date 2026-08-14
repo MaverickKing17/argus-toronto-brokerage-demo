@@ -79,7 +79,7 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Grand Living Suite",
     subtitle: "Floor-to-ceiling glass overlooking Toronto skyline & CN Tower",
     category: "interior",
-    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80"
+    url: "https://i.ibb.co/tp4fftHy/Chat-GPT-Image-Aug-14-2026-04-14-11-PM.png"
   },
   {
     id: "living_lounge",

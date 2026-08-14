@@ -109,41 +109,40 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
         {/* Luminous High-Res Penthouse Interior Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80" 
+            src="https://i.ibb.co/tp4fftHy/Chat-GPT-Image-Aug-14-2026-04-14-11-PM.png" 
             alt="The Yorkville Penthouse Collection Living Room"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
           />
-          {/* Subtle Dark Gradient Vignette Overlay for Text Legibility Without Obscuring the View */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />
+          {/* Crisp, clear background exposure with gentle bottom fade for control contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
         </div>
 
         {/* Hero Content positioned directly over background */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full space-y-6">
           {/* Listing Badges */}
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+            <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xl">
               <Building2 className="w-3.5 h-3.5 text-amber-400" />
               OFFERED AT $4,500,000 CAD
             </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-medium flex items-center gap-1.5 shadow-lg">
+            <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/25 text-white text-xs font-medium flex items-center gap-1.5 shadow-xl">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
               188 Bay Street · Yorkville, Toronto
             </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-emerald-950/70 backdrop-blur-md border border-emerald-500/40 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 shadow-lg">
+            <span className="px-3.5 py-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md border border-emerald-400/50 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 shadow-xl">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               Private Elevator Direct
             </span>
           </div>
 
-          {/* Headline and Description Directly Over Hero Image */}
+          {/* Headline and Description with High-Contrast Text Shadows */}
           <div className="space-y-3 max-w-3xl">
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] drop-shadow-md">
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
               The Yorkville Penthouse Collection
             </h1>
 
-            <p className="text-white/90 text-sm sm:text-base lg:text-lg font-normal leading-relaxed max-w-2xl drop-shadow-sm">
+            <p className="text-white text-sm sm:text-base lg:text-lg font-medium leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               An extraordinary 3,850 sq. ft. full-floor sky residence featuring a 1,200 sq. ft. heated wraparound terrace, 270° CN Tower panoramic skyline views, and bespoke interior architecture.
             </p>
           </div>
