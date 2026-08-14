@@ -22,11 +22,19 @@ async function startServer() {
       const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENAI_API_KEY;
 
       const systemInstruction = `You are ARGUS AI Assistant, the ultra-elite private AI concierge for "The Yorkville Luxury Group", premier luxury real estate brokerage in Toronto, Ontario.
-You represent the flagship residence: "The Yorkville Penthouse Collection" located at 188 Bay Street / Yorkville Ave, Toronto, ON ($4,500,000 CAD).
-Brokerage details:
+
+CORE SCOPE & INTENT RECOGNITION RULES (STRICT ENFORCEMENT):
+1. Residential Focus: The Yorkville Luxury Group exclusively represents high-end residential luxury properties (penthouses, private estates, architectural residences, and off-market residential acquisitions in Yorkville, The Bridle Path, Forest Hill, and Rosedale).
+2. Commercial Real Estate & Land/Hotel Development Inquiries:
+   - If a client or user asks about Commercial Real Estate (e.g. retail plazas, strip malls, shopping centers, office buildings, industrial/warehousing, multi-tenant commercial parks) or Land Assembly / Hotel / Commercial Development:
+   - You MUST NOT output Suite 5200 penthouse residential specifications, bedroom/bathroom counts, or residential terrace amenities.
+   - Clarify politely and concisely that The Yorkville Luxury Group specializes strictly in ultra-luxury residential properties and estates.
+   - Offer to route their commercial or development inquiry directly to Senior Managing Partner Victoria Sterling, who coordinates confidential commercial partner referrals with premier commercial institutional brokerages in Toronto.
+
+Brokerage & Residential Context:
 - Flagship Listing: Suite 5200 at 188 Bay Street, Toronto ($4.5M CAD, 3 Beds, 4 Baths, 3,850 sq. ft. interior + 1,200 sq. ft. heated terrace, CN Tower views, keycard private elevator foyer, 3 EV parking stalls).
 - Senior Managing Partner: Victoria Sterling.
-- Off-Market / Private Collection: $10M–$25M+ ultra-prime estates in The Bridle Path, Forest Hill, Rosedale, and private full-floor penthouses in Yorkville.
+- Off-Market / Private Collection: $10M–$25M+ ultra-prime residential estates in The Bridle Path, Forest Hill, Rosedale, and private full-floor penthouses in Yorkville.
 - Privacy & NDA Policy: For all off-market trophy assets, digital or physical mutual NDAs are executed via secure DocuSign within 15 minutes before floor plans or dossiers are released.
 - Coverage & Expertise: Toronto high-end luxury neighborhoods including Yorkville, The Bridle Path, Forest Hill, Rosedale, and Lawrence Park.
 - Top Toronto Private Schools: Upper Canada College (UCC), Bishop Strachan School (BSS), Havergal College, Branksome Hall, Crescent School.
@@ -34,8 +42,7 @@ Brokerage details:
 
 Tone & Persona:
 - Ultra-polished, intelligent, discreet, warm, and highly knowledgeable.
-- Answer user inquiries directly, insightfully, and thoroughly (e.g. comparing Yorkville to Bridle Path/Forest Hill, proximity to top schools like UCC/BSS, NDA execution protocols, neighborhood pricing, private viewings, amenities).
-- Offer to coordinate private VIP viewings or prepare custom property dossiers when appropriate.`;
+- Only provide residential penthouse specs when the client specifically asks about residential luxury acquisitions.`;
 
       if (apiKey && apiKey !== "MY_GEMINI_API_KEY") {
         try {
@@ -73,7 +80,22 @@ Tone & Persona:
 
       let reply = "Absolute discretion is the cornerstone of The Yorkville Luxury Group. For our off-market $10M–$15M+ estates in The Bridle Path and private full-floor Yorkville penthouses, we execute a bilateral digital Non-Disclosure Agreement (NDA) via encrypted DocuSign prior to transmitting architectural dossiers, security specs, or floor plans. Our Managing Partner Victoria Sterling can transmit the NDA to your counsel immediately—would you prefer we direct this to your office or representative?";
 
-      if (lastUserText.includes("school") || lastUserText.includes("ucc") || lastUserText.includes("bss") || lastUserText.includes("kids") || lastUserText.includes("upper canada")) {
+      if (
+        lastUserText.includes("commercial") || 
+        lastUserText.includes("plaza") || 
+        lastUserText.includes("plazas") || 
+        lastUserText.includes("retail") || 
+        lastUserText.includes("industrial") || 
+        lastUserText.includes("warehouse") || 
+        lastUserText.includes("office building") || 
+        lastUserText.includes("hotel development") || 
+        lastUserText.includes("commercial land") || 
+        lastUserText.includes("land assembly") || 
+        lastUserText.includes("strip mall") || 
+        lastUserText.includes("shopping center")
+      ) {
+        reply = "The Yorkville Luxury Group focuses exclusively on ultra-luxury residential properties, penthouses, and private estates. We do not directly broker commercial assets, retail plazas, or industrial developments; however, our Senior Managing Partner Victoria Sterling maintains close executive relationships with Toronto's leading commercial institutional partner firms. We would be pleased to route your commercial inquiry directly to Victoria Sterling for a direct partner introduction—would you like us to connect your office?";
+      } else if (lastUserText.includes("school") || lastUserText.includes("ucc") || lastUserText.includes("bss") || lastUserText.includes("kids") || lastUserText.includes("upper canada")) {
         reply = "For families prioritizing Upper Canada College (UCC) or Bishop Strachan School (BSS), Forest Hill and South Rosedale provide seamless access within 10 to 12 minutes, while our 188 Bay Street Penthouse in Yorkville offers private luxury within 12 minutes of both campuses. We can coordinate private viewings for residences directly along preferred school routes.";
       } else if (lastUserText.includes("saturday") || lastUserText.includes("tour") || lastUserText.includes("viewing") || lastUserText.includes("appointment") || lastUserText.includes("schedule")) {
         reply = "We would be delighted to host a private viewing for you this Saturday. We have exclusive private showing slots available at 2:00 PM and 4:30 PM with private valet arranged at 188 Bay Street. Which time works best for your schedule?";
