@@ -12,7 +12,11 @@ import {
   Share2, 
   Eye,
   CheckCircle2,
-  Lock
+  Lock,
+  BedDouble,
+  Bath,
+  Maximize2,
+  Layers
 } from 'lucide-react';
 
 interface HeaderHeroProps {
@@ -147,23 +151,66 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
             </p>
           </div>
 
-          {/* Quick Specs Highlight Bar with High-Contrast Dark Glassmorphism Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
-            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
-              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Bedrooms</span>
-              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">3 Suite Beds</span>
+          {/* Quick Specs Highlight Bar with High-Impact Ultra-Luxury Glass Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 max-w-3xl">
+            {/* Card 1: Bedrooms */}
+            <div className="group relative p-4 rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-950/90 to-black/95 backdrop-blur-xl border border-amber-500/30 hover:border-amber-400 text-white shadow-[0_8px_30px_rgba(0,0,0,0.7)] hover:shadow-[0_12px_35px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent group-hover:via-amber-400 transition-all"></div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-7 h-7 rounded-lg bg-amber-400/15 border border-amber-400/30 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/25 group-hover:scale-105 transition-all">
+                  <BedDouble className="w-3.5 h-3.5 text-amber-400" />
+                </div>
+                <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest font-bold">BEDROOMS</span>
+              </div>
+              <span className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight block drop-shadow-sm group-hover:text-amber-100 transition-colors">
+                3 Suite Beds
+              </span>
+              <span className="text-[10px] font-mono text-slate-400 block mt-0.5">Ensuite Walk-ins</span>
             </div>
-            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
-              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Bathrooms</span>
-              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">4 Luxury Baths</span>
+
+            {/* Card 2: Bathrooms */}
+            <div className="group relative p-4 rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-950/90 to-black/95 backdrop-blur-xl border border-amber-500/30 hover:border-amber-400 text-white shadow-[0_8px_30px_rgba(0,0,0,0.7)] hover:shadow-[0_12px_35px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent group-hover:via-amber-400 transition-all"></div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-7 h-7 rounded-lg bg-amber-400/15 border border-amber-400/30 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/25 group-hover:scale-105 transition-all">
+                  <Bath className="w-3.5 h-3.5 text-amber-400" />
+                </div>
+                <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest font-bold">BATHROOMS</span>
+              </div>
+              <span className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight block drop-shadow-sm group-hover:text-amber-100 transition-colors">
+                4 Luxury Baths
+              </span>
+              <span className="text-[10px] font-mono text-slate-400 block mt-0.5">Heated Calacatta</span>
             </div>
-            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
-              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Living Space</span>
-              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">5,050 sq. ft.</span>
+
+            {/* Card 3: Living Space */}
+            <div className="group relative p-4 rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-950/90 to-black/95 backdrop-blur-xl border border-amber-500/30 hover:border-amber-400 text-white shadow-[0_8px_30px_rgba(0,0,0,0.7)] hover:shadow-[0_12px_35px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent group-hover:via-amber-400 transition-all"></div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-7 h-7 rounded-lg bg-amber-400/15 border border-amber-400/30 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/25 group-hover:scale-105 transition-all">
+                  <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
+                </div>
+                <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest font-bold">LIVING SPACE</span>
+              </div>
+              <span className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight block drop-shadow-sm group-hover:text-amber-100 transition-colors">
+                5,050 sq. ft.
+              </span>
+              <span className="text-[10px] font-mono text-slate-400 block mt-0.5">3,850 + 1,200 Terrace</span>
             </div>
-            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
-              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Elevator Access</span>
-              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">Private Foyer</span>
+
+            {/* Card 4: Elevator Access */}
+            <div className="group relative p-4 rounded-2xl bg-gradient-to-b from-slate-900/95 via-slate-950/90 to-black/95 backdrop-blur-xl border border-amber-500/30 hover:border-amber-400 text-white shadow-[0_8px_30px_rgba(0,0,0,0.7)] hover:shadow-[0_12px_35px_rgba(245,158,11,0.25)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent group-hover:via-amber-400 transition-all"></div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-7 h-7 rounded-lg bg-amber-400/15 border border-amber-400/30 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/25 group-hover:scale-105 transition-all">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-amber-400" />
+                </div>
+                <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest font-bold">ELEVATOR</span>
+              </div>
+              <span className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight block drop-shadow-sm group-hover:text-amber-100 transition-colors">
+                Private Foyer
+              </span>
+              <span className="text-[10px] font-mono text-slate-400 block mt-0.5">Biometric Keycard</span>
             </div>
           </div>
 
@@ -171,16 +218,16 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
           <div className="pt-2 flex flex-wrap items-center gap-3.5">
             <button
               onClick={onOpenScheduleModal}
-              className="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg hover:shadow-xl shadow-amber-500/30 flex items-center gap-2 hover:scale-[1.02] cursor-pointer"
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_25px_rgba(245,158,11,0.45)] hover:shadow-[0_6px_30px_rgba(245,158,11,0.6)] hover:scale-[1.03] flex items-center gap-2.5 cursor-pointer"
               id="hero-schedule-btn"
             >
-              <Calendar className="w-4 h-4 text-zinc-950" />
+              <Calendar className="w-4 h-4 text-zinc-950 stroke-[2.5]" />
               Schedule Private Viewing
             </button>
 
             <button
               onClick={() => onOpenGallery(0)}
-              className="px-6 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/25 hover:border-amber-400 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-b from-slate-900/90 to-black/90 hover:from-slate-800 hover:to-black/95 backdrop-blur-xl border border-white/20 hover:border-amber-400 text-white hover:text-amber-200 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_6px_25px_rgba(245,158,11,0.25)] hover:scale-[1.02] flex items-center gap-2.5 cursor-pointer"
               id="hero-gallery-btn"
             >
               <Eye className="w-4 h-4 text-amber-400" />
@@ -189,7 +236,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
 
             <button
               onClick={onOpenChat}
-              className="px-5 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-950 backdrop-blur-md border border-amber-400/50 text-amber-300 font-bold text-xs sm:text-sm tracking-wider transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+              className="px-5 py-3.5 rounded-xl bg-gradient-to-r from-amber-950/60 via-slate-950/90 to-black/90 hover:from-amber-950/80 hover:to-black backdrop-blur-xl border border-amber-400/50 hover:border-amber-300 text-amber-300 hover:text-amber-200 font-bold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(245,158,11,0.2)] hover:shadow-[0_6px_25px_rgba(245,158,11,0.35)] hover:scale-[1.02] flex items-center gap-2.5 cursor-pointer"
               id="hero-argus-btn"
             >
               <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
