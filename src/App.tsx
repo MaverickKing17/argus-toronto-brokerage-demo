@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { HeaderHero } from './components/HeaderHero';
 import { PropertyOverview } from './components/PropertyOverview';
 import { PropertyGallery } from './components/PropertyGallery';
@@ -13,33 +13,12 @@ import { MortgageCalculator } from './components/MortgageCalculator';
 import { ScheduleTourModal } from './components/ScheduleTourModal';
 import { ArgusChatWidget } from './components/ArgusChatWidget';
 import { Footer } from './components/Footer';
-import { CheckCircle2, FileText, Share2, Sparkles, X, ArrowUp } from 'lucide-react';
+import { CheckCircle2, X } from 'lucide-react';
 
 export default function App() {
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState<boolean>(false);
   const [isChatOpen, setIsChatOpen] = useState<boolean>(true); // Default open widget for demo clarity
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -121,21 +100,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Standout High-Contrast Scroll-To-Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          aria-label="Scroll to top of page"
-          className="fixed bottom-6 left-6 z-40 p-3.5 rounded-2xl bg-slate-950/90 hover:bg-black text-amber-400 border-2 border-amber-400 shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 group cursor-pointer flex items-center gap-2"
-          id="scroll-to-top-btn"
-        >
-          <ArrowUp className="w-5 h-5 text-amber-400 group-hover:text-amber-300 stroke-[3] transition-transform group-hover:-translate-y-0.5" />
-          <span className="hidden sm:inline font-mono text-[11px] font-bold text-amber-400 uppercase tracking-wider pr-1">
-            Top
-          </span>
-        </button>
-      )}
 
     </div>
   );

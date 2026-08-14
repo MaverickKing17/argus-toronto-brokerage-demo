@@ -12,6 +12,7 @@ import {
   Sparkles,
   Camera
 } from 'lucide-react';
+import { Spatial3DTour } from './Spatial3DTour';
 
 interface PropertyGalleryProps {
   initialPhotoIndex?: number | null;
@@ -24,7 +25,7 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
 }) => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(initialPhotoIndex);
-  const [virtualTourActive, setVirtualTourActive] = useState<boolean>(false);
+  const [virtualTourActive, setVirtualTourActive] = useState<boolean>(true);
 
   const filteredPhotos = activeFilter === 'all' 
     ? GALLERY_PHOTOS 
@@ -189,26 +190,8 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
 
         {/* 3D Walkthrough Viewport */}
         {virtualTourActive && (
-          <div className="mt-6 p-4 rounded-2xl bg-white border border-slate-200/90 text-center space-y-4 shadow-md">
-            <div className="relative h-96 w-full rounded-xl overflow-hidden border border-slate-200/90">
-              <img 
-                src={GALLERY_PHOTOS[0].url} 
-                alt="3D Walkthrough Preview" 
-                className="w-full h-full object-cover filter contrast-105" 
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-6 text-center backdrop-blur-xs">
-                <div className="p-4 rounded-full bg-white/20 border border-white/30 text-white mb-3 animate-pulse">
-                  <Compass className="w-8 h-8 text-amber-300" />
-                </div>
-                <span className="font-serif text-2xl text-white font-bold">
-                  3D Spatial Tour Engine Active
-                </span>
-                <p className="text-xs text-gray-200 max-w-md mt-1 font-normal">
-                  Use mouse/touch to pan 360° across the 3,850 sq. ft. floorplate. Direct private elevator entrance highlighted at Bay St elevation.
-                </p>
-              </div>
-            </div>
+          <div className="mt-8 animate-fade-in">
+            <Spatial3DTour />
           </div>
         )}
 

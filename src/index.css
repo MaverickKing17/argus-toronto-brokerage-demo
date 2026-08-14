@@ -13,17 +13,21 @@
     --color-text-main: #0F172A;
   }
 
-  html, body, #root, button, input, textarea, select {
-    font-family: var(--font-sans) !important;
-    background-color: #F4F5F7 !important;
+  html, body, #root {
+    font-family: var(--font-sans);
+    background-color: #F4F5F7;
     color: #0F172A;
     min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  button, input, textarea, select {
+    font-family: var(--font-sans);
+  }
+
   h1, h2, h3, h4, h5, h6, .font-serif {
-    font-family: var(--font-sans) !important;
+    font-family: var(--font-sans);
     letter-spacing: -0.015em;
   }
 }
