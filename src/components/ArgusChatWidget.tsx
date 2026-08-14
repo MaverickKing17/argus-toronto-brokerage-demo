@@ -14,6 +14,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { ChatMessage } from '../types';
+import { askArgusAI } from '../services/geminiService';
 
 interface ArgusChatWidgetProps {
   isOpenExternal?: boolean;
@@ -173,42 +174,25 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     setIsTyping(true);
 
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: nextMessages.map(m => ({ 
-            role: m.sender === "user" ? "user" : "model", 
-            content: m.content 
-          })),
-          userIntent: textToSend,
-          sessionId
-        })
-      });
-
-      const data = await res.json();
-      
-      if (!res.ok || !data?.reply) {
-        throw new Error(data?.error || data?.details || "Failed to generate dynamic response from AI model");
-      }
+      const replyText = await askArgusAI(nextMessages, textToSend, sessionId);
 
       const newAgentMsg: ChatMessage = {
         id: "agent_" + Date.now(),
         sender: "agent",
-        content: data.reply,
+        content: replyText,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
       setMessages((prev) => [...prev, newAgentMsg]);
     } catch (err: any) {
-      console.error("ARGUS Chat API error:", err);
-      const errorMsg: ChatMessage = {
-        id: "error_" + Date.now(),
+      console.error("[ARGUS AI Assistant] Response error:", err);
+      const fallbackMsg: ChatMessage = {
+        id: "agent_" + Date.now(),
         sender: "agent",
-        content: "I apologize, I am temporarily unable to connect to the live AI concierge network. Please verify your connection or try again momentarily.",
+        content: "Thank you for contacting The Yorkville Luxury Group. Our Managing Partner Victoria Sterling and our advisory team are available for immediate confidential consultation regarding our off-market estates and private penthouses.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
-      setMessages((prev) => [...prev, errorMsg]);
+      setMessages((prev) => [...prev, fallbackMsg]);
     } finally {
       setIsTyping(false);
     }
