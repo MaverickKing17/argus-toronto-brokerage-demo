@@ -79,7 +79,7 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Grand Living Suite",
     subtitle: "Floor-to-ceiling glass overlooking Toronto skyline & CN Tower",
     category: "interior",
-    url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
+    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: "living_lounge",
@@ -93,7 +93,7 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Gaggenau Chef's Kitchen",
     subtitle: "Calacatta Gold marble island, wine pillar & hidden butler's pantry",
     category: "interior",
-    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600"
+    url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600"
   },
   {
     id: "terrace",

@@ -63,13 +63,13 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#0F1115]/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="relative w-full max-w-xl rounded-2xl bg-[#1C1E24] border border-white/[0.08] p-6 sm:p-8 shadow-2xl space-y-6">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="relative w-full max-w-xl rounded-2xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-2xl space-y-6">
         
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-[#14161C] border border-white/[0.08] text-zinc-300 hover:text-white transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 border border-slate-200 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -77,20 +77,20 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono text-zinc-300 uppercase tracking-widest block font-semibold">
+              <span className="text-[10px] font-mono text-amber-800 uppercase tracking-widest block font-bold">
                 DISCREET PRIVATE VIEWING REQUEST
               </span>
-              <h3 className="font-serif text-2xl text-white font-bold">
+              <h3 className="font-serif text-2xl text-slate-900 font-bold">
                 Schedule Suite 5200 Private Showing
               </h3>
-              <p className="text-xs text-zinc-300 font-normal">
+              <p className="text-xs text-slate-600 font-normal">
                 Coordinated directly with Victoria Sterling, Senior Managing Partner.
               </p>
             </div>
 
             {/* Date Select */}
             <div className="space-y-2">
-              <label className="block text-xs font-semibold text-zinc-200">Select Viewing Date:</label>
+              <label className="block text-xs font-semibold text-slate-800">Select Viewing Date:</label>
               <div className="grid grid-cols-3 gap-2">
                 {["Saturday, Aug 15", "Sunday, Aug 16", "Monday, Aug 17"].map((d) => (
                   <button
@@ -99,8 +99,8 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                     onClick={() => setSelectedDate(d)}
                     className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                       selectedDate === d
-                        ? "bg-amber-500 text-zinc-950 border-amber-400 font-bold shadow-md shadow-amber-500/20"
-                        : "bg-[#14161C] border-white/[0.08] text-zinc-200 hover:text-white hover:border-white/[0.15]"
+                        ? "bg-amber-500 text-zinc-950 border-amber-500 font-bold shadow-sm"
+                        : "bg-slate-50 border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
                     }`}
                   >
                     {d}
@@ -111,7 +111,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
 
             {/* Time Select */}
             <div className="space-y-2">
-              <label className="block text-xs font-semibold text-zinc-200">Preferred Time Slot:</label>
+              <label className="block text-xs font-semibold text-slate-800">Preferred Time Slot:</label>
               <div className="grid grid-cols-3 gap-2">
                 {["11:00 AM EST", "2:00 PM EST", "4:30 PM EST"].map((t) => (
                   <button
@@ -120,8 +120,8 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                     onClick={() => setSelectedTime(t)}
                     className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                       selectedTime === t
-                        ? "bg-amber-500 text-zinc-950 border-amber-400 font-bold shadow-md shadow-amber-500/20"
-                        : "bg-[#14161C] border-white/[0.08] text-zinc-200 hover:text-white hover:border-white/[0.15]"
+                        ? "bg-amber-500 text-zinc-950 border-amber-500 font-bold shadow-sm"
+                        : "bg-slate-50 border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
                     }`}
                   >
                     {t}
@@ -133,38 +133,38 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
             {/* Client Info Inputs */}
             <div className="space-y-3 pt-2">
               <div>
-                <label className="block text-xs font-medium text-zinc-300 mb-1">Full Name</label>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Jonathan Vance"
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-amber-500 shadow-sm"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-300 mb-1">Email Address</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Email Address</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="vance@privateoffice.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-amber-500 shadow-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-300 mb-1">Phone Number</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Phone Number</label>
                   <input
                     type="tel"
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 (416) 555-0188"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-amber-500 shadow-sm"
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
               id="confirm-booking-submit-btn"
             >
               <Calendar className="w-4 h-4 text-zinc-950" />
@@ -183,40 +183,40 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
           </form>
         ) : (
           <div className="text-center space-y-6 py-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
             <div className="space-y-2">
-              <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block font-bold">
+              <span className="text-[10px] font-mono text-emerald-800 uppercase tracking-widest block font-bold">
                 VIEWING SECURED & CALENDAR SYNCED
               </span>
-              <h3 className="font-serif text-2xl text-white font-bold">
+              <h3 className="font-serif text-2xl text-slate-900 font-bold">
                 Private Viewing Confirmed
               </h3>
-              <p className="text-xs text-zinc-200 max-w-md mx-auto leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed font-normal">
                 {confirmationData?.confirmationMessage}
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#14161C] border border-white/[0.08] text-left text-xs space-y-2 font-medium">
-              <div className="flex justify-between border-b border-white/[0.08] pb-2">
-                <span className="text-zinc-300">Confirmation ID:</span>
-                <span className="font-mono text-white font-bold">{confirmationData?.bookingId}</span>
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs space-y-2 font-medium">
+              <div className="flex justify-between border-b border-slate-200 pb-2">
+                <span className="text-slate-600">Confirmation ID:</span>
+                <span className="font-mono text-slate-900 font-bold">{confirmationData?.bookingId}</span>
               </div>
-              <div className="flex justify-between border-b border-white/[0.08] pb-2">
-                <span className="text-zinc-300">Reserved Slot:</span>
-                <span className="font-mono text-white font-bold">{confirmationData?.slot}</span>
+              <div className="flex justify-between border-b border-slate-200 pb-2">
+                <span className="text-slate-600">Reserved Slot:</span>
+                <span className="font-mono text-slate-900 font-bold">{confirmationData?.slot}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-300">Assigned Senior Broker:</span>
-                <span className="text-white font-bold">{confirmationData?.broker}</span>
+                <span className="text-slate-600">Assigned Senior Broker:</span>
+                <span className="text-slate-900 font-bold">{confirmationData?.broker}</span>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="px-6 py-2.5 rounded-lg bg-[#14161C] hover:bg-[#242731] border border-white/[0.08] text-white font-bold text-xs tracking-wider uppercase transition-colors cursor-pointer"
+              className="px-6 py-2.5 rounded-lg bg-slate-900 hover:bg-black text-white font-bold text-xs tracking-wider uppercase transition-colors cursor-pointer shadow-sm"
             >
               Return to Listing
             </button>

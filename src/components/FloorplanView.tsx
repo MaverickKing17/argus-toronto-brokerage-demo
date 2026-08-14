@@ -57,7 +57,7 @@ export const FloorplanView: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState<RoomDetail>(ROOM_DATA[0]);
 
   return (
-    <section id="floorplan" className="relative py-20 bg-[#0F1115] text-zinc-100 border-b border-white/[0.08] overflow-hidden">
+    <section id="floorplan" className="relative py-20 bg-[#F4F5F7] text-slate-900 border-b border-slate-200/90 overflow-hidden">
       {/* Background Accent Glow */}
       <div className="absolute top-1/2 left-10 -translate-y-1/2 w-80 h-80 bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
 
@@ -65,14 +65,14 @@ export const FloorplanView: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-10">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[11px] font-mono font-bold uppercase tracking-wider mb-3">
-            <Layers className="w-3.5 h-3.5" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-mono font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <Layers className="w-3.5 h-3.5 text-amber-600" />
             ARCHITECTURAL LAYOUT & SCHEMATICS
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold mt-1">
+          <h2 className="font-serif text-3xl sm:text-4xl text-slate-900 font-bold mt-1">
             52nd Floor Full-Floorplate Floorplan
           </h2>
-          <p className="text-zinc-300 text-sm mt-2 font-normal max-w-2xl leading-relaxed">
+          <p className="text-slate-600 text-sm mt-2 font-normal max-w-2xl leading-relaxed">
             3,850 sq. ft. interior residence + 1,200 sq. ft. private heated terrace. Select a room below to view exact dimensions and architectural specifications.
           </p>
         </div>
@@ -81,30 +81,28 @@ export const FloorplanView: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           
           {/* Architectural Layout Diagram Graphic */}
-          <div className="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+          <div className="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-md hover:shadow-lg transition-all duration-300 space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200/90">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-[#14161C] border border-white/[0.08] text-amber-400">
+                <div className="p-2 rounded-lg bg-amber-50 border border-amber-200 text-amber-700">
                   <Layers className="w-5 h-5" />
                 </div>
-                <span className="font-serif text-lg text-white font-bold">Suite 5200 Architectural Blueprint</span>
+                <span className="font-serif text-lg text-slate-900 font-bold">Suite 5200 Architectural Blueprint</span>
               </div>
-              <span className="text-[11px] font-mono text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/30 font-bold tracking-wide">
+              <span className="text-[11px] font-mono text-amber-800 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200 font-bold tracking-wide">
                 SCALE 1:50 · 270° PANORAMIC
               </span>
             </div>
 
             {/* Simulated Interactive Blueprint Diagram */}
-            <div className="relative w-full aspect-16/10 rounded-xl bg-[#14161C] border border-white/[0.08] p-6 flex flex-col justify-between overflow-hidden shadow-inner">
-              <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-
+            <div className="relative w-full aspect-16/10 rounded-xl bg-slate-50 border border-slate-200/90 p-6 flex flex-col justify-between overflow-hidden shadow-inner">
               {/* Private Elevator Foyer Indicator */}
               <div className="relative z-10 flex items-center justify-between">
-                <div className="p-3 rounded-lg bg-[#1C1E24] border border-amber-500/30 text-amber-300 text-xs flex items-center gap-2 font-mono font-bold shadow-md">
-                  <ArrowUpRight className="w-4 h-4 text-amber-400" />
+                <div className="p-3 rounded-lg bg-white border border-amber-300 text-amber-900 text-xs flex items-center gap-2 font-mono font-bold shadow-sm">
+                  <ArrowUpRight className="w-4 h-4 text-amber-600" />
                   DIRECT PRIVATE ELEVATOR LIFT
                 </div>
-                <div className="text-right font-mono text-[11px] text-zinc-300 font-bold bg-[#1C1E24] px-2.5 py-1 rounded border border-white/[0.08]">
+                <div className="text-right font-mono text-[11px] text-slate-700 font-bold bg-white px-2.5 py-1 rounded border border-slate-200/90 shadow-sm">
                   NORTH ↑ (BLOOR ST)
                 </div>
               </div>
@@ -115,111 +113,111 @@ export const FloorplanView: React.FC = () => {
                 {/* Room 1: Foyer & Entry */}
                 <div 
                   onClick={() => setSelectedRoom(ROOM_DATA[0])}
-                  className={`col-span-3 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
+                  className={`col-span-3 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-sm ${
                     selectedRoom.id === 'foyer' 
-                      ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
+                      ? 'bg-amber-100/70 border-amber-500 text-amber-950 scale-[1.02] shadow-md font-bold' 
+                      : 'bg-white border-slate-200/90 text-slate-700 hover:border-amber-400'
                   }`}
                 >
-                  <span className="text-[10px] font-mono uppercase font-bold text-amber-300">ELEVATOR FOYER</span>
-                  <span className="text-xs font-bold text-white font-mono">178 SQ FT</span>
+                  <span className="text-[10px] font-mono uppercase font-bold text-amber-800">ELEVATOR FOYER</span>
+                  <span className="text-xs font-bold text-slate-900 font-mono">178 SQ FT</span>
                 </div>
 
                 {/* Room 2: Grand Salon */}
                 <div 
                   onClick={() => setSelectedRoom(ROOM_DATA[1])}
-                  className={`col-span-5 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
+                  className={`col-span-5 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-sm ${
                     selectedRoom.id === 'living' 
-                      ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
+                      ? 'bg-amber-100/70 border-amber-500 text-amber-950 scale-[1.02] shadow-md font-bold' 
+                      : 'bg-white border-slate-200/90 text-slate-700 hover:border-amber-400'
                   }`}
                 >
-                  <span className="text-[10px] font-mono uppercase font-bold text-amber-300">GRAND SALON & DINING</span>
-                  <span className="text-xs font-bold text-white font-mono">775 SQ FT</span>
+                  <span className="text-[10px] font-mono uppercase font-bold text-amber-800">GRAND SALON & DINING</span>
+                  <span className="text-xs font-bold text-slate-900 font-mono">775 SQ FT</span>
                 </div>
 
                 {/* Room 3: Kitchen & Wine */}
                 <div 
                   onClick={() => setSelectedRoom(ROOM_DATA[2])}
-                  className={`col-span-4 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
+                  className={`col-span-4 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-sm ${
                     selectedRoom.id === 'kitchen' 
-                      ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
+                      ? 'bg-amber-100/70 border-amber-500 text-amber-950 scale-[1.02] shadow-md font-bold' 
+                      : 'bg-white border-slate-200/90 text-slate-700 hover:border-amber-400'
                   }`}
                 >
-                  <span className="text-[10px] font-mono uppercase font-bold text-amber-300">CHEF'S KITCHEN & WINE</span>
-                  <span className="text-xs font-bold text-white font-mono">350 SQ FT</span>
+                  <span className="text-[10px] font-mono uppercase font-bold text-amber-800">CHEF'S KITCHEN & WINE</span>
+                  <span className="text-xs font-bold text-slate-900 font-mono">350 SQ FT</span>
                 </div>
 
                 {/* Room 4: Primary Suite */}
                 <div 
                   onClick={() => setSelectedRoom(ROOM_DATA[3])}
-                  className={`col-span-6 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
+                  className={`col-span-6 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-sm ${
                     selectedRoom.id === 'primary' 
-                      ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
+                      ? 'bg-amber-100/70 border-amber-500 text-amber-950 scale-[1.02] shadow-md font-bold' 
+                      : 'bg-white border-slate-200/90 text-slate-700 hover:border-amber-400'
                   }`}
                 >
-                  <span className="text-[10px] font-mono uppercase font-bold text-amber-300">PRIMARY MASTER SUITE</span>
-                  <span className="text-xs font-bold text-white font-mono">515 SQ FT</span>
+                  <span className="text-[10px] font-mono uppercase font-bold text-amber-800">PRIMARY MASTER SUITE</span>
+                  <span className="text-xs font-bold text-slate-900 font-mono">515 SQ FT</span>
                 </div>
 
                 {/* Room 5: Private Terrace */}
                 <div 
                   onClick={() => setSelectedRoom(ROOM_DATA[4])}
-                  className={`col-span-6 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
+                  className={`col-span-6 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-sm ${
                     selectedRoom.id === 'terrace' 
-                      ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
+                      ? 'bg-amber-100/70 border-amber-500 text-amber-950 scale-[1.02] shadow-md font-bold' 
+                      : 'bg-white border-slate-200/90 text-slate-700 hover:border-amber-400'
                   }`}
                 >
-                  <span className="text-[10px] font-mono uppercase text-amber-300 font-bold">HEATED PRIVATE TERRACE</span>
-                  <span className="text-xs font-bold text-white font-mono">1,200 SQ FT</span>
+                  <span className="text-[10px] font-mono uppercase text-amber-800 font-bold">HEATED PRIVATE TERRACE</span>
+                  <span className="text-xs font-bold text-slate-900 font-mono">1,200 SQ FT</span>
                 </div>
 
               </div>
 
               {/* Blueprint Footer note */}
-              <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-zinc-300 pt-3 border-t border-white/[0.08] font-medium">
-                <span className="font-bold">TOTAL SUITE FOOTPRINT: 5,050 SQ. FT.</span>
-                <span className="text-amber-400 font-bold animate-pulse">CLICK ROOM ZONES TO INSPECT DIMENSIONS</span>
+              <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-slate-600 pt-3 border-t border-slate-200/90 font-medium">
+                <span className="font-bold text-slate-900">TOTAL SUITE FOOTPRINT: 5,050 SQ. FT.</span>
+                <span className="text-amber-800 font-bold">CLICK ROOM ZONES TO INSPECT DIMENSIONS</span>
               </div>
             </div>
           </div>
 
           {/* Selected Room Specifications Inspector */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl space-y-6">
-            <div className="pb-4 border-b border-white/[0.08]">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block font-bold mb-1">
+          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-md hover:shadow-lg transition-all duration-300 space-y-6">
+            <div className="pb-4 border-b border-slate-200/90">
+              <span className="text-[10px] font-mono text-amber-800 uppercase tracking-widest block font-bold mb-1">
                 ROOM SPECIFICATION INSPECTOR
               </span>
-              <h3 className="font-serif text-2xl text-white font-bold">
+              <h3 className="font-serif text-2xl text-slate-900 font-bold">
                 {selectedRoom.name}
               </h3>
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
-                <span className="text-zinc-300 font-medium">Dimensions:</span>
-                <span className="font-mono text-white font-bold text-sm">{selectedRoom.dimensions}</span>
+              <div className="flex items-center justify-between text-xs py-2 border-b border-slate-200/90">
+                <span className="text-slate-600 font-medium">Dimensions:</span>
+                <span className="font-mono text-slate-900 font-bold text-sm">{selectedRoom.dimensions}</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
-                <span className="text-zinc-300 font-medium">Square Footage:</span>
-                <span className="font-mono text-amber-300 font-bold text-sm">{selectedRoom.area}</span>
+              <div className="flex items-center justify-between text-xs py-2 border-b border-slate-200/90">
+                <span className="text-slate-600 font-medium">Square Footage:</span>
+                <span className="font-mono text-amber-700 font-bold text-sm">{selectedRoom.area}</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
-                <span className="text-zinc-300 font-medium">Exposure & Views:</span>
-                <span className="text-zinc-100 text-right font-semibold">{selectedRoom.exposure}</span>
+              <div className="flex items-center justify-between text-xs py-2 border-b border-slate-200/90">
+                <span className="text-slate-600 font-medium">Exposure & Views:</span>
+                <span className="text-slate-900 text-right font-semibold">{selectedRoom.exposure}</span>
               </div>
 
               <div className="pt-2">
-                <span className="text-xs font-bold text-white block mb-3">Architectural Callouts:</span>
+                <span className="text-xs font-bold text-slate-900 block mb-3">Architectural Callouts:</span>
                 <div className="space-y-2.5">
                   {selectedRoom.highlights.map((h, i) => (
-                    <div key={i} className="flex items-start gap-2.5 text-xs text-zinc-200 font-medium p-2.5 rounded-lg bg-[#14161C] border border-white/[0.08]">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium p-2.5 rounded-lg bg-slate-50 border border-slate-200/90">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </div>
                   ))}

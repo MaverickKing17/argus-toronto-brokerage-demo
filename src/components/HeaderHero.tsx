@@ -29,26 +29,26 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
   onShare
 }) => {
   return (
-    <header className="relative w-full bg-[#0F1115] border-b border-white/[0.08]">
+    <header className="relative w-full bg-[#F4F5F7] border-b border-slate-200/90">
       {/* Top Luxury Announcement Bar */}
-      <div className="bg-[#14161C] border-b border-white/[0.08] px-4 py-2 text-xs text-zinc-300">
+      <div className="bg-[#F4F5F7] border-b border-slate-200/90 px-4 py-2 text-xs text-slate-600">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#1C1E24] text-zinc-200 border border-white/[0.08]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               TROPHY RESIDENCE
             </span>
-            <span className="text-zinc-300 font-medium">Yorkville, Toronto, ON · Private Collection</span>
+            <span className="text-slate-700 font-medium">Yorkville, Toronto, ON · Private Collection</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] text-zinc-300 font-medium">
-            <span className="flex items-center gap-1.5 hover:text-amber-300 transition-colors cursor-pointer" onClick={onOpenChat}>
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+          <div className="flex items-center gap-4 text-[11px] text-slate-600 font-medium">
+            <span className="flex items-center gap-1.5 hover:text-amber-700 transition-colors cursor-pointer" onClick={onOpenChat}>
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
               ARGUS AI Concierge Online
             </span>
-            <span className="hidden md:inline text-zinc-600">|</span>
-            <a href="tel:+14169288800" className="hidden md:flex items-center gap-1 hover:text-white transition-colors text-zinc-300">
-              <PhoneCall className="w-3 h-3 text-zinc-300" />
+            <span className="hidden md:inline text-slate-300">|</span>
+            <a href="tel:+14169288800" className="hidden md:flex items-center gap-1 hover:text-slate-900 transition-colors text-slate-600">
+              <PhoneCall className="w-3 h-3 text-slate-500" />
               +1 (416) 928-8800
             </a>
           </div>
@@ -59,34 +59,34 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl border border-white/[0.08] bg-[#1C1E24] flex items-center justify-center shadow-lg group-hover:border-amber-400/50 transition-colors">
-            <span className="font-serif text-xl font-bold text-white tracking-tighter">Y</span>
+          <div className="w-10 h-10 rounded-xl border border-amber-200 bg-amber-50 flex items-center justify-center shadow-sm group-hover:border-amber-400 transition-colors">
+            <span className="font-serif text-xl font-bold text-amber-900 tracking-tighter">Y</span>
           </div>
           <div>
-            <span className="block font-serif text-lg tracking-wider text-zinc-100 font-bold group-hover:text-amber-300 transition-colors uppercase">
+            <span className="block font-serif text-lg tracking-wider text-slate-900 font-bold group-hover:text-amber-700 transition-colors uppercase">
               The Yorkville Luxury Group
             </span>
-            <span className="block text-[10px] tracking-widest text-zinc-400 uppercase font-mono font-medium">
+            <span className="block text-[10px] tracking-widest text-slate-500 uppercase font-mono font-semibold">
               Premier Toronto Brokerage
             </span>
           </div>
         </a>
 
         {/* Navigation Links */}
-        <div className="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-zinc-200">
-          <a href="#overview" className="hover:text-white transition-colors">Overview</a>
-          <a href="#specs" className="hover:text-white transition-colors">Specifications</a>
-          <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
-          <a href="#floorplan" className="hover:text-white transition-colors">Floorplan</a>
-          <a href="#neighborhood" className="hover:text-white transition-colors">Yorkville</a>
-          <a href="#calculator" className="hover:text-white transition-colors">Investment</a>
+        <div className="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-700">
+          <a href="#overview" className="hover:text-amber-700 transition-colors">Overview</a>
+          <a href="#specs" className="hover:text-amber-700 transition-colors">Specifications</a>
+          <a href="#gallery" className="hover:text-amber-700 transition-colors">Gallery</a>
+          <a href="#floorplan" className="hover:text-amber-700 transition-colors">Floorplan</a>
+          <a href="#neighborhood" className="hover:text-amber-700 transition-colors">Yorkville</a>
+          <a href="#calculator" className="hover:text-amber-700 transition-colors">Investment</a>
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-3">
           <button 
             onClick={onShare}
-            className="p-2.5 rounded-lg border border-white/[0.08] bg-[#1C1E24] text-zinc-200 hover:text-white hover:border-white/[0.16] transition-all"
+            className="p-2.5 rounded-lg border border-slate-200/90 bg-white text-slate-700 hover:text-slate-900 hover:border-slate-300 transition-all shadow-sm cursor-pointer"
             title="Share Dossier"
             id="share-button"
           >
@@ -95,7 +95,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
           
           <button 
             onClick={onOpenScheduleModal}
-            className="px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
+            className="px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md hover:shadow-lg shadow-amber-500/20 flex items-center gap-2 cursor-pointer"
             id="schedule-tour-header-btn"
           >
             <Calendar className="w-4 h-4 text-zinc-950" />
@@ -105,100 +105,97 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
       </nav>
 
       {/* Hero Container with Clear Vivid Background */}
-      <div className="relative min-h-[600px] lg:min-h-[680px] flex items-center overflow-hidden">
-        {/* Luminous Background Image with Scrim Overlay */}
+      <div className="relative min-h-[640px] lg:min-h-[720px] flex items-end overflow-hidden">
+        {/* Luminous High-Res Penthouse Interior Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={GALLERY_PHOTOS[0]?.url || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"} 
-            alt="The Yorkville Penthouse Collection"
-            className="w-full h-full object-cover object-center transform scale-100 filter brightness-105 contrast-105 saturate-110"
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80" 
+            alt="The Yorkville Penthouse Collection Living Room"
+            className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
           />
-          {/* Subtle directional gradient scrim for high left-side text contrast while leaving the right side & CN Tower view ultra-clear */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F1115]/95 via-[#0F1115]/70 to-transparent w-full md:w-[75%] lg:w-[65%]"></div>
-          {/* Bottom transition gradient to seamlessly blend into page section */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0F1115] via-[#0F1115]/60 to-transparent"></div>
-          {/* Top subtle nav shadow */}
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0F1115]/60 to-transparent"></div>
+          {/* Subtle Dark Gradient Vignette Overlay for Text Legibility Without Obscuring the View */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full flex flex-col justify-end">
-          {/* Listing Badge & Address */}
-          <div className="space-y-5 max-w-3xl">
-            <div className="flex flex-wrap items-center gap-2.5">
-              <span className="px-3 py-1.5 rounded-lg bg-[#1C1E24]/90 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xl">
-                <Building2 className="w-3.5 h-3.5 text-amber-400" />
-                OFFERED AT $4,500,000 CAD
-              </span>
-              <span className="px-3 py-1.5 rounded-lg bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] text-zinc-100 text-xs font-semibold flex items-center gap-1.5 shadow-xl">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                188 Bay Street · Yorkville, Toronto
-              </span>
-              <span className="px-3 py-1.5 rounded-lg bg-emerald-950/80 backdrop-blur-md border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shadow-xl">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                Private Elevator Direct
-              </span>
-            </div>
+        {/* Hero Content positioned directly over background */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full space-y-6">
+          {/* Listing Badges */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+              <Building2 className="w-3.5 h-3.5 text-amber-400" />
+              OFFERED AT $4,500,000 CAD
+            </span>
+            <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-medium flex items-center gap-1.5 shadow-lg">
+              <MapPin className="w-3.5 h-3.5 text-amber-400" />
+              188 Bay Street · Yorkville, Toronto
+            </span>
+            <span className="px-3.5 py-1.5 rounded-full bg-emerald-950/70 backdrop-blur-md border border-emerald-500/40 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 shadow-lg">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              Private Elevator Direct
+            </span>
+          </div>
 
-            {/* Main Title */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+          {/* Headline and Description Directly Over Hero Image */}
+          <div className="space-y-3 max-w-3xl">
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] drop-shadow-md">
               The Yorkville Penthouse Collection
             </h1>
 
-            <p className="text-zinc-100 text-base sm:text-lg max-w-2xl font-medium leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+            <p className="text-white/90 text-sm sm:text-base lg:text-lg font-normal leading-relaxed max-w-2xl drop-shadow-sm">
               An extraordinary 3,850 sq. ft. full-floor sky residence featuring a 1,200 sq. ft. heated wraparound terrace, 270° CN Tower panoramic skyline views, and bespoke interior architecture.
             </p>
+          </div>
 
-            {/* Quick Specs Highlight Bar */}
-            <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
-              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
-                <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Bedrooms</span>
-                <span className="font-serif text-xl text-white font-bold mt-0.5 block">3 Suite Beds</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
-                <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Bathrooms</span>
-                <span className="font-serif text-xl text-white font-bold mt-0.5 block">4 Luxury Baths</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
-                <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Living Space</span>
-                <span className="font-serif text-xl text-white font-bold mt-0.5 block">5,050 sq. ft.</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
-                <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Elevator</span>
-                <span className="font-serif text-xl text-white font-bold mt-0.5 block">Private Foyer</span>
-              </div>
+          {/* Quick Specs Highlight Bar with High-Contrast Dark Glassmorphism Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
+            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
+              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Bedrooms</span>
+              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">3 Suite Beds</span>
             </div>
-
-            {/* Hero CTAs */}
-            <div className="pt-3 flex flex-wrap items-center gap-3.5">
-              <button
-                onClick={onOpenScheduleModal}
-                className="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl shadow-amber-500/25 flex items-center gap-2 hover:scale-[1.02]"
-                id="hero-schedule-btn"
-              >
-                <Calendar className="w-4 h-4 text-zinc-950" />
-                Schedule Private Viewing
-              </button>
-
-              <button
-                onClick={() => onOpenGallery(0)}
-                className="px-6 py-3.5 rounded-xl bg-[#1C1E24]/90 hover:bg-[#242731] border border-white/[0.08] text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-2 backdrop-blur-md shadow-xl hover:border-amber-500/40"
-                id="hero-gallery-btn"
-              >
-                <Eye className="w-4 h-4 text-amber-400" />
-                View Gallery & Virtual Tour
-              </button>
-
-              <button
-                onClick={onOpenChat}
-                className="px-5 py-3.5 rounded-xl bg-[#1C1E24]/90 hover:bg-[#242731] border border-amber-500/50 text-amber-300 font-bold text-xs sm:text-sm tracking-wider transition-all flex items-center gap-2 backdrop-blur-md shadow-xl"
-                id="hero-argus-btn"
-              >
-                <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-                Ask ARGUS AI 24/7
-              </button>
+            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
+              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Bathrooms</span>
+              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">4 Luxury Baths</span>
             </div>
+            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
+              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Living Space</span>
+              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">5,050 sq. ft.</span>
+            </div>
+            <div className="p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-xl hover:border-amber-400/60 transition-all duration-300">
+              <span className="block text-[10px] font-mono text-amber-300 uppercase tracking-wider font-bold">Elevator Access</span>
+              <span className="font-serif text-xl sm:text-2xl text-white font-bold mt-1 block">Private Foyer</span>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="pt-2 flex flex-wrap items-center gap-3.5">
+            <button
+              onClick={onOpenScheduleModal}
+              className="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg hover:shadow-xl shadow-amber-500/30 flex items-center gap-2 hover:scale-[1.02] cursor-pointer"
+              id="hero-schedule-btn"
+            >
+              <Calendar className="w-4 h-4 text-zinc-950" />
+              Schedule Private Viewing
+            </button>
+
+            <button
+              onClick={() => onOpenGallery(0)}
+              className="px-6 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/25 hover:border-amber-400 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+              id="hero-gallery-btn"
+            >
+              <Eye className="w-4 h-4 text-amber-400" />
+              View Gallery
+            </button>
+
+            <button
+              onClick={onOpenChat}
+              className="px-5 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-950 backdrop-blur-md border border-amber-400/50 text-amber-300 font-bold text-xs sm:text-sm tracking-wider transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+              id="hero-argus-btn"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+              Inquire with ARGUS AI
+            </button>
           </div>
         </div>
       </div>

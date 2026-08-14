@@ -6,16 +6,15 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --color-gold: #c5a367;
     --color-gold-hover: #b39055;
-    --color-dark-bg: #0F1115;
-    --color-dark-card: #1C1E24;
-    --color-dark-surface: #1C1E24;
-    --color-dark-elevated: #242731;
+    --color-page-bg: #F4F5F7;
+    --color-card-bg: #FFFFFF;
+    --color-text-main: #0F172A;
   }
 
   html, body, #root {
     font-family: var(--font-sans);
-    background-color: #0F1115 !important;
-    color: #f4f4f5;
+    background-color: #F4F5F7 !important;
+    color: #0F172A;
     min-height: 100%;
   }
 
@@ -37,30 +36,30 @@
 }
 
 .border-gold-subtle {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(197, 163, 103, 0.25);
 }
 
 .bg-gold-subtle {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(197, 163, 103, 0.08);
 }
 
-/* Custom subtle scrollbars for chat and galleries */
+/* Custom subtle scrollbars */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0F1115;
+  background: #F4F5F7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  background: #D1D5DB;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(197, 163, 103, 0.6);
+  background: #9CA3AF;
 }
 
 @keyframes pulse-subtle {
