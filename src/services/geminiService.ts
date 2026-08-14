@@ -3,27 +3,21 @@ import { ChatMessage } from "../types";
 
 const SYSTEM_INSTRUCTION = `You are ARGUS AI Assistant, the ultra-elite private AI Concierge for "The Yorkville Luxury Group", premier luxury real estate brokerage in Toronto, Ontario.
 
-CORE SCOPE & INTENT RECOGNITION RULES (STRICT ENFORCEMENT):
-1. Residential Focus: The Yorkville Luxury Group exclusively represents high-end residential luxury properties (penthouses, private estates, architectural residences, and off-market residential acquisitions in Yorkville, The Bridle Path, Forest Hill, and Rosedale).
-2. Commercial Real Estate & Land/Hotel Development Inquiries:
-   - If a client or user asks about Commercial Real Estate (e.g. retail plazas, strip malls, shopping centers, office buildings, industrial/warehousing, multi-tenant commercial parks) or Land Assembly / Hotel / Commercial Development:
-   - You MUST NOT output Suite 5200 penthouse residential specifications, bedroom/bathroom counts, or residential terrace amenities.
-   - Clarify politely and concisely that The Yorkville Luxury Group specializes strictly in ultra-luxury residential properties and estates.
-   - Offer to route their commercial or development inquiry directly to Senior Managing Partner Victoria Sterling, who coordinates confidential commercial partner referrals with premier commercial institutional brokerages in Toronto.
+CORE INTENT RECOGNITION & SCOPE RULES:
+1. Commercial Real Estate & Non-Residential Inquiries:
+   - When a user asks about Commercial Real Estate (e.g. commercial plazas, retail strips, industrial sites, warehouses, office buildings, hotels, or development land):
+   - You MUST NOT output Suite 5200 penthouse residential specifications (such as bedroom counts, Gaggenau kitchen, wine room, private elevator, or terrace specs).
+   - Clarify politely: "The Yorkville Luxury Group specializes exclusively in premier residential estates and penthouses. However, I can flag your commercial requirements for Managing Partner Victoria Sterling, who can connect you directly with our vetted commercial advisory partners." (Adapt with the user's specific commercial budget or details if provided, e.g. "$12M commercial requirements").
 
-Brokerage & Residential Context:
-- Flagship Residential Listing: "The Yorkville Penthouse Collection" at 188 Bay Street / Yorkville Ave, Toronto, ON.
-- Specs: $4,500,000 CAD | 3 Bedrooms | 4 Bathrooms | 3,850 sq. ft. interior + 1,200 sq. ft. heated wraparound terrace with CN Tower & skyline views.
-- Key Amenities: Private keycard elevator into personal foyer, 200-bottle glass wine room, Gaggenau chef's kitchen, custom Italian millwork, automated Lutron system, 3 EV-ready parking stalls, 24/7 white-glove concierge.
-- Senior Managing Partner: Victoria Sterling.
-- Off-Market / Private Collection: $10M–$25M+ ultra-prime residential estates in The Bridle Path, Forest Hill, Rosedale, and private full-floor penthouses in Yorkville.
-- Privacy & NDA Policy: For all off-market trophy assets, digital or physical mutual NDAs are executed via secure DocuSign within 15 minutes before floor plans or dossiers are released.
-- Top Toronto Private Schools: Upper Canada College (UCC), Bishop Strachan School (BSS), Havergal College, Branksome Hall, Crescent School.
-- Investment & Tax: Ontario & Toronto Municipal Land Transfer Tax (MLTT), non-resident speculation tax, Canadian wealth preservation.
+2. Residential Luxury Scope:
+   - The Yorkville Luxury Group exclusively represents premier residential estates, penthouses, and private off-market residential acquisitions in Yorkville, The Bridle Path, Forest Hill, and Rosedale.
+   - Flagship Residential Listing: "The Yorkville Penthouse Collection" at 188 Bay Street / Yorkville Ave, Toronto, ON ($4,500,000 CAD | 3 Beds, 4 Baths, 3,850 sq. ft. interior + 1,200 sq. ft. heated terrace).
+   - Off-market residential collection: $10M–$25M+ estates in The Bridle Path and Forest Hill (mutual digital NDA via DocuSign prior to releasing dossiers).
+   - Senior Managing Partner: Victoria Sterling.
 
-Tone & Guidelines:
+Tone & Persona:
 - Polished, intelligent, discreet, and concierge-level.
-- Only discuss residential penthouse specs when the inquiry relates to residential luxury real estate.`;
+- Provide direct, helpful answers to user inquiries with high accuracy.`;
 
 // Dynamic intelligent fallback generator when running in offline preview without API credentials
 export function generateContextualConciergeResponse(userPrompt: string, history: ChatMessage[] = []): string {
@@ -38,13 +32,16 @@ export function generateContextualConciergeResponse(userPrompt: string, history:
     query.includes("industrial") || 
     query.includes("warehouse") || 
     query.includes("office building") || 
-    query.includes("hotel development") || 
-    query.includes("commercial land") || 
+    query.includes("hotel") || 
+    query.includes("development land") || 
     query.includes("land assembly") || 
     query.includes("strip mall") || 
     query.includes("shopping center")
   ) {
-    return "The Yorkville Luxury Group focuses exclusively on ultra-luxury residential properties, penthouses, and private estates. We do not directly broker commercial assets, retail plazas, or industrial developments; however, our Senior Managing Partner Victoria Sterling maintains close executive relationships with Toronto's leading commercial institutional partner firms. We would be pleased to route your commercial inquiry directly to Victoria Sterling for a direct partner introduction—would you like us to connect your office?";
+    // Extract any budget if user specified one (e.g. $12M, 12 million, $5M, etc.)
+    const budgetMatch = userPrompt.match(/\$?\d+(?:\.\d+)?\s*(?:m|million|k|billion|b)?/i);
+    const budgetStr = budgetMatch ? `${budgetMatch[0]} ` : "";
+    return `The Yorkville Luxury Group specializes exclusively in premier residential estates and penthouses. However, I can flag your ${budgetStr}commercial requirements for Managing Partner Victoria Sterling, who can connect you directly with our vetted commercial advisory partners. Would you like me to coordinate an introduction for your team?`;
   }
 
   // NDA & High-profile discretion inquiries ($10M-$15M+ Bridle Path / Yorkville)
@@ -72,13 +69,8 @@ export function generateContextualConciergeResponse(userPrompt: string, history:
     return "We would be delighted to host a private walkthrough of The Yorkville Penthouse Collection. We have exclusive private viewing slots available this Saturday at 2:00 PM and 4:30 PM. We will arrange dedicated valet at the private 188 Bay Street motor court. Shall we reserve Saturday at 2:00 PM for your party?";
   }
 
-  // Features (Elevator, wine vault, terrace, parking)
-  if (query.includes("elevator") || query.includes("terrace") || query.includes("wine") || query.includes("parking") || query.includes("ev") || query.includes("specs")) {
-    return "The penthouse residence features a biometric keycard elevator opening directly into your private foyer, a 200-bottle temperature-controlled glass wine showcase, Gaggenau kitchen suite, a 1,200 sq. ft. heated wraparound terrace with CN Tower panoramic views, and 3 reserved subterranean EV parking stalls.";
-  }
-
   // Default dynamic response
-  return "Thank you for reaching out to The Yorkville Luxury Group. I am ARGUS, your dedicated AI Concierge. We represent both on-market trophy residences like Suite 5200 ($4.5M CAD) and confidential off-market estates across Yorkville, Forest Hill, and The Bridle Path. How may I best assist your portfolio requirements today?";
+  return "Thank you for reaching out to The Yorkville Luxury Group. I am ARGUS, your dedicated AI Concierge. We represent premier on-market trophy residences like Suite 5200 ($4.5M CAD) and confidential off-market estates across Yorkville, Forest Hill, and The Bridle Path. How may I assist with your luxury portfolio requirements?";
 }
 
 export async function askArgusAI(

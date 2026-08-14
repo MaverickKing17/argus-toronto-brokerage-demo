@@ -88,21 +88,21 @@ Tone & Persona:
         lastUserText.includes("industrial") || 
         lastUserText.includes("warehouse") || 
         lastUserText.includes("office building") || 
-        lastUserText.includes("hotel development") || 
-        lastUserText.includes("commercial land") || 
+        lastUserText.includes("hotel") || 
+        lastUserText.includes("development land") || 
         lastUserText.includes("land assembly") || 
         lastUserText.includes("strip mall") || 
         lastUserText.includes("shopping center")
       ) {
-        reply = "The Yorkville Luxury Group focuses exclusively on ultra-luxury residential properties, penthouses, and private estates. We do not directly broker commercial assets, retail plazas, or industrial developments; however, our Senior Managing Partner Victoria Sterling maintains close executive relationships with Toronto's leading commercial institutional partner firms. We would be pleased to route your commercial inquiry directly to Victoria Sterling for a direct partner introduction—would you like us to connect your office?";
+        const budgetMatch = lastUserText.match(/\$?\d+(?:\.\d+)?\s*(?:m|million|k|billion|b)?/i);
+        const budgetStr = budgetMatch ? `${budgetMatch[0]} ` : "";
+        reply = `The Yorkville Luxury Group specializes exclusively in premier residential estates and penthouses. However, I can flag your ${budgetStr}commercial requirements for Managing Partner Victoria Sterling, who can connect you directly with our vetted commercial advisory partners. Would you like me to coordinate an introduction for your team?`;
       } else if (lastUserText.includes("school") || lastUserText.includes("ucc") || lastUserText.includes("bss") || lastUserText.includes("kids") || lastUserText.includes("upper canada")) {
         reply = "For families prioritizing Upper Canada College (UCC) or Bishop Strachan School (BSS), Forest Hill and South Rosedale provide seamless access within 10 to 12 minutes, while our 188 Bay Street Penthouse in Yorkville offers private luxury within 12 minutes of both campuses. We can coordinate private viewings for residences directly along preferred school routes.";
       } else if (lastUserText.includes("saturday") || lastUserText.includes("tour") || lastUserText.includes("viewing") || lastUserText.includes("appointment") || lastUserText.includes("schedule")) {
         reply = "We would be delighted to host a private viewing for you this Saturday. We have exclusive private showing slots available at 2:00 PM and 4:30 PM with private valet arranged at 188 Bay Street. Which time works best for your schedule?";
       } else if (lastUserText.includes("hoa") || lastUserText.includes("maintenance") || lastUserText.includes("fee") || lastUserText.includes("carry") || lastUserText.includes("tax")) {
         reply = "Monthly maintenance for Suite 5200 at 188 Bay Street is $3,450 CAD, covering 24/7 concierge, private elevator maintenance, valet, and building reserve. Estimated property taxes are $3,875 CAD/mo. Complete financial carry schedules are available for your review.";
-      } else if (lastUserText.includes("elevator") || lastUserText.includes("wine") || lastUserText.includes("terrace") || lastUserText.includes("features")) {
-        reply = "The penthouse features a private keycard-activated elevator entering your private foyer, a 200-bottle glass wine room, Gaggenau kitchen suite, and a 1,200 sq. ft. heated wraparound terrace with panoramic CN Tower views.";
       }
 
       res.json({ reply, sessionId });
