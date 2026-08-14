@@ -13,7 +13,6 @@ import {
   ChevronUp,
   ChevronDown
 } from 'lucide-react';
-import { REQUIRED_DEMO_SCRIPT } from '../data/propertyData';
 import { ChatMessage } from '../types';
 
 interface ArgusChatWidgetProps {
@@ -26,10 +25,19 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
   onToggleExternal
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(true); // Default open to showcase prototype layout
-  const [messages, setMessages] = useState<ChatMessage[]>(REQUIRED_DEMO_SCRIPT);
+  const [sessionId, setSessionId] = useState<string>(() => 
+    typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : 'session_' + Date.now()
+  );
+  const [messages, setMessages] = useState<ChatMessage[]>(() => [
+    {
+      id: "intro_init",
+      sender: "agent",
+      content: "Good afternoon. I am ARGUS, private AI Concierge for The Yorkville Luxury Group. How may I assist with your Toronto luxury property acquisition or private viewing schedule?",
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    }
+  ]);
   const [inputValue, setInputValue] = useState<string>('');
   const [isTyping, setIsTyping] = useState<boolean>(false);
-  const [autoPlayIndex, setAutoPlayIndex] = useState<number>(-1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -120,84 +128,87 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
     if (onToggleExternal) onToggleExternal();
   };
 
-  // Replay exact prompt-required demo conversation step by step
-  const handleReplayDemo = () => {
-    setMessages([]);
-    setAutoPlayIndex(0);
+  // Proper Session Reset ("Demo Replay" button handler)
+  const handleDemoReplay = () => {
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+    } catch (err) {
+      console.warn("Storage clearance notice:", err);
+    }
+
+    const freshSessionId = typeof crypto !== 'undefined' && crypto.randomUUID 
+      ? crypto.randomUUID() 
+      : 'session_' + Date.now();
+
+    setSessionId(freshSessionId);
+    setMessages([
+      {
+        id: "intro_" + Date.now(),
+        sender: "agent",
+        content: "Good afternoon. I am ARGUS, private AI Concierge for The Yorkville Luxury Group. How may I assist with your Toronto luxury property acquisition or private viewing schedule?",
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      }
+    ]);
+    setInputValue('');
+    setIsTyping(false);
   };
 
-  useEffect(() => {
-    if (autoPlayIndex >= 0 && autoPlayIndex < REQUIRED_DEMO_SCRIPT.length) {
-      setIsTyping(true);
-      const timer = setTimeout(() => {
-        setMessages((prev) => [...prev, REQUIRED_DEMO_SCRIPT[autoPlayIndex]]);
-        setIsTyping(false);
-        setAutoPlayIndex((prev) => prev + 1);
-      }, 1200);
-      return () => clearTimeout(timer);
-    } else if (autoPlayIndex >= REQUIRED_DEMO_SCRIPT.length) {
-      setAutoPlayIndex(-1);
-    }
-  }, [autoPlayIndex]);
-
-  // Handle user sending live messages to ARGUS AI + Botpress Webchat
-  const handleSendMessage = async (e?: React.FormEvent) => {
+  // Handle sending all prompts dynamically to the AI API endpoint
+  const handleSendMessage = async (e?: React.FormEvent, customPrompt?: string) => {
     if (e) e.preventDefault();
-    if (!inputValue.trim()) return;
+    const textToSend = (customPrompt !== undefined ? customPrompt : inputValue).trim();
+    if (!textToSend || isTyping) return;
 
-    const userText = inputValue.trim();
     const newUserMsg: ChatMessage = {
       id: "user_" + Date.now(),
       sender: "user",
-      content: userText,
+      content: textToSend,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
-    setMessages((prev) => [...prev, newUserMsg]);
+    const nextMessages = [...messages, newUserMsg];
+    setMessages(nextMessages);
     setInputValue('');
     setIsTyping(true);
-
-    // Send event to Botpress if Botpress Webchat is loaded in window
-    try {
-      if ((window as any).botpressWebChat) {
-        (window as any).botpressWebChat.sendPayload({ type: 'text', text: userText });
-      } else if ((window as any).botpress) {
-        (window as any).botpress.sendMessage(userText);
-      }
-    } catch (bpErr) {
-      console.warn("Botpress trigger note:", bpErr);
-    }
 
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          messages: [...messages, newUserMsg].map(m => ({ role: m.sender, content: m.content })),
-          userIntent: userText
+          messages: nextMessages.map(m => ({ 
+            role: m.sender === "user" ? "user" : "model", 
+            content: m.content 
+          })),
+          userIntent: textToSend,
+          sessionId
         })
       });
 
       const data = await res.json();
       
+      if (!res.ok || !data?.reply) {
+        throw new Error(data?.error || data?.details || "Failed to generate dynamic response from AI model");
+      }
+
       const newAgentMsg: ChatMessage = {
         id: "agent_" + Date.now(),
         sender: "agent",
-        content: data.reply || "I am pleased to assist you with the Yorkville Penthouse Collection.",
+        content: data.reply,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
       setMessages((prev) => [...prev, newAgentMsg]);
-    } catch (err) {
-      console.error("Chat error:", err);
-      // Local fallback
-      const newAgentMsg: ChatMessage = {
-        id: "agent_" + Date.now(),
+    } catch (err: any) {
+      console.error("ARGUS Chat API error:", err);
+      const errorMsg: ChatMessage = {
+        id: "error_" + Date.now(),
         sender: "agent",
-        content: "Thank you. Our senior broker Victoria Sterling has noted your inquiry regarding the $4.5M Yorkville Penthouse and will reach out shortly.",
+        content: "I apologize, I am temporarily unable to connect to the live AI concierge network. Please verify your connection or try again momentarily.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
-      setMessages((prev) => [...prev, newAgentMsg]);
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setIsTyping(false);
     }
@@ -263,9 +274,9 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
 
             <div className="flex items-center gap-1.5">
               <button
-                onClick={handleReplayDemo}
-                title="Replay Video Demo Conversation"
-                className="px-2.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 hover:text-amber-300 text-xs transition-colors flex items-center gap-1.5 shadow-sm"
+                onClick={handleDemoReplay}
+                title="Reset session & clear storage"
+                className="px-2.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 hover:text-amber-300 text-xs transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
                 id="replay-demo-btn"
               >
                 <RotateCcw className="w-3.5 h-3.5 text-zinc-300" />
@@ -274,7 +285,7 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
 
               <button
                 onClick={toggleWidget}
-                className="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-white transition-colors"
+                className="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 hover:text-white transition-colors cursor-pointer"
                 id="close-chat-widget-btn"
                 title="Minimize Window"
               >
@@ -405,26 +416,23 @@ export const ArgusChatWidget: React.FC<ArgusChatWidgetProps> = ({
           {/* Preset Quick Prompts Chips */}
           <div className="p-2.5 bg-zinc-950 border-t border-zinc-800/80 flex gap-2 overflow-x-auto text-xs scrollbar-none">
             <button
-              onClick={() => {
-                setInputValue("Can I view the penthouse this Saturday?");
-              }}
-              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5"
+              type="button"
+              onClick={() => handleSendMessage(undefined, "Can I view the penthouse this Saturday?")}
+              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               📅 Schedule Saturday
             </button>
             <button
-              onClick={() => {
-                setInputValue("What are the HOA maintenance specs?");
-              }}
-              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5"
+              type="button"
+              onClick={() => handleSendMessage(undefined, "What are the HOA maintenance specs for Suite 5200?")}
+              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               💰 Maintenance Specs
             </button>
             <button
-              onClick={() => {
-                setInputValue("Tell me about the private elevator & wine vault.");
-              }}
-              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5"
+              type="button"
+              onClick={() => handleSendMessage(undefined, "Tell me about the private elevator & wine vault in the penthouse.")}
+              className="px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-100 hover:text-white shrink-0 font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               🍷 Private Features
             </button>

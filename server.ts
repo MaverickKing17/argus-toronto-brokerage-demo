@@ -17,75 +17,54 @@ async function startServer() {
   // API Endpoint for ARGUS AI Assistant Chat
   app.post("/api/chat", async (req, res) => {
     try {
-      const { messages, userIntent } = req.body;
+      const { messages, userIntent, sessionId } = req.body;
       
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENAI_API_KEY;
 
-      if (apiKey && apiKey !== "MY_GEMINI_API_KEY") {
-        try {
-          const ai = new GoogleGenAI({ 
-            apiKey,
-            httpOptions: {
-              headers: {
-                'User-Agent': 'aistudio-build'
-              }
-            }
-          });
-          
-          const systemInstruction = `You are ARGUS AI Assistant, a 24/7 ultra-high-end concierge AI for "The Yorkville Luxury Group", premier real estate brokerage in Toronto, Ontario.
-You are representing the flagship listing: "The Yorkville Penthouse Collection" located at 188 Bay Street / Yorkville Ave, Toronto, ON.
-Specs:
-- Price: $4,500,000 CAD
-- Bedrooms: 3 Beds | Bathrooms: 4 Baths
-- Size: 3,850 sq. ft. interior + 1,200 sq. ft. wraparound private terrace with CN Tower & Lake Ontario views
-- Features: Direct private elevator into grand foyer, 200-bottle glass wine room, Gaggenau chef's kitchen, custom Italian millwork, automated Lutron smart home, 3 EV parking stalls, 24/7 white-glove concierge.
-- Senior Broker: Victoria Sterling, Managing Partner.
+      const ai = new GoogleGenAI(apiKey ? { apiKey } : {});
+      
+      const systemInstruction = `You are ARGUS AI Assistant, the ultra-elite private AI concierge for "The Yorkville Luxury Group", premier luxury real estate brokerage in Toronto, Ontario.
+You represent the flagship residence: "The Yorkville Penthouse Collection" located at 188 Bay Street / Yorkville Ave, Toronto, ON ($4,500,000 CAD).
+Brokerage details:
+- Flagship Listing: Suite 5200 at 188 Bay Street, Toronto ($4.5M CAD, 3 Beds, 4 Baths, 3,850 sq. ft. interior + 1,200 sq. ft. heated terrace, CN Tower views, keycard private elevator foyer, 3 EV parking stalls).
+- Senior Managing Partner: Victoria Sterling.
+- Coverage & Expertise: Toronto high-end luxury neighborhoods including Yorkville, The Bridle Path, Forest Hill, Rosedale, and Lawrence Park.
+- Top Toronto Private Schools: Upper Canada College (UCC), Bishop Strachan School (BSS), Havergal College, Branksome Hall, Crescent School.
+- Investment & Tax: Standard Ontario & Toronto Municipal Land Transfer Tax (MLTT), non-resident speculation tax, Canadian wealth preservation.
 
-Your tone: Ultra-polished, warm, knowledgeable, discreet, and concierge-level.
-Respond concisely (2-4 sentences max), always offering to schedule a private viewing or provide official dossier specs.`;
+Tone & Persona:
+- Ultra-polished, intelligent, discreet, warm, and highly knowledgeable.
+- Answer user inquiries directly, insightfully, and thoroughly (e.g. comparing Yorkville to Bridle Path/Forest Hill, proximity to top schools like UCC/BSS, neighborhood pricing, private viewings, amenities).
+- Offer to coordinate private VIP viewings or prepare custom property dossiers when appropriate.`;
 
-          const formattedContents = messages ? messages.map((m: any) => ({
+      const formattedContents = (messages && Array.isArray(messages) && messages.length > 0)
+        ? messages.map((m: any) => ({
             role: m.role === "user" ? "user" : "model",
-            parts: [{ text: m.content }]
-          })) : [{ role: "user", parts: [{ text: userIntent || "Tell me about the $4.5M Penthouse in Yorkville" }] }];
+            parts: [{ text: String(m.content || "") }]
+          }))
+        : [{ role: "user", parts: [{ text: String(userIntent || "Hello ARGUS") }] }];
 
-          const response = await ai.models.generateContent({
-            model: "gemini-3.6-flash",
-            contents: formattedContents,
-            config: {
-              systemInstruction,
-              temperature: 0.7,
-              maxOutputTokens: 2048,
-            }
-          });
-
-          if (response && response.text) {
-            return res.json({ reply: response.text });
-          }
-        } catch (geminiError) {
-          console.warn("Gemini API error fallback:", geminiError);
+      const response = await ai.models.generateContent({
+        model: "gemini-3.7-flash",
+        contents: formattedContents,
+        config: {
+          systemInstruction,
+          temperature: 0.7,
+          maxOutputTokens: 2048,
         }
+      });
+
+      if (response && response.text) {
+        return res.json({ reply: response.text, sessionId });
       }
 
-      // High-quality contextual fallback logic for ARGUS AI
-      const lastUserMsg = messages && messages.length > 0 
-        ? messages[messages.length - 1].content.toLowerCase() 
-        : (userIntent || "").toLowerCase();
-
-      let reply = "I would be delighted to assist you with the Yorkville Penthouse Collection. Our senior broker Victoria Sterling is currently coordinating private appointments for qualified buyers this week.";
-
-      if (lastUserMsg.includes("viewing") || lastUserMsg.includes("available") || lastUserMsg.includes("see") || lastUserMsg.includes("tour") || lastUserMsg.includes("saturday")) {
-        reply = "Wonderful! The Penthouse at 188 Bay Street remains exclusively available for private showings. We have reserved viewing slots this Saturday at 2:00 PM or 4:30 PM. Would Saturday at 2:00 PM suit your schedule?";
-      } else if (lastUserMsg.includes("price") || lastUserMsg.includes("cost") || lastUserMsg.includes("budget") || lastUserMsg.includes("4m")) {
-        reply = "The listing is offered at $4,500,000 CAD. This includes 3,850 sq. ft. of luxury interior, a 1,200 sq. ft. terrace, private elevator foyer, and 3 reserved EV parking spaces.";
-      } else if (lastUserMsg.includes("elevator") || lastUserMsg.includes("parking") || lastUserMsg.includes("amenities") || lastUserMsg.includes("terrace")) {
-        reply = "The penthouse features a keycard-secured direct private elevator opening directly into your foyer, 10-foot floor-to-ceiling glass, a heated 1,200 sq. ft. terrace, and 3 underground EV-ready parking stalls.";
-      }
-
-      res.json({ reply });
-    } catch (err) {
-      console.error("Chat error:", err);
-      res.status(500).json({ error: "Failed to process ARGUS response" });
+      res.status(500).json({ error: "Empty response received from AI model" });
+    } catch (err: any) {
+      console.error("ARGUS Chat API error:", err);
+      res.status(500).json({ 
+        error: "Failed to generate dynamic response from AI model",
+        details: err?.message || "Internal server error"
+      });
     }
   });
 
