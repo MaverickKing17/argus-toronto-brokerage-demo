@@ -6,15 +6,15 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --color-gold: #c5a367;
     --color-gold-hover: #b39055;
-    --color-dark-bg: #121212;
-    --color-dark-card: #18181b;
-    --color-dark-surface: #202023;
-    --color-dark-elevated: #27272a;
+    --color-dark-bg: #0F1115;
+    --color-dark-card: #1C1E24;
+    --color-dark-surface: #1C1E24;
+    --color-dark-elevated: #242731;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #121212;
+    background-color: #0F1115;
     color: #f4f4f5;
   }
 
@@ -36,7 +36,7 @@
 }
 
 .border-gold-subtle {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .bg-gold-subtle {
@@ -50,11 +50,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #121212;
+  background: #0F1115;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 2px;
 }
 
@@ -96,7 +96,8 @@
 #argus-chat-window .chat-bot-bubble,
 #argus-chat-window .chat-bot-bubble p {
   color: #FFFFFF !important;
-  background-color: #18181b !important;
+  background-color: #1C1E24 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   opacity: 1 !important;
   visibility: visible !important;
   white-space: pre-wrap !important;
@@ -139,14 +140,14 @@
 }
 
 #argus-chat-input::-webkit-scrollbar-track {
-  background: #18181b;
+  background: #14161C;
   border-radius: 6px;
 }
 
 #argus-chat-input::-webkit-scrollbar-thumb {
-  background: #52525b;
+  background: #383B45;
   border-radius: 6px;
-  border: 2px solid #18181b;
+  border: 2px solid #14161C;
 }
 
 #argus-chat-input::-webkit-scrollbar-thumb:hover {
@@ -157,7 +158,7 @@
 #argus-chat-input::-webkit-scrollbar-button:single-button:vertical:decrement {
   height: 14px;
   width: 10px;
-  background-color: #27272a;
+  background-color: #1C1E24;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23fbbf24'><polygon points='50,15 90,85 10,85'/></svg>");
   background-size: 8px 8px;
   background-repeat: no-repeat;
@@ -168,7 +169,7 @@
 #argus-chat-input::-webkit-scrollbar-button:single-button:vertical:increment {
   height: 14px;
   width: 10px;
-  background-color: #27272a;
+  background-color: #1C1E24;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23fbbf24'><polygon points='50,85 90,15 10,15'/></svg>");
   background-size: 8px 8px;
   background-repeat: no-repeat;
@@ -178,7 +179,7 @@
 
 #argus-chat-input::-webkit-scrollbar-button:single-button:vertical:decrement:hover,
 #argus-chat-input::-webkit-scrollbar-button:single-button:vertical:increment:hover {
-  background-color: #3f3f46;
+  background-color: #2D3039;
 }
 
 /* Completely hide native Botpress floating blue button and default widget overlay */

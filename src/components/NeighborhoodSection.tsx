@@ -4,7 +4,7 @@ import { MapPin, Navigation, Compass, Utensils, ShoppingBag, Landmark, Building 
 
 export const NeighborhoodSection: React.FC = () => {
   return (
-    <section id="neighborhood" className="relative py-20 bg-[#141418] text-zinc-100 border-b border-zinc-800/80 overflow-hidden">
+    <section id="neighborhood" className="relative py-20 bg-[#12141A] text-zinc-100 border-b border-white/[0.08] overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent"></div>
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
@@ -33,13 +33,13 @@ export const NeighborhoodSection: React.FC = () => {
             {NEIGHBORHOOD_SPOTS.map((spot, index) => (
               <div 
                 key={index} 
-                className="p-6 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-900 to-zinc-950 border border-zinc-700/80 hover:border-amber-500/40 transition-all duration-300 space-y-3.5 shadow-xl hover:shadow-2xl group"
+                className="p-6 rounded-2xl bg-[#1C1E24] border border-white/[0.08] hover:border-amber-500/40 transition-all duration-300 space-y-3.5 shadow-xl hover:shadow-2xl group"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono text-amber-300 uppercase tracking-wider px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 font-bold">
                     {spot.category}
                   </span>
-                  <span className="text-xs text-zinc-300 font-mono flex items-center gap-1 font-bold bg-zinc-950 px-2.5 py-1 rounded-lg border border-zinc-800">
+                  <span className="text-xs text-zinc-300 font-mono flex items-center gap-1 font-bold bg-[#14161C] px-2.5 py-1 rounded-lg border border-white/[0.08]">
                     <Navigation className="w-3.5 h-3.5 text-amber-400" />
                     {spot.distance}
                   </span>
@@ -57,7 +57,7 @@ export const NeighborhoodSection: React.FC = () => {
           </div>
 
           {/* Location Map Elevation Preview Card */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-700/80 shadow-2xl flex flex-col justify-between space-y-6">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl flex flex-col justify-between space-y-6">
             <div>
               <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block font-bold mb-1">
                 MAP LOCATION & WALKABILITY
@@ -72,7 +72,7 @@ export const NeighborhoodSection: React.FC = () => {
             </div>
 
             {/* Map Preview Graphic */}
-            <div className="relative h-48 w-full rounded-xl bg-zinc-950 border border-zinc-800 overflow-hidden flex items-center justify-center shadow-inner">
+            <div className="relative h-48 w-full rounded-xl bg-[#14161C] border border-white/[0.08] overflow-hidden flex items-center justify-center shadow-inner">
               <div className="absolute inset-0 bg-grid-pattern opacity-15"></div>
               
               <div className="relative z-10 text-center p-4">
@@ -85,11 +85,11 @@ export const NeighborhoodSection: React.FC = () => {
             </div>
 
             <div className="space-y-2.5 text-xs">
-              <div className="flex justify-between text-zinc-200 border-b border-zinc-800/80 pb-2 font-medium">
+              <div className="flex justify-between text-zinc-200 border-b border-white/[0.08] pb-2 font-medium">
                 <span className="text-zinc-300">Pearson Int'l Airport (YYZ):</span>
                 <span className="font-mono text-white font-bold">25 min chauffeur</span>
               </div>
-              <div className="flex justify-between text-zinc-200 border-b border-zinc-800/80 pb-2 font-medium">
+              <div className="flex justify-between text-zinc-200 border-b border-white/[0.08] pb-2 font-medium">
                 <span className="text-zinc-300">Billy Bishop Airport (YTZ):</span>
                 <span className="font-mono text-white font-bold">12 min helicopter/cab</span>
               </div>

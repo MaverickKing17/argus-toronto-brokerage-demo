@@ -52,7 +52,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
   };
 
   return (
-    <section id="overview" className="relative py-20 bg-zinc-950 text-zinc-100 border-b border-zinc-800/80 overflow-hidden">
+    <section id="overview" className="relative py-20 bg-[#0F1115] text-zinc-100 border-b border-white/[0.08] overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
 
@@ -76,7 +76,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={onRequestDossier}
-              className="px-5 py-3 rounded-xl border border-amber-500/40 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 hover:border-amber-400 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-lg flex items-center gap-2.5 group"
+              className="px-5 py-3 rounded-xl border border-amber-500/40 bg-gradient-to-r from-[#1C1E24] via-[#242731] to-[#1C1E24] hover:border-amber-400 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-lg flex items-center gap-2.5 group"
               id="download-dossier-btn"
             >
               <FileText className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
@@ -90,7 +90,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
           {PROPERTY_SPECS.map((spec) => (
             <div 
               key={spec.id}
-              className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-zinc-900/95 via-zinc-900 to-zinc-950 border border-zinc-700/80 hover:border-amber-400/80 shadow-xl hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden"
+              className="relative p-6 sm:p-7 rounded-2xl bg-[#1C1E24] border border-white/[0.08] hover:border-amber-400/80 shadow-xl hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden"
               id={`spec-card-${spec.id}`}
             >
               {/* Metallic Gold Accent Top Bar */}
@@ -100,7 +100,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
               <div className="absolute -top-10 -right-10 w-36 h-36 bg-amber-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
               <div className="flex items-start justify-between mb-5 relative z-10">
-                <div className="p-3.5 rounded-xl bg-gradient-to-br from-amber-500/20 via-zinc-900 to-zinc-950 border border-amber-500/40 shadow-lg group-hover:border-amber-400 group-hover:scale-110 transition-all duration-300">
+                <div className="p-3.5 rounded-xl bg-gradient-to-br from-amber-500/20 via-[#14161C] to-[#0F1115] border border-amber-500/40 shadow-lg group-hover:border-amber-400 group-hover:scale-110 transition-all duration-300">
                   {getIcon(spec.iconName)}
                 </div>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm">
@@ -117,7 +117,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
                   {spec.value}
                 </span>
                 {spec.subtext && (
-                  <div className="mt-3 pt-2.5 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-300 font-semibold bg-zinc-950/60 -mx-1 px-3 py-1.5 rounded-lg border border-zinc-800/50">
+                  <div className="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-300 font-semibold bg-[#14161C] -mx-1 px-3 py-1.5 rounded-lg border border-white/[0.04]">
                     <span>{spec.subtext}</span>
                     <span className="text-amber-400 text-xs">→</span>
                   </div>
@@ -132,7 +132,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
           
           {/* Main Residence Narrative */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-zinc-950 border border-zinc-700/80 shadow-2xl space-y-4 relative overflow-hidden">
+            <div className="p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl space-y-4 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
               <span className="inline-block text-xs font-mono text-amber-400 uppercase tracking-widest font-bold px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/20">
@@ -145,16 +145,16 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
                 {PROPERTY_DETAILS.description}
               </p>
               
-              <div className="pt-6 border-t border-zinc-800 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
-                <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800">
+              <div className="pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+                <div className="p-3 rounded-xl bg-[#14161C] border border-white/[0.08]">
                   <span className="text-zinc-400 block font-medium">Interior Area:</span>
                   <span className="text-white font-bold text-sm font-mono mt-0.5 block">3,850 SQ. FT.</span>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800">
+                <div className="p-3 rounded-xl bg-[#14161C] border border-white/[0.08]">
                   <span className="text-zinc-400 block font-medium">Private Terrace:</span>
                   <span className="text-white font-bold text-sm font-mono mt-0.5 block">1,200 SQ. FT. HEATED</span>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800">
+                <div className="p-3 rounded-xl bg-[#14161C] border border-white/[0.08]">
                   <span className="text-zinc-400 block font-medium">Floor Position:</span>
                   <span className="text-white font-bold text-sm font-mono mt-0.5 block">FULL 52ND FLOOR</span>
                 </div>
@@ -162,7 +162,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
             </div>
 
             {/* Key Features & Amenities List */}
-            <div className="p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-zinc-950 border border-zinc-700/80 shadow-2xl relative overflow-hidden">
+            <div className="p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent"></div>
 
               <h3 className="font-serif text-xl sm:text-2xl text-white font-bold mb-6 flex items-center gap-2.5">
@@ -172,10 +172,10 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {AMENITIES_LIST.map((amenity) => (
-                  <div key={amenity.id} className="relative flex items-start gap-4 p-5 rounded-2xl bg-zinc-950/90 border border-zinc-800 hover:border-amber-500/40 hover:-translate-y-0.5 transition-all duration-300 shadow-lg group overflow-hidden">
+                  <div key={amenity.id} className="relative flex items-start gap-4 p-5 rounded-2xl bg-[#14161C] border border-white/[0.08] hover:border-amber-500/40 hover:-translate-y-0.5 transition-all duration-300 shadow-lg group overflow-hidden">
                     <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/20 via-zinc-900 to-zinc-950 border border-amber-500/30 text-amber-300 shrink-0 shadow-md group-hover:border-amber-400 group-hover:scale-105 transition-all">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/20 via-[#1C1E24] to-[#0F1115] border border-amber-500/30 text-amber-300 shrink-0 shadow-md group-hover:border-amber-400 group-hover:scale-105 transition-all">
                       {getIcon(amenity.icon)}
                     </div>
                     <div>
@@ -197,7 +197,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
 
           {/* Senior Broker Profile Card */}
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-700/90 shadow-2xl relative overflow-hidden">
+            <div className="p-6 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
               <div className="flex items-center gap-4 mb-6">
@@ -223,14 +223,14 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
                 </div>
               </div>
 
-              <p className="text-xs text-zinc-200 leading-relaxed font-normal mb-6 italic p-3 rounded-xl bg-zinc-950/70 border border-zinc-800/80">
+              <p className="text-xs text-zinc-200 leading-relaxed font-normal mb-6 italic p-3 rounded-xl bg-[#14161C] border border-white/[0.08]">
                 "The Penthouse Collection at 188 Bay Street represents a rare opportunity to acquire Toronto's most coveted sky estate. Private viewings are conducted with total discretion."
               </p>
 
               <div className="space-y-3 pt-2">
                 <a 
                   href={`tel:${BROKER_INFO.phone}`}
-                  className="w-full py-3 px-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs flex items-center justify-center gap-2 border border-zinc-700 transition-colors shadow-md"
+                  className="w-full py-3 px-4 rounded-xl bg-[#14161C] hover:bg-[#242731] text-white font-bold text-xs flex items-center justify-center gap-2 border border-white/[0.08] transition-colors shadow-md"
                 >
                   <Phone className="w-3.5 h-3.5 text-amber-400" />
                   Direct Desk: {BROKER_INFO.phone}
@@ -247,7 +247,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
 
                 <button 
                   onClick={onOpenChat}
-                  className="w-full py-3 px-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-md"
+                  className="w-full py-3 px-4 rounded-xl bg-[#14161C] hover:bg-[#242731] border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-md"
                   id="broker-card-argus-btn"
                 >
                   <Award className="w-3.5 h-3.5 text-amber-400" />
@@ -257,7 +257,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
             </div>
 
             {/* Verification Seal Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-b from-zinc-900 to-zinc-950 border border-zinc-800 text-center space-y-2 shadow-lg">
+            <div className="p-5 rounded-2xl bg-[#14161C] border border-white/[0.08] text-center space-y-2 shadow-lg">
               <span className="inline-flex items-center gap-1.5 text-white text-xs font-bold">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 VERIFIED BROKERAGE EXCLUSIVE

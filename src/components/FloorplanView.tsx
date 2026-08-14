@@ -57,7 +57,7 @@ export const FloorplanView: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState<RoomDetail>(ROOM_DATA[0]);
 
   return (
-    <section id="floorplan" className="relative py-20 bg-zinc-950 text-zinc-100 border-b border-zinc-800/80 overflow-hidden">
+    <section id="floorplan" className="relative py-20 bg-[#0F1115] text-zinc-100 border-b border-white/[0.08] overflow-hidden">
       {/* Background Accent Glow */}
       <div className="absolute top-1/2 left-10 -translate-y-1/2 w-80 h-80 bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
 
@@ -81,10 +81,10 @@ export const FloorplanView: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           
           {/* Architectural Layout Diagram Graphic */}
-          <div className="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-900 to-zinc-950 border border-zinc-700/80 shadow-2xl space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
+          <div className="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-zinc-950 border border-zinc-800 text-amber-400">
+                <div className="p-2 rounded-lg bg-[#14161C] border border-white/[0.08] text-amber-400">
                   <Layers className="w-5 h-5" />
                 </div>
                 <span className="font-serif text-lg text-white font-bold">Suite 5200 Architectural Blueprint</span>
@@ -95,16 +95,16 @@ export const FloorplanView: React.FC = () => {
             </div>
 
             {/* Simulated Interactive Blueprint Diagram */}
-            <div className="relative w-full aspect-16/10 rounded-xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden shadow-inner">
+            <div className="relative w-full aspect-16/10 rounded-xl bg-[#14161C] border border-white/[0.08] p-6 flex flex-col justify-between overflow-hidden shadow-inner">
               <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
 
               {/* Private Elevator Foyer Indicator */}
               <div className="relative z-10 flex items-center justify-between">
-                <div className="p-3 rounded-lg bg-zinc-900 border border-amber-500/30 text-amber-300 text-xs flex items-center gap-2 font-mono font-bold shadow-md">
+                <div className="p-3 rounded-lg bg-[#1C1E24] border border-amber-500/30 text-amber-300 text-xs flex items-center gap-2 font-mono font-bold shadow-md">
                   <ArrowUpRight className="w-4 h-4 text-amber-400" />
                   DIRECT PRIVATE ELEVATOR LIFT
                 </div>
-                <div className="text-right font-mono text-[11px] text-zinc-300 font-bold bg-zinc-900/80 px-2.5 py-1 rounded border border-zinc-800">
+                <div className="text-right font-mono text-[11px] text-zinc-300 font-bold bg-[#1C1E24] px-2.5 py-1 rounded border border-white/[0.08]">
                   NORTH ↑ (BLOOR ST)
                 </div>
               </div>
@@ -118,7 +118,7 @@ export const FloorplanView: React.FC = () => {
                   className={`col-span-3 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
                     selectedRoom.id === 'foyer' 
                       ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-zinc-900/90 border-zinc-700/80 text-zinc-300 hover:border-amber-500/40'
+                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
                   }`}
                 >
                   <span className="text-[10px] font-mono uppercase font-bold text-amber-300">ELEVATOR FOYER</span>
@@ -131,7 +131,7 @@ export const FloorplanView: React.FC = () => {
                   className={`col-span-5 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
                     selectedRoom.id === 'living' 
                       ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-zinc-900/90 border-zinc-700/80 text-zinc-300 hover:border-amber-500/40'
+                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
                   }`}
                 >
                   <span className="text-[10px] font-mono uppercase font-bold text-amber-300">GRAND SALON & DINING</span>
@@ -144,7 +144,7 @@ export const FloorplanView: React.FC = () => {
                   className={`col-span-4 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
                     selectedRoom.id === 'kitchen' 
                       ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-zinc-900/90 border-zinc-700/80 text-zinc-300 hover:border-amber-500/40'
+                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
                   }`}
                 >
                   <span className="text-[10px] font-mono uppercase font-bold text-amber-300">CHEF'S KITCHEN & WINE</span>
@@ -157,7 +157,7 @@ export const FloorplanView: React.FC = () => {
                   className={`col-span-6 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
                     selectedRoom.id === 'primary' 
                       ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-zinc-900/90 border-zinc-700/80 text-zinc-300 hover:border-amber-500/40'
+                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
                   }`}
                 >
                   <span className="text-[10px] font-mono uppercase font-bold text-amber-300">PRIMARY MASTER SUITE</span>
@@ -170,7 +170,7 @@ export const FloorplanView: React.FC = () => {
                   className={`col-span-6 rounded-xl p-3.5 border transition-all cursor-pointer flex flex-col justify-between shadow-md ${
                     selectedRoom.id === 'terrace' 
                       ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-amber-500/10 scale-[1.02]' 
-                      : 'bg-zinc-900/90 border-zinc-700/80 text-zinc-300 hover:border-amber-500/40'
+                      : 'bg-[#1C1E24] border-white/[0.08] text-zinc-300 hover:border-amber-500/40'
                   }`}
                 >
                   <span className="text-[10px] font-mono uppercase text-amber-300 font-bold">HEATED PRIVATE TERRACE</span>
@@ -180,7 +180,7 @@ export const FloorplanView: React.FC = () => {
               </div>
 
               {/* Blueprint Footer note */}
-              <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-zinc-300 pt-3 border-t border-zinc-800 font-medium">
+              <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-zinc-300 pt-3 border-t border-white/[0.08] font-medium">
                 <span className="font-bold">TOTAL SUITE FOOTPRINT: 5,050 SQ. FT.</span>
                 <span className="text-amber-400 font-bold animate-pulse">CLICK ROOM ZONES TO INSPECT DIMENSIONS</span>
               </div>
@@ -188,8 +188,8 @@ export const FloorplanView: React.FC = () => {
           </div>
 
           {/* Selected Room Specifications Inspector */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-700/80 shadow-2xl space-y-6">
-            <div className="pb-4 border-b border-zinc-800">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl space-y-6">
+            <div className="pb-4 border-b border-white/[0.08]">
               <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block font-bold mb-1">
                 ROOM SPECIFICATION INSPECTOR
               </span>
@@ -199,17 +199,17 @@ export const FloorplanView: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
                 <span className="text-zinc-300 font-medium">Dimensions:</span>
                 <span className="font-mono text-white font-bold text-sm">{selectedRoom.dimensions}</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
                 <span className="text-zinc-300 font-medium">Square Footage:</span>
                 <span className="font-mono text-amber-300 font-bold text-sm">{selectedRoom.area}</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
                 <span className="text-zinc-300 font-medium">Exposure & Views:</span>
                 <span className="text-zinc-100 text-right font-semibold">{selectedRoom.exposure}</span>
               </div>
@@ -218,7 +218,7 @@ export const FloorplanView: React.FC = () => {
                 <span className="text-xs font-bold text-white block mb-3">Architectural Callouts:</span>
                 <div className="space-y-2.5">
                   {selectedRoom.highlights.map((h, i) => (
-                    <div key={i} className="flex items-start gap-2.5 text-xs text-zinc-200 font-medium p-2 rounded-lg bg-zinc-950/80 border border-zinc-800">
+                    <div key={i} className="flex items-start gap-2.5 text-xs text-zinc-200 font-medium p-2.5 rounded-lg bg-[#14161C] border border-white/[0.08]">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </div>

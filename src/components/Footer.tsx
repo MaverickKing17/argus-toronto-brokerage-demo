@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-[#18181b] via-[#121215] to-[#0d0d0f] text-zinc-300 text-xs border-t border-amber-500/20 pt-16 pb-12 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+    <footer className="relative bg-[#0C0D11] text-zinc-300 text-xs border-t border-amber-500/20 pt-16 pb-12 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
       
       {/* Subtle Top Gold Accent Ambient Glow */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* VIP Off-Market Registry Banner Card */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-zinc-900 via-zinc-900/90 to-zinc-950 border border-zinc-700/80 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="space-y-2 max-w-xl">
@@ -61,11 +61,11 @@ export const Footer: React.FC = () => {
                   value={vipEmail}
                   onChange={(e) => setVipEmail(e.target.value)}
                   placeholder="vance@privateoffice.com"
-                  className="w-full sm:w-72 px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-700 text-white text-xs focus:outline-none focus:border-amber-400 placeholder:text-zinc-500 font-medium"
+                  className="w-full sm:w-72 px-4 py-3 rounded-xl bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400 placeholder:text-zinc-500 font-medium"
                 />
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 shrink-0"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 shrink-0 cursor-pointer"
                   id="join-offmarket-registry-btn"
                 >
                   Join Registry
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand & Credibility */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl border border-amber-500/40 bg-zinc-900 flex items-center justify-center font-serif text-amber-400 font-bold text-lg shadow-md">
+              <div className="w-9 h-9 rounded-xl border border-amber-500/40 bg-[#1C1E24] flex items-center justify-center font-serif text-amber-400 font-bold text-lg shadow-md">
                 Y
               </div>
               <div>
@@ -108,21 +108,21 @@ export const Footer: React.FC = () => {
 
             {/* Compliance Trust Badges */}
             <div className="pt-2 space-y-2">
-              <div className="flex items-center gap-2 text-emerald-400 font-mono text-[10px] font-bold bg-zinc-900/80 px-3 py-1.5 rounded-lg border border-zinc-800">
+              <div className="flex items-center gap-2 text-emerald-400 font-mono text-[10px] font-bold bg-[#1C1E24] px-3 py-1.5 rounded-lg border border-white/[0.08]">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>RECO VERIFIED · FINTRAC COMPLIANT</span>
               </div>
               <div className="flex flex-wrap gap-2 text-[10px] font-mono text-zinc-400">
-                <span className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">TRREB MEMBER</span>
-                <span className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">OREA / CREA</span>
-                <span className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">PIPEDA SAFE</span>
+                <span className="px-2 py-0.5 rounded bg-[#1C1E24] border border-white/[0.08]">TRREB MEMBER</span>
+                <span className="px-2 py-0.5 rounded bg-[#1C1E24] border border-white/[0.08]">OREA / CREA</span>
+                <span className="px-2 py-0.5 rounded bg-[#1C1E24] border border-white/[0.08]">PIPEDA SAFE</span>
               </div>
             </div>
           </div>
 
           {/* Column 2: Yorkville Headquarters */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm text-white font-bold uppercase tracking-wider pb-1 border-b border-zinc-800 flex items-center justify-between">
+            <h4 className="font-serif text-sm text-white font-bold uppercase tracking-wider pb-1 border-b border-white/[0.08] flex items-center justify-between">
               <span>YORKVILLE HEADQUARTERS</span>
               <Building2 className="w-4 h-4 text-amber-400" />
             </h4>
@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-2">
-              <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
+              <div className="p-3 rounded-xl bg-[#1C1E24] border border-white/[0.08] space-y-1">
                 <span className="text-[10px] font-mono text-zinc-400 font-semibold block uppercase">MANAGEMENT DESK HOURS</span>
                 <p className="text-[11px] text-zinc-200 font-medium">Mon–Fri: 8:00 AM – 8:00 PM EST</p>
                 <p className="text-[11px] text-amber-400 font-medium">24/7 VIP On-Call Advisory for Suite 5200</p>
@@ -153,7 +153,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: The Collection Navigation */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm text-white font-bold uppercase tracking-wider pb-1 border-b border-zinc-800">
+            <h4 className="font-serif text-sm text-white font-bold uppercase tracking-wider pb-1 border-b border-white/[0.08]">
               THE PENTHOUSE COLLECTION
             </h4>
             <ul className="space-y-2 text-xs text-zinc-200 font-medium">
@@ -192,7 +192,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Detailed Legal & Regulatory Governance */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm text-white font-bold uppercase tracking-wider pb-1 border-b border-zinc-800 flex items-center justify-between">
+            <h4 className="font-serif text-sm text-white font-bold uppercase tracking-wider pb-1 border-b border-white/[0.08] flex items-center justify-between">
               <span>LEGAL & GOVERNANCE</span>
               <Scale className="w-4 h-4 text-amber-400" />
             </h4>
@@ -204,7 +204,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-1.5 font-medium">
               <button
                 onClick={() => openLegalTab('privacy')}
-                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group"
+                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-[#1C1E24] hover:bg-[#242731] border border-white/[0.08] text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group cursor-pointer"
                 id="footer-privacy-btn"
               >
                 <span className="flex items-center gap-2">
@@ -216,7 +216,7 @@ export const Footer: React.FC = () => {
 
               <button
                 onClick={() => openLegalTab('terms')}
-                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group"
+                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-[#1C1E24] hover:bg-[#242731] border border-white/[0.08] text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group cursor-pointer"
                 id="footer-terms-btn"
               >
                 <span className="flex items-center gap-2">
@@ -228,7 +228,7 @@ export const Footer: React.FC = () => {
 
               <button
                 onClick={() => openLegalTab('portal')}
-                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group"
+                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-[#1C1E24] hover:bg-[#242731] border border-white/[0.08] text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group cursor-pointer"
                 id="footer-portal-btn"
               >
                 <span className="flex items-center gap-2">
@@ -240,7 +240,7 @@ export const Footer: React.FC = () => {
 
               <button
                 onClick={() => openLegalTab('dmca')}
-                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group"
+                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-[#1C1E24] hover:bg-[#242731] border border-white/[0.08] text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group cursor-pointer"
                 id="footer-dmca-btn"
               >
                 <span className="flex items-center gap-2">
@@ -252,7 +252,7 @@ export const Footer: React.FC = () => {
 
               <button
                 onClick={() => openLegalTab('disclaimers')}
-                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group"
+                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-[#1C1E24] hover:bg-[#242731] border border-white/[0.08] text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group cursor-pointer"
                 id="footer-disclaimers-btn"
               >
                 <span className="flex items-center gap-2">
@@ -264,7 +264,7 @@ export const Footer: React.FC = () => {
 
               <button
                 onClick={() => openLegalTab('cookies')}
-                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group"
+                className="w-full text-left py-1.5 px-2.5 rounded-lg bg-[#1C1E24] hover:bg-[#242731] border border-white/[0.08] text-zinc-200 hover:text-amber-300 transition-all flex items-center justify-between text-xs group cursor-pointer"
                 id="footer-cookies-btn"
               >
                 <span className="flex items-center gap-2">
@@ -279,7 +279,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar with Regulatory Notice & Quick Links */}
-        <div className="pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-zinc-300 font-medium">
+        <div className="pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-zinc-300 font-medium">
           <div className="space-y-1 text-center md:text-left">
             <p className="text-zinc-200 font-semibold">© 2026 The Yorkville Luxury Group. All Rights Reserved.</p>
             <p className="text-[10px] text-zinc-400 font-normal">
@@ -288,17 +288,17 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 text-zinc-300 text-[11px]">
-            <button onClick={() => openLegalTab('privacy')} className="hover:text-amber-300 transition-colors">Privacy Policy</button>
+            <button onClick={() => openLegalTab('privacy')} className="hover:text-amber-300 transition-colors cursor-pointer">Privacy Policy</button>
             <span>·</span>
-            <button onClick={() => openLegalTab('terms')} className="hover:text-amber-300 transition-colors">Terms of Representation</button>
+            <button onClick={() => openLegalTab('terms')} className="hover:text-amber-300 transition-colors cursor-pointer">Terms of Representation</button>
             <span>·</span>
-            <button onClick={() => openLegalTab('portal')} className="hover:text-amber-300 transition-colors">Discreet Portal</button>
+            <button onClick={() => openLegalTab('portal')} className="hover:text-amber-300 transition-colors cursor-pointer">Discreet Portal</button>
             <span>·</span>
-            <button onClick={() => openLegalTab('dmca')} className="hover:text-amber-300 transition-colors">DMCA Notice</button>
+            <button onClick={() => openLegalTab('dmca')} className="hover:text-amber-300 transition-colors cursor-pointer">DMCA Notice</button>
             <span>·</span>
-            <button onClick={() => openLegalTab('disclaimers')} className="hover:text-amber-300 transition-colors">RECO Disclaimers</button>
+            <button onClick={() => openLegalTab('disclaimers')} className="hover:text-amber-300 transition-colors cursor-pointer">RECO Disclaimers</button>
             <span>·</span>
-            <button onClick={() => openLegalTab('cookies')} className="hover:text-amber-300 transition-colors">Cookie Policy</button>
+            <button onClick={() => openLegalTab('cookies')} className="hover:text-amber-300 transition-colors cursor-pointer">Cookie Policy</button>
           </div>
         </div>
 

@@ -63,13 +63,13 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-zinc-950/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="relative w-full max-w-xl rounded-2xl bg-zinc-900 border border-zinc-700 p-6 sm:p-8 shadow-2xl space-y-6">
+    <div className="fixed inset-0 z-50 bg-[#0F1115]/80 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="relative w-full max-w-xl rounded-2xl bg-[#1C1E24] border border-white/[0.08] p-6 sm:p-8 shadow-2xl space-y-6">
         
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-zinc-800 text-zinc-300 hover:text-white transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-full bg-[#14161C] border border-white/[0.08] text-zinc-300 hover:text-white transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -97,10 +97,10 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                     key={d}
                     type="button"
                     onClick={() => setSelectedDate(d)}
-                    className={`p-2.5 rounded-lg border text-xs font-medium transition-all ${
+                    className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                       selectedDate === d
-                        ? "bg-amber-500 text-zinc-950 border-amber-400 font-bold"
-                        : "bg-zinc-950 border-zinc-800 text-zinc-200 hover:text-white"
+                        ? "bg-amber-500 text-zinc-950 border-amber-400 font-bold shadow-md shadow-amber-500/20"
+                        : "bg-[#14161C] border-white/[0.08] text-zinc-200 hover:text-white hover:border-white/[0.15]"
                     }`}
                   >
                     {d}
@@ -118,10 +118,10 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                     key={t}
                     type="button"
                     onClick={() => setSelectedTime(t)}
-                    className={`p-2.5 rounded-lg border text-xs font-medium transition-all ${
+                    className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                       selectedTime === t
-                        ? "bg-amber-500 text-zinc-950 border-amber-400 font-bold"
-                        : "bg-zinc-950 border-zinc-800 text-zinc-200 hover:text-white"
+                        ? "bg-amber-500 text-zinc-950 border-amber-400 font-bold shadow-md shadow-amber-500/20"
+                        : "bg-[#14161C] border-white/[0.08] text-zinc-200 hover:text-white hover:border-white/[0.15]"
                     }`}
                   >
                     {t}
@@ -140,7 +140,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Jonathan Vance"
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-950 border border-zinc-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -153,7 +153,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="vance@privateoffice.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-950 border border-zinc-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400"
                   />
                 </div>
                 <div>
@@ -164,7 +164,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 (416) 555-0188"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-950 border border-zinc-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#14161C] border border-white/[0.08] text-white text-xs focus:outline-none focus:border-amber-400"
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer"
               id="confirm-booking-submit-btn"
             >
               <Calendar className="w-4 h-4 text-zinc-950" />
@@ -199,12 +199,12 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-800 text-left text-xs space-y-2 font-medium">
-              <div className="flex justify-between border-b border-zinc-800 pb-2">
+            <div className="p-4 rounded-xl bg-[#14161C] border border-white/[0.08] text-left text-xs space-y-2 font-medium">
+              <div className="flex justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-zinc-300">Confirmation ID:</span>
                 <span className="font-mono text-white font-bold">{confirmationData?.bookingId}</span>
               </div>
-              <div className="flex justify-between border-b border-zinc-800 pb-2">
+              <div className="flex justify-between border-b border-white/[0.08] pb-2">
                 <span className="text-zinc-300">Reserved Slot:</span>
                 <span className="font-mono text-white font-bold">{confirmationData?.slot}</span>
               </div>
@@ -216,7 +216,7 @@ export const ScheduleTourModal: React.FC<ScheduleTourModalProps> = ({
 
             <button
               onClick={onClose}
-              className="px-6 py-2.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs tracking-wider uppercase transition-colors"
+              className="px-6 py-2.5 rounded-lg bg-[#14161C] hover:bg-[#242731] border border-white/[0.08] text-white font-bold text-xs tracking-wider uppercase transition-colors cursor-pointer"
             >
               Return to Listing
             </button>

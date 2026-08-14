@@ -29,12 +29,12 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
   onShare
 }) => {
   return (
-    <header className="relative w-full bg-[#121212] border-b border-zinc-800">
+    <header className="relative w-full bg-[#0F1115] border-b border-white/[0.08]">
       {/* Top Luxury Announcement Bar */}
-      <div className="bg-zinc-900 border-b border-zinc-800 px-4 py-2 text-xs text-zinc-300">
+      <div className="bg-[#14161C] border-b border-white/[0.08] px-4 py-2 text-xs text-zinc-300">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-zinc-800 text-zinc-200 border border-zinc-700">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#1C1E24] text-zinc-200 border border-white/[0.08]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               TROPHY RESIDENCE
             </span>
@@ -59,7 +59,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded border border-zinc-700 bg-zinc-800 flex items-center justify-center shadow-lg group-hover:border-zinc-500 transition-colors">
+          <div className="w-10 h-10 rounded-xl border border-white/[0.08] bg-[#1C1E24] flex items-center justify-center shadow-lg group-hover:border-amber-400/50 transition-colors">
             <span className="font-serif text-xl font-bold text-white tracking-tighter">Y</span>
           </div>
           <div>
@@ -86,7 +86,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
         <div className="flex items-center gap-3">
           <button 
             onClick={onShare}
-            className="p-2.5 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-200 hover:text-white hover:border-zinc-600 transition-all"
+            className="p-2.5 rounded-lg border border-white/[0.08] bg-[#1C1E24] text-zinc-200 hover:text-white hover:border-white/[0.16] transition-all"
             title="Share Dossier"
             id="share-button"
           >
@@ -115,11 +115,11 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
             referrerPolicy="no-referrer"
           />
           {/* Subtle directional gradient scrim for high left-side text contrast while leaving the right side & CN Tower view ultra-clear */}
-          <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/70 to-transparent w-full md:w-[75%] lg:w-[65%]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F1115]/95 via-[#0F1115]/70 to-transparent w-full md:w-[75%] lg:w-[65%]"></div>
           {/* Bottom transition gradient to seamlessly blend into page section */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#121212] via-[#121212]/60 to-transparent"></div>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0F1115] via-[#0F1115]/60 to-transparent"></div>
           {/* Top subtle nav shadow */}
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-zinc-950/60 to-transparent"></div>
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0F1115]/60 to-transparent"></div>
         </div>
 
         {/* Hero Content */}
@@ -127,11 +127,11 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
           {/* Listing Badge & Address */}
           <div className="space-y-5 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="px-3 py-1.5 rounded-lg bg-zinc-950/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xl">
+              <span className="px-3 py-1.5 rounded-lg bg-[#1C1E24]/90 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xl">
                 <Building2 className="w-3.5 h-3.5 text-amber-400" />
                 OFFERED AT $4,500,000 CAD
               </span>
-              <span className="px-3 py-1.5 rounded-lg bg-zinc-950/85 backdrop-blur-md border border-zinc-700/90 text-zinc-100 text-xs font-semibold flex items-center gap-1.5 shadow-xl">
+              <span className="px-3 py-1.5 rounded-lg bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] text-zinc-100 text-xs font-semibold flex items-center gap-1.5 shadow-xl">
                 <MapPin className="w-3.5 h-3.5 text-amber-400" />
                 188 Bay Street · Yorkville, Toronto
               </span>
@@ -152,19 +152,19 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
 
             {/* Quick Specs Highlight Bar */}
             <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
-              <div className="p-3.5 rounded-xl bg-zinc-950/85 backdrop-blur-md border border-zinc-700/80 shadow-2xl">
+              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
                 <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Bedrooms</span>
                 <span className="font-serif text-xl text-white font-bold mt-0.5 block">3 Suite Beds</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-zinc-950/85 backdrop-blur-md border border-zinc-700/80 shadow-2xl">
+              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
                 <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Bathrooms</span>
                 <span className="font-serif text-xl text-white font-bold mt-0.5 block">4 Luxury Baths</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-zinc-950/85 backdrop-blur-md border border-zinc-700/80 shadow-2xl">
+              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
                 <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Living Space</span>
                 <span className="font-serif text-xl text-white font-bold mt-0.5 block">5,050 sq. ft.</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-zinc-950/85 backdrop-blur-md border border-zinc-700/80 shadow-2xl">
+              <div className="p-3.5 rounded-xl bg-[#1C1E24]/90 backdrop-blur-md border border-white/[0.08] shadow-2xl">
                 <span className="block text-[11px] font-mono text-zinc-300 uppercase tracking-wider font-bold">Elevator</span>
                 <span className="font-serif text-xl text-white font-bold mt-0.5 block">Private Foyer</span>
               </div>
@@ -183,7 +183,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
 
               <button
                 onClick={() => onOpenGallery(0)}
-                className="px-6 py-3.5 rounded-xl bg-zinc-950/90 hover:bg-zinc-800 border border-zinc-700 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-2 backdrop-blur-md shadow-xl hover:border-amber-500/40"
+                className="px-6 py-3.5 rounded-xl bg-[#1C1E24]/90 hover:bg-[#242731] border border-white/[0.08] text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-2 backdrop-blur-md shadow-xl hover:border-amber-500/40"
                 id="hero-gallery-btn"
               >
                 <Eye className="w-4 h-4 text-amber-400" />
@@ -192,7 +192,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
 
               <button
                 onClick={onOpenChat}
-                className="px-5 py-3.5 rounded-xl bg-zinc-950/90 hover:bg-zinc-800 border border-amber-500/50 text-amber-300 font-bold text-xs sm:text-sm tracking-wider transition-all flex items-center gap-2 backdrop-blur-md shadow-xl"
+                className="px-5 py-3.5 rounded-xl bg-[#1C1E24]/90 hover:bg-[#242731] border border-amber-500/50 text-amber-300 font-bold text-xs sm:text-sm tracking-wider transition-all flex items-center gap-2 backdrop-blur-md shadow-xl"
                 id="hero-argus-btn"
               >
                 <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />

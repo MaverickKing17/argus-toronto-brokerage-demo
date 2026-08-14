@@ -26,7 +26,7 @@ export const MortgageCalculator: React.FC = () => {
   const estimatedLTT = 210000; // Approx LTT for $4.5M in Toronto
 
   return (
-    <section id="calculator" className="relative py-20 bg-zinc-950 text-zinc-100 border-b border-zinc-800/80 overflow-hidden">
+    <section id="calculator" className="relative py-20 bg-[#0F1115] text-zinc-100 border-b border-white/[0.08] overflow-hidden">
       {/* Background Accent Glow */}
       <div className="absolute top-1/3 right-10 w-96 h-96 bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
 
@@ -49,10 +49,10 @@ export const MortgageCalculator: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Controls Column */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900/90 via-zinc-900 to-zinc-950 border border-zinc-700/80 shadow-2xl space-y-6">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] shadow-2xl space-y-6">
             
             {/* Purchase Price Display */}
-            <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
+            <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
               <span className="text-xs font-bold text-zinc-300">Purchase Price (CAD):</span>
               <span className="font-serif text-2xl text-white font-bold">$4,500,000</span>
             </div>
@@ -70,7 +70,7 @@ export const MortgageCalculator: React.FC = () => {
                 step={5}
                 value={downPaymentPercent}
                 onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className="w-full accent-amber-500 bg-zinc-950 h-2 rounded-lg cursor-pointer border border-zinc-800"
+                className="w-full accent-amber-500 bg-[#14161C] h-2 rounded-lg cursor-pointer border border-white/[0.08]"
               />
               <div className="flex justify-between text-[10px] text-zinc-400 font-mono font-semibold">
                 <span>20% ($900k)</span>
@@ -92,7 +92,7 @@ export const MortgageCalculator: React.FC = () => {
                 step={0.1}
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className="w-full accent-amber-500 bg-zinc-950 h-2 rounded-lg cursor-pointer border border-zinc-800"
+                className="w-full accent-amber-500 bg-[#14161C] h-2 rounded-lg cursor-pointer border border-white/[0.08]"
               />
               <div className="flex justify-between text-[10px] text-zinc-400 font-mono font-semibold">
                 <span>4.0% Prime</span>
@@ -107,20 +107,20 @@ export const MortgageCalculator: React.FC = () => {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setAmortizationYears(25)}
-                  className={`py-3 rounded-xl border text-xs font-bold font-mono transition-all shadow-md ${
+                  className={`py-3 rounded-xl border text-xs font-bold font-mono transition-all shadow-md cursor-pointer ${
                     amortizationYears === 25 
                       ? 'bg-amber-500 text-zinc-950 border-amber-400 shadow-amber-500/20' 
-                      : 'bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700'
+                      : 'bg-[#14161C] border-white/[0.08] text-zinc-300 hover:text-white hover:border-white/[0.15]'
                   }`}
                 >
                   25 Years (Standard)
                 </button>
                 <button
                   onClick={() => setAmortizationYears(30)}
-                  className={`py-3 rounded-xl border text-xs font-bold font-mono transition-all shadow-md ${
+                  className={`py-3 rounded-xl border text-xs font-bold font-mono transition-all shadow-md cursor-pointer ${
                     amortizationYears === 30 
                       ? 'bg-amber-500 text-zinc-950 border-amber-400 shadow-amber-500/20' 
-                      : 'bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700'
+                      : 'bg-[#14161C] border-white/[0.08] text-zinc-300 hover:text-white hover:border-white/[0.15]'
                   }`}
                 >
                   30 Years (Extended)
@@ -129,7 +129,7 @@ export const MortgageCalculator: React.FC = () => {
             </div>
 
             {/* Closing Costs Callout */}
-            <div className="p-4.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs space-y-1.5 shadow-inner">
+            <div className="p-4.5 rounded-xl bg-[#14161C] border border-white/[0.08] text-xs space-y-1.5 shadow-inner">
               <span className="font-mono text-amber-400 text-[10px] uppercase block font-bold">
                 TORONTO CLOSING CAPITAL ESTIMATE
               </span>
@@ -145,7 +145,7 @@ export const MortgageCalculator: React.FC = () => {
           </div>
 
           {/* Monthly Output Summary Card */}
-          <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-amber-500/40 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-[#1C1E24] border border-amber-500/40 space-y-6 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
             <div>
@@ -160,18 +160,18 @@ export const MortgageCalculator: React.FC = () => {
               </span>
             </div>
 
-            <div className="space-y-3 pt-4 border-t border-zinc-800/80">
-              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+            <div className="space-y-3 pt-4 border-t border-white/[0.08]">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
                 <span className="text-zinc-300 font-medium">Mortgage Principal & Interest:</span>
                 <span className="font-mono text-white font-bold">${Math.round(monthlyMortgage).toLocaleString()}/mo</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
                 <span className="text-zinc-300 font-medium">Building Maintenance Fee:</span>
                 <span className="font-mono text-white font-bold">${monthlyMaintenance.toLocaleString()}/mo</span>
               </div>
 
-              <div className="flex items-center justify-between text-xs py-2 border-b border-zinc-800/80">
+              <div className="flex items-center justify-between text-xs py-2 border-b border-white/[0.08]">
                 <span className="text-zinc-300 font-medium">Annual Property Tax (Est. Monthly):</span>
                 <span className="font-mono text-white font-bold">${Math.round(monthlyPropertyTax).toLocaleString()}/mo</span>
               </div>

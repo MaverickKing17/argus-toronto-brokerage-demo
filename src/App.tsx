@@ -37,11 +37,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-zinc-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200">
+    <div className="min-h-screen bg-[#0F1115] text-zinc-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200">
       
       {/* Toast Notification Banner */}
       {toastMessage && (
-        <div className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 px-4 py-3 rounded-xl bg-zinc-800 border border-amber-500/50 text-white shadow-2xl flex items-center gap-3 backdrop-blur-xl animate-fade-in text-xs font-medium">
+        <div className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 px-4 py-3 rounded-xl bg-[#1C1E24] border border-amber-500/50 text-white shadow-2xl flex items-center gap-3 backdrop-blur-xl animate-fade-in text-xs font-medium">
           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
           <button 

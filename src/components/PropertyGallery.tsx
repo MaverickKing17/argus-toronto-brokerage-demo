@@ -50,7 +50,7 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
   };
 
   return (
-    <section id="gallery" className="relative py-20 bg-[#141418] text-zinc-100 border-b border-zinc-800/80 overflow-hidden">
+    <section id="gallery" className="relative py-20 bg-[#12141A] text-zinc-100 border-b border-white/[0.08] overflow-hidden">
       {/* Background Accent Lines & Glow */}
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent"></div>
       <div className="absolute top-1/3 right-10 w-96 h-96 bg-amber-500/5 blur-[120px] pointer-events-none rounded-full"></div>
@@ -73,13 +73,13 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
           </div>
 
           {/* Category Filters */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-zinc-950 border border-zinc-800/80 shadow-inner">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-[#1C1E24] border border-white/[0.08] shadow-inner">
             <button
               onClick={() => setActiveFilter('all')}
               className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all ${
                 activeFilter === 'all' 
                   ? 'bg-amber-500 text-zinc-950 shadow-md' 
-                  : 'text-zinc-300 hover:text-white hover:bg-zinc-900'
+                  : 'text-zinc-300 hover:text-white hover:bg-[#242731]'
               }`}
             >
               All Views ({GALLERY_PHOTOS.length})
@@ -89,7 +89,7 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
               className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all ${
                 activeFilter === 'interior' 
                   ? 'bg-amber-500 text-zinc-950 shadow-md' 
-                  : 'text-zinc-300 hover:text-white hover:bg-zinc-900'
+                  : 'text-zinc-300 hover:text-white hover:bg-[#242731]'
               }`}
             >
               Interiors
@@ -99,7 +99,7 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
               className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all ${
                 activeFilter === 'terrace' 
                   ? 'bg-amber-500 text-zinc-950 shadow-md' 
-                  : 'text-zinc-300 hover:text-white hover:bg-zinc-900'
+                  : 'text-zinc-300 hover:text-white hover:bg-[#242731]'
               }`}
             >
               Private Terrace
@@ -109,7 +109,7 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
               className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all ${
                 activeFilter === 'amenities' 
                   ? 'bg-amber-500 text-zinc-950 shadow-md' 
-                  : 'text-zinc-300 hover:text-white hover:bg-zinc-900'
+                  : 'text-zinc-300 hover:text-white hover:bg-[#242731]'
               }`}
             >
               Amenities
@@ -123,7 +123,7 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
             <div
               key={photo.id}
               onClick={() => openLightbox(index)}
-              className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-zinc-700/80 bg-zinc-900 hover:border-amber-500/50 transition-all duration-500 shadow-2xl hover:shadow-amber-500/10"
+              className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-white/[0.08] bg-[#1C1E24] hover:border-amber-500/50 transition-all duration-500 shadow-2xl hover:shadow-amber-500/10"
               id={`gallery-thumb-${photo.id}`}
             >
               <img
@@ -132,14 +132,14 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent opacity-85 group-hover:opacity-70 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1115] via-[#0F1115]/30 to-transparent opacity-85 group-hover:opacity-70 transition-opacity"></div>
 
-              <div className="absolute top-4 right-4 p-2.5 rounded-xl bg-zinc-950/90 border border-zinc-700 text-amber-400 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <div className="absolute top-4 right-4 p-2.5 rounded-xl bg-[#14161C]/90 border border-white/[0.08] text-amber-400 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
                 <Maximize2 className="w-4 h-4" />
               </div>
 
               <div className="absolute top-4 left-4">
-                <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest font-bold px-2.5 py-1 rounded bg-zinc-950/80 border border-zinc-800 backdrop-blur-sm shadow-md">
+                <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest font-bold px-2.5 py-1 rounded bg-[#14161C]/90 border border-white/[0.08] backdrop-blur-sm shadow-md">
                   {photo.category}
                 </span>
               </div>
@@ -157,11 +157,11 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
         </div>
 
         {/* 360 Virtual Tour Banner */}
-        <div className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-700/80 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+        <div className="mt-12 p-8 rounded-2xl bg-[#1C1E24] border border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="flex items-center gap-5">
-            <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-amber-400 shrink-0 shadow-inner">
+            <div className="p-4 rounded-2xl bg-[#14161C] border border-white/[0.08] text-amber-400 shrink-0 shadow-inner">
               <Compass className="w-8 h-8 animate-spin-slow" />
             </div>
             <div>
@@ -189,17 +189,17 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
 
         {/* 3D Walkthrough Viewport */}
         {virtualTourActive && (
-          <div className="mt-6 p-4 rounded-2xl bg-zinc-950 border border-zinc-800 text-center space-y-4">
-            <div className="relative h-96 w-full rounded-xl overflow-hidden border border-zinc-800">
+          <div className="mt-6 p-4 rounded-2xl bg-[#14161C] border border-white/[0.08] text-center space-y-4">
+            <div className="relative h-96 w-full rounded-xl overflow-hidden border border-white/[0.08]">
               <img 
                 src={GALLERY_PHOTOS[0].url} 
                 alt="3D Walkthrough Preview" 
                 className="w-full h-full object-cover filter contrast-105" 
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-zinc-950/60 flex flex-col items-center justify-center p-6 text-center backdrop-blur-xs">
-                <div className="p-4 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-200 mb-3 animate-pulse">
-                  <Compass className="w-8 h-8 text-zinc-200" />
+              <div className="absolute inset-0 bg-[#0F1115]/70 flex flex-col items-center justify-center p-6 text-center backdrop-blur-xs">
+                <div className="p-4 rounded-full bg-[#1C1E24] border border-white/[0.08] text-zinc-200 mb-3 animate-pulse">
+                  <Compass className="w-8 h-8 text-amber-400" />
                 </div>
                 <span className="font-serif text-2xl text-white font-bold">
                   3D Spatial Tour Engine Active
