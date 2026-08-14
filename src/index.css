@@ -12,10 +12,11 @@
     --color-dark-elevated: #242731;
   }
 
-  body {
+  html, body, #root {
     font-family: var(--font-sans);
-    background-color: #0F1115;
+    background-color: #0F1115 !important;
     color: #f4f4f5;
+    min-height: 100%;
   }
 
   h1, h2, h3, .font-serif {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PROPERTY_DETAILS } from '../data/propertyData';
+import { PROPERTY_DETAILS, GALLERY_PHOTOS } from '../data/propertyData';
 import { 
   Building2, 
   MapPin, 
@@ -109,7 +109,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
         {/* Luminous Background Image with Scrim Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/images/yorkville_hero_penthouse_1786469850313.jpg" 
+            src={GALLERY_PHOTOS[0]?.url || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"} 
             alt="The Yorkville Penthouse Collection"
             className="w-full h-full object-cover object-center transform scale-100 filter brightness-105 contrast-105 saturate-110"
             referrerPolicy="no-referrer"

@@ -79,14 +79,14 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Grand Living Suite",
     subtitle: "Floor-to-ceiling glass overlooking Toronto skyline & CN Tower",
     category: "interior",
-    url: "/src/assets/images/yorkville_hero_penthouse_1786469850313.jpg"
+    url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: "living_lounge",
     title: "Private Lounge & Elevator Foyer",
     subtitle: "Direct elevator entrance with Italian white oak millwork",
     category: "interior",
-    url: "/src/assets/images/yorkville_condo_living_1786469860203.jpg"
+    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80"
   },
   {
     id: "kitchen",
