@@ -86,28 +86,28 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Grand Salon & Living Vista",
     subtitle: "270° floor-to-ceiling panoramic glass, custom Calacatta fireplace & skyline vista",
     category: "interior",
-    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80"
+    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: "kitchen",
     title: "Poliform Chef & Wine Gallery",
     subtitle: "Gaggenau 400 series suite, waterfall Calacatta island & sommelier wine vault",
     category: "interior",
-    url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80"
+    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: "primary_bath",
     title: "Primary Wing & Spa Bath",
     subtitle: "Boffi freestanding tub overlooking sunset horizon, heated bookmatched marble floors",
     category: "interior",
-    url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=80"
+    url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: "terrace",
     title: "1,200 Sq. Ft. Private Heated Terrace",
     subtitle: "High-rise glass balcony with integrated radiant heaters, gas fire table & Hestan grill",
     category: "terrace",
-    url: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=1600&q=80"
+    url: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: "primary_suite",

@@ -158,23 +158,23 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
           ))}
         </div>
 
-        {/* 360 Virtual Tour Banner */}
+        {/* Virtual Tour Banner */}
         <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-white border-2 border-slate-200/90 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.12)] transition-all duration-300 relative overflow-hidden">
           <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
 
           <div className="flex items-center gap-5">
             <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/90 border border-amber-300 text-amber-700 shrink-0 shadow-sm">
-              <Compass className="w-8 h-8 animate-spin-slow" />
+              <Sparkles className="w-8 h-8 text-amber-600" />
             </div>
             <div>
               <span className="text-[10px] font-mono text-amber-800 uppercase tracking-widest font-bold block mb-1">
-                3D SPATIAL SCANNING
+                HIGH-DEFINITION ROOM EXPERIENCE
               </span>
               <h3 className="font-serif text-2xl text-slate-950 font-bold">
-                Interactive 3D Walkthrough Available
+                Interactive Suite Virtual Tour
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 font-normal mt-0.5 max-w-xl leading-relaxed">
-                Experience room-by-room floorplan orientation with 4K laser spatial scans. Integrated directly into the luxury buyer dossier.
+                Experience high-definition architectural room previews with interactive finish and specification hotspots across all key living wings.
               </p>
             </div>
           </div>
@@ -185,11 +185,11 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
             id="toggle-virtual-tour-btn"
           >
             <Sparkles className="w-4 h-4 text-zinc-950 stroke-[2.5]" />
-            {virtualTourActive ? "Close 3D View" : "Launch 3D Walkthrough"}
+            {virtualTourActive ? "Close Virtual Tour" : "Launch Suite Virtual Tour"}
           </button>
         </div>
 
-        {/* 3D Walkthrough Viewport */}
+        {/* Suite Virtual Tour Viewport */}
         {virtualTourActive && (
           <div className="mt-8 animate-fade-in">
             <Spatial3DTour />

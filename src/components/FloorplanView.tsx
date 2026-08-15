@@ -80,7 +80,7 @@ const ROOM_DATA: RoomDetail[] = [
     area: "350 sq. ft.",
     ceilingHeight: "10' 4\" Finished Reveal",
     exposure: "West / Afternoon Golden Hour",
-    imageUrl: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
     materials: ["Poliform Varenna Matte Lacquer Cabinets", "Continuous Waterfall Marble Island", "UV-Filtered Temperature Glass Vault"],
     highlights: [
       "Full Gaggenau 400 Series Appliance Suite & Steam Oven",
@@ -116,7 +116,7 @@ const ROOM_DATA: RoomDetail[] = [
     area: "1,200 sq. ft.",
     ceilingHeight: "Open Sky (Frameless Glass Railing)",
     exposure: "270° South / West / North Sky Vista",
-    imageUrl: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
     materials: ["Architectural Porcelain Pavers", "Marine-Grade Teak Louver Accents", "Automated Snow-Melt Subfloor"],
     highlights: [
       "Flush-Mounted Infrared Radiant Ceiling Heaters",
