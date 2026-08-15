@@ -115,7 +115,7 @@ export const HeaderHero: React.FC<HeaderHeroProps> = ({
         {/* Luminous High-Res Penthouse Interior Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://i.ibb.co/tp4fftHy/Chat-GPT-Image-Aug-14-2026-04-14-11-PM.png" 
+            src="https://i.ibb.co/GvSZs7mt/Chat-GPT-Image-Aug-14-2026-04-14-11-PM.png" 
             alt="The Yorkville Penthouse Collection Living Room"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
