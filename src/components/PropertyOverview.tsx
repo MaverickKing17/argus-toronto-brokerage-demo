@@ -20,7 +20,9 @@ import {
   Calendar,
   FileText,
   Award,
-  Sparkles
+  Sparkles,
+  Layers,
+  ChevronRight
 } from 'lucide-react';
 
 interface PropertyOverviewProps {
@@ -63,7 +65,7 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-amber-300/80 text-amber-900 text-[11px] font-mono font-bold uppercase tracking-widest mb-3 shadow-sm">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-amber-300/80 text-amber-900 text-[11px] font-mono font-bold uppercase tracking-widest mb-3 shadow-xs">
               <Award className="w-3.5 h-3.5 text-amber-600" />
               ARCHITECTURAL DOSSIER & SPECIFICATIONS
             </span>
@@ -99,10 +101,10 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
               <div className="absolute top-0 inset-x-0 h-[4px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 group-hover:h-[5px] transition-all duration-300"></div>
 
               <div className="flex items-start justify-between mb-5 relative z-10">
-                <div className="p-3.5 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100/90 border border-amber-300 text-amber-700 shadow-sm group-hover:border-amber-400 group-hover:scale-110 transition-all duration-300">
+                <div className="p-3.5 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100/90 border border-amber-300 text-amber-700 shadow-xs group-hover:border-amber-400 group-hover:scale-110 transition-all duration-300">
                   {getIcon(spec.iconName)}
                 </div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950 text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm border border-slate-800">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950 text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-xs border border-slate-800">
                   <CheckCircle2 className="w-3 h-3 text-amber-400" />
                   VERIFIED SPEC
                 </span>
@@ -126,79 +128,164 @@ export const PropertyOverview: React.FC<PropertyOverviewProps> = ({
           ))}
         </div>
 
-        {/* Narrative & Senior Broker Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-          
-          {/* Main Residence Narrative */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="p-8 sm:p-10 rounded-2xl bg-white border-2 border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.12)] transition-all duration-300 space-y-5 relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
+        {/* 2-Column Split Layout for Residence Overview */}
+        <div className="mb-16 p-8 sm:p-10 lg:p-12 rounded-3xl bg-white border-2 border-slate-200/90 shadow-[0_12px_45px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_rgba(245,158,11,0.12)] transition-all duration-300 relative overflow-hidden">
+          <div className="absolute top-0 inset-x-0 h-[4px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
 
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Column: Narrative & Key Stat Boxes (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center gap-2">
-                <span className="inline-block text-xs font-mono text-amber-900 uppercase tracking-widest font-bold px-3 py-1 rounded-full bg-amber-50 border border-amber-200 shadow-xs">
-                  RESIDENCE OVERVIEW
+                <span className="inline-block text-xs font-mono text-amber-900 uppercase tracking-widest font-bold px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-300 shadow-xs">
+                  RESIDENCE ARCHITECTURAL OVERVIEW
                 </span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-slate-950 font-bold leading-tight">
+              <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-slate-950 font-bold leading-tight tracking-tight">
                 {PROPERTY_DETAILS.tagline}
               </h3>
+
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-normal">
                 {PROPERTY_DETAILS.description}
               </p>
-              
-              <div className="pt-6 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs hover:border-amber-300 transition-colors">
-                  <span className="text-slate-500 block font-bold text-[11px] uppercase font-mono">Interior Area:</span>
-                  <span className="text-slate-950 font-bold text-base font-serif mt-1 block">3,850 SQ. FT.</span>
+
+              {/* Stat Boxes */}
+              <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-amber-400 transition-all group shadow-xs">
+                  <span className="text-slate-500 block font-bold text-[10px] uppercase font-mono tracking-wider">Interior Residence:</span>
+                  <span className="text-slate-950 font-bold text-lg sm:text-xl font-serif mt-1 block group-hover:text-amber-900">3,850 SQ. FT.</span>
+                  <span className="text-[10px] text-slate-500 block mt-0.5">3 Bedrooms · 4 Baths</span>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs hover:border-amber-300 transition-colors">
-                  <span className="text-slate-500 block font-bold text-[11px] uppercase font-mono">Private Terrace:</span>
-                  <span className="text-slate-950 font-bold text-base font-serif mt-1 block">1,200 SQ. FT. HEATED</span>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-amber-400 transition-all group shadow-xs">
+                  <span className="text-slate-500 block font-bold text-[10px] uppercase font-mono tracking-wider">Private Sky Terrace:</span>
+                  <span className="text-amber-800 font-bold text-lg sm:text-xl font-serif mt-1 block">1,200 SQ. FT.</span>
+                  <span className="text-[10px] text-emerald-700 font-semibold block mt-0.5">Automated Snow-Melt</span>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs hover:border-amber-300 transition-colors">
-                  <span className="text-slate-500 block font-bold text-[11px] uppercase font-mono">Floor Position:</span>
-                  <span className="text-slate-950 font-bold text-base font-serif mt-1 block">FULL 52ND FLOOR</span>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-amber-400 transition-all group shadow-xs">
+                  <span className="text-slate-500 block font-bold text-[10px] uppercase font-mono tracking-wider">Elevation:</span>
+                  <span className="text-slate-950 font-bold text-lg sm:text-xl font-serif mt-1 block group-hover:text-amber-900">FULL 52ND FLOOR</span>
+                  <span className="text-[10px] text-slate-500 block mt-0.5">Direct High-Speed Lift</span>
                 </div>
               </div>
             </div>
 
-            {/* Key Features & Amenities List */}
-            <div className="p-8 sm:p-10 rounded-2xl bg-white border-2 border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.12)] transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
+            {/* Right Column: High-End Vertical Architectural Interior Photo (5 cols) */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-3xl overflow-hidden border-2 border-slate-200 shadow-[0_15px_40px_rgba(0,0,0,0.15)] group h-[420px] sm:h-[480px]">
+                <img 
+                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Penthouse Grand Salon & Skyline Vista" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                
+                {/* Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl text-slate-950 font-bold mb-6 flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-emerald-600" />
-                Unsurpassed Architectural Features
-              </h3>
+                {/* Floating Top Badge */}
+                <div className="absolute top-4 left-4 z-10 px-3.5 py-1.5 rounded-xl bg-slate-950/85 border border-amber-400/50 backdrop-blur-md text-amber-300 text-xs font-mono font-bold shadow-lg">
+                  SUITE 5200 · SKY RESIDENCE
+                </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {AMENITIES_LIST.map((amenity) => (
-                  <div key={amenity.id} className="relative flex items-start gap-4 p-5 rounded-2xl bg-slate-50/80 border border-slate-200/90 hover:bg-white hover:border-amber-400 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group overflow-hidden">
-                    <div className="p-3.5 rounded-xl bg-white border border-amber-200 text-amber-700 shrink-0 shadow-sm group-hover:bg-amber-50 group-hover:border-amber-400 group-hover:scale-105 transition-all">
-                      {getIcon(amenity.icon)}
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase text-amber-800 tracking-widest font-bold block">
+                {/* Floating Bottom Card */}
+                <div className="absolute bottom-4 inset-x-4 z-10 p-4 rounded-2xl bg-slate-950/90 border border-slate-700 backdrop-blur-md text-white shadow-xl space-y-1">
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-amber-400 font-bold flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                      270° LAKE & CN TOWER PANORAMA
+                    </span>
+                    <span className="text-slate-400">10'8" CEILINGS</span>
+                  </div>
+                  <p className="text-xs text-slate-200 font-light">
+                    Thermal acoustic glazing with integrated Lutron motorized Palladiom shading.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Unsurpassed Architectural Features & Broker Profile Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+          
+          {/* Key Features & Amenities Grid (8 cols) */}
+          <div className="lg:col-span-8 p-8 sm:p-10 rounded-3xl bg-white border-2 border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)] transition-all duration-300 relative overflow-hidden">
+            <div className="absolute top-0 inset-x-0 h-[4px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+              <div>
+                <span className="text-[11px] font-mono text-amber-800 uppercase tracking-widest block font-bold">
+                  CURATED LUXURY APPOINTMENTS
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl text-slate-950 font-bold flex items-center gap-3 mt-1">
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+                  Unsurpassed Architectural Features
+                </h3>
+              </div>
+              <span className="px-3.5 py-1.5 rounded-xl bg-slate-100 border border-slate-300 text-slate-700 font-mono text-xs font-bold">
+                6 EXCLUSIVE RESIDENCE TIERS
+              </span>
+            </div>
+
+            {/* 6 Feature Cards with Image Headers */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {AMENITIES_LIST.map((amenity) => (
+                <div 
+                  key={amenity.id} 
+                  className="relative rounded-2xl bg-white border-2 border-slate-200/90 hover:border-amber-500 hover:-translate-y-1.5 hover:shadow-[0_14px_30px_rgba(245,158,11,0.16)] transition-all duration-300 group overflow-hidden flex flex-col justify-between"
+                >
+                  {/* Thumbnail Image Header */}
+                  <div className="relative h-36 w-full overflow-hidden bg-slate-900">
+                    {amenity.imageUrl && (
+                      <img 
+                        src={amenity.imageUrl} 
+                        alt={amenity.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                    
+                    {/* Category Pill on Image */}
+                    <div className="absolute top-3 left-3">
+                      <span className="text-[10px] font-mono uppercase text-amber-300 tracking-wider font-bold px-2.5 py-1 rounded-lg bg-slate-950/80 border border-amber-400/40 backdrop-blur-md shadow-xs">
                         {amenity.category}
                       </span>
-                      <h4 className="text-sm sm:text-base font-bold text-slate-950 mt-0.5 group-hover:text-amber-900 transition-colors">
+                    </div>
+
+                    {/* Icon Badge */}
+                    <div className="absolute bottom-3 right-3 p-2.5 rounded-xl bg-white text-amber-700 shadow-md border border-amber-300 group-hover:scale-110 group-hover:bg-amber-50 transition-all">
+                      {getIcon(amenity.icon)}
+                    </div>
+                  </div>
+
+                  {/* Text Content */}
+                  <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-slate-950 leading-snug group-hover:text-amber-900 transition-colors">
                         {amenity.title}
                       </h4>
-                      <p className="text-xs text-slate-600 mt-1 font-normal leading-relaxed">
+                      <p className="text-xs text-slate-600 mt-1.5 font-normal leading-relaxed">
                         {amenity.description}
                       </p>
                     </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center text-[11px] font-mono text-amber-800 font-bold gap-1 group-hover:translate-x-1 transition-transform">
+                      <span>INSPECT DETAILS</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-amber-600" />
+                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Senior Broker Profile Card */}
-          <div className="space-y-6">
-            <div className="p-7 sm:p-8 rounded-2xl bg-white border-2 border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.14)] transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
+          {/* Senior Broker Profile Card (4 cols) */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="p-7 sm:p-8 rounded-3xl bg-white border-2 border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.14)] transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-[4px] bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400"></div>
 
               <div className="flex items-center gap-4 mb-6">
                 <div className="relative">

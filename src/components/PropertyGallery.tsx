@@ -31,8 +31,9 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
     ? GALLERY_PHOTOS 
     : GALLERY_PHOTOS.filter(p => p.category === activeFilter);
 
-  const openLightbox = (index: number) => {
-    setLightboxIndex(index);
+  const openLightbox = (photo: GalleryPhoto) => {
+    const index = GALLERY_PHOTOS.findIndex(p => p.id === photo.id);
+    setLightboxIndex(index !== -1 ? index : 0);
   };
 
   const closeLightboxModal = () => {
@@ -120,10 +121,10 @@ export const PropertyGallery: React.FC<PropertyGalleryProps> = ({
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredPhotos.map((photo, index) => (
+          {filteredPhotos.map((photo) => (
             <div
               key={photo.id}
-              onClick={() => openLightbox(index)}
+              onClick={() => openLightbox(photo)}
               className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border-2 border-slate-200/90 bg-white hover:border-amber-500 transition-all duration-500 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.18)] hover:-translate-y-1"
               id={`gallery-thumb-${photo.id}`}
             >

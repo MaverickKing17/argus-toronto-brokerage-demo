@@ -44,7 +44,7 @@ const TOUR_ROOMS: TourRoom[] = [
     name: 'Grand Salon & Living Vista',
     floorArea: '1,450 sq. ft.',
     elevation: '52nd Floor · South & West Skyline',
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
     bearing: '180° S · Panoramic CN Tower & Lake Ontario',
     hotspots: [
       {
@@ -81,7 +81,7 @@ const TOUR_ROOMS: TourRoom[] = [
     name: 'Poliform Chef & Wine Gallery',
     floorArea: '780 sq. ft.',
     elevation: '52nd Floor · East Morning Light',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=2400&q=85',
     bearing: '090° E · Rosedale Valley & Sunrise Vista',
     hotspots: [
       {
@@ -109,7 +109,7 @@ const TOUR_ROOMS: TourRoom[] = [
     name: 'Primary Wing & Spa Bath',
     floorArea: '1,120 sq. ft.',
     elevation: '52nd Floor · West Sunset Vista',
-    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=80',
     bearing: '270° W · High Park & Lake Ontario Sunsets',
     hotspots: [
       {
@@ -137,7 +137,7 @@ const TOUR_ROOMS: TourRoom[] = [
     name: '1,200 Sq. Ft. Private Heated Terrace',
     floorArea: '1,200 sq. ft.',
     elevation: '52nd Floor · 360° Open Air',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=2400&q=85',
     bearing: '210° SW · Downtown Skyline & Yorkville Canopy',
     hotspots: [
       {

@@ -21,6 +21,7 @@ export interface AmenityItem {
   title: string;
   description: string;
   icon: string;
+  imageUrl?: string;
 }
 
 export interface ChatMessage {
@@ -42,6 +43,7 @@ export interface NeighborhoodSpot {
   category: string;
   distance: string;
   description: string;
+  imageUrl?: string;
 }
 
 export interface BrokerInfo {

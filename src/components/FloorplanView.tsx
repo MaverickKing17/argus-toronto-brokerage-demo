@@ -62,7 +62,7 @@ const ROOM_DATA: RoomDetail[] = [
     area: "775 sq. ft.",
     ceilingHeight: "10' 8\" Clear Span",
     exposure: "South-West (Panoramic CN Tower & Lake)",
-    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
     materials: ["14ft Bookmatched Calacatta Oro Hearth", "Wide-Plank White Oak Flooring", "Lutron Palladiom Motorized Solar Glass"],
     highlights: [
       "270° Floor-to-Ceiling Thermal Acoustic Glazing",
@@ -98,7 +98,7 @@ const ROOM_DATA: RoomDetail[] = [
     area: "515 sq. ft.",
     ceilingHeight: "10' 6\" Coffered Detail",
     exposure: "South / Skyline & Waterfront",
-    imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
     materials: ["Boffi Sculpted Soaking Tub", "Dornbracht Platinum Matte Fixtures", "Rimadesio Glass Dressing Closets"],
     highlights: [
       "Dual Walk-In Dressing Rooms with Biometric Safe",
@@ -116,7 +116,7 @@ const ROOM_DATA: RoomDetail[] = [
     area: "1,200 sq. ft.",
     ceilingHeight: "Open Sky (Frameless Glass Railing)",
     exposure: "270° South / West / North Sky Vista",
-    imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80",
     materials: ["Architectural Porcelain Pavers", "Marine-Grade Teak Louver Accents", "Automated Snow-Melt Subfloor"],
     highlights: [
       "Flush-Mounted Infrared Radiant Ceiling Heaters",
